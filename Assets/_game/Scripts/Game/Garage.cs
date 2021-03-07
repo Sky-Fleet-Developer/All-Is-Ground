@@ -27,7 +27,7 @@ public class Garage : MonoBehaviour, IAccountEvents
     UILink UserShip;
     UILink AIShip;
 
-    public static bool shipDirty;
+    public static bool shipDirty = false;
 
     StorageEditor Modernizations;
 
@@ -104,7 +104,7 @@ public class Garage : MonoBehaviour, IAccountEvents
         UserShip = _Garage.GetChildByName("PlayerShipValue");
         AIShip = _Garage.GetChildByName("AIShipValue");
 
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (isGame)
         {
             UILink.ToggleGarage.Button.onClick.AddListener(ToggleActive);
         }
@@ -130,8 +130,8 @@ public class Garage : MonoBehaviour, IAccountEvents
             InstanceShip(ref MachineInstances[i], storage.Ships[i].PrefabName);
         }
 
-        int bi = SceneManager.GetActiveScene().buildIndex;
-        _Garage = bi == 0 ? UILink.Garage : UILink.BattleGarage;
+       
+        _Garage = isGame ? UILink.BattleGarage : UILink.Garage;
         GetUI();
 
         if (PhotonNetwork.connected && UsersDATA.currentAccount != null) Setup();
@@ -185,19 +185,21 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SetShipInstance(ref Transform ship, int N, Transform place)
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            if (ship)
-            Destroy(ship.gameObject);
-        ship = Instantiate(MachineInstances[N], place);
-        ship.localPosition = Vector3.zero;
-        ship.localRotation = Quaternion.identity;
-        ship.gameObject.SetActive(true);
+        if (!isGame)
+        {
+            if (ship) Destroy(ship.gameObject);
+            ship = Instantiate(MachineInstances[N], place);
+            ship.localPosition = Vector3.zero;
+            ship.localRotation = Quaternion.identity;
+            ship.gameObject.SetActive(true);
+        }
     }
 
     public void InstanceShip(ref Transform ship, string Name)
     {
         int i = GetShipID(Name);
         ship = Instantiate(MachinePrefabs[i]);
+        Destroy(ship.GetComponent<Control>());
         foreach (var hit in ship.GetComponentsInChildren<MonoBehaviour>())
             hit.enabled = false;
         foreach (var hit in ship.GetComponentsInChildren<AudioSource>())
@@ -208,7 +210,11 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SelectMachine(int i, string setName)
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0) shipDirty = true;
+        if (!isGame)
+        {
+            shipDirty = true;
+            Debug.Log("Ёбана");
+        }
 
         ShipsScroll.ScrollRing.Value = i;
         storage.Ships[i].ApplyGrowth(MachineInstances[i].gameObject);
@@ -252,6 +258,8 @@ public class Garage : MonoBehaviour, IAccountEvents
         this.Wait(0.1f, Setup);
     }
 
+    bool isGame => SceneManager.GetActiveScene().buildIndex != 0;
+
     public void Setup()
     {
         _Garage.gameObject.SetActive(true);
@@ -262,11 +270,11 @@ public class Garage : MonoBehaviour, IAccountEvents
             hit.Text.text = storage.Ships[i].StorageName;
         }
         ShipsScroll.ScrollRing.OnValueChainge.AddListener(SetApply);
-        SelectMachine(0, "Машина");
+        if (!isGame) SelectMachine(0, "Машина");
         SetShipInstance(ref UserInstance, 0, UserPlace);
         SetShipInstance(ref AIInstance, 0, AIPlace);
         UserShip.Text.text = UsersDATA.currentAccount.ShoosedMachine.FullName;
         AIShip.Text.text = UsersDATA.currentAccount.AIMachine.FullName;
-        if (SceneManager.GetActiveScene().buildIndex != 0) _Garage.gameObject.SetActive(false);
+        if (isGame) _Garage.gameObject.SetActive(false);
     }
 }

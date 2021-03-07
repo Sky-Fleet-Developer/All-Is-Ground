@@ -63,9 +63,9 @@ public class ShowFriendUI : MonoBehaviourPlus
         GUI.skin = skin;
         foreach (var Hit in Friends)
         {
-            if (CamTr.InverseTransformPoint(Hit.Tr.position).z > 0)
+            if (CamTr.InverseTransformPoint(Hit.transform.position).z > 0)
             {
-                scrPos = mainCam.WorldToScreenPoint(Hit.Tr.position + Hit.Tr.up + Vector3.up * 5f);
+                scrPos = mainCam.WorldToScreenPoint(Hit.transform.position + Hit.transform.up + Vector3.up * 5f);
                 Vector2 pos = new Vector2(scrPos.x - 100, Screen.height - scrPos.y - 35);
                 if (Hit.IsMine)
                     label = "Bot";

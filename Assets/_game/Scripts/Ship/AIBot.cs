@@ -136,7 +136,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
     }
     protected virtual void SetCombatForward()
     {
-        control.Forward = MainEnamy.Tr.position - Tr.position;
+        control.Forward = MainEnamy.transform.position - Tr.position;
     }
     protected virtual void SetForward()
     {
@@ -144,14 +144,14 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
     }
     protected virtual void SetGunAimPoint()
     {
-        control.AimPoint = MainEnamy.Tr.position + MainEnamy.Tr.up + MainEnamy.Rigid.velocity * GetGunPreemption(MainEnamy.Tr.position);
+        control.AimPoint = MainEnamy.transform.position + MainEnamy.transform.up + MainEnamy.Rigid.velocity * GetGunPreemption(MainEnamy.transform.position);
     }
     protected virtual void SetRocketAimPoint()
     {
-        float RTEDist = (rockets.Followers[0].Tr.position - MainEnamy.Tr.position).magnitude;
+        float RTEDist = (rockets.Followers[0].Tr.position - MainEnamy.transform.position).magnitude;
         float Up = RTEDist / 120 - 0.5f;
         Up = Mathf.Clamp(Up, -0.5f, 1);
-        control.AimPoint = MainEnamy.Tr.position + MainEnamy.Rigid.velocity * RTEDist / rockets.Followers[0].Velocity.magnitude + MainEnamy.Tr.up + Vector3.up * Up * 6;
+        control.AimPoint = MainEnamy.transform.position + MainEnamy.Rigid.velocity * RTEDist / rockets.Followers[0].Velocity.magnitude + MainEnamy.transform.up + Vector3.up * Up * 6;
     }
     #endregion
     protected IEnumerator ShootRockets()
@@ -184,7 +184,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
     {
         Vector3[] points = new Vector3[Points.Length];
         for (int i = 0; i < Points.Length; i++)
-            points[i] = Points[i].Tr.position;
+            points[i] = Points[i].transform.position;
         Vector3 point;
         int nomber;
         if (PointClosedToRay(MouseOrbit.AimRay, points, out point, out nomber))
@@ -199,7 +199,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
     {
         Vector3[] points = new Vector3[Points.Length];
         for (int i = 0; i < Points.Length; i++)
-            points[i] = Points[i].Tr.position;
+            points[i] = Points[i].transform.position;
         Vector3 point;
         int nomber;
         if (PointClosedToRay(MouseOrbit.AimRay, points, out point, out nomber))
@@ -298,20 +298,20 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
         {
             SetGunAimPoint();
             control.Fire1 = false;
-            float dist = Vector3.Distance(Tr.position, MainEnamy.Tr.position);
+            float dist = Vector3.Distance(Tr.position, MainEnamy.transform.position);
             float time = dist / gun.ChargePool.charge.StartSpeed;
             Vector3 grav = Vector3.up * GRAVITY * time;
             if (gun.ChargePool.charge.UseGravity)
                 grav = Vector3.zero;
             Vector3 GunPreemption = (MainEnamy.Rigid.velocity - Rigid.velocity + grav) * time;
             
-            if (RocketsCanShoot(MainEnamy.Tr.position))
+            if (RocketsCanShoot(MainEnamy.transform.position))
             {
                 StartCoroutine(ShootRockets());
             }
-            else if (GunCanShoot(MainEnamy.Tr.position + GunPreemption))
+            else if (GunCanShoot(MainEnamy.transform.position + GunPreemption))
             {
-                MainGunShoot(MainEnamy.Tr.position + GunPreemption);
+                MainGunShoot(MainEnamy.transform.position + GunPreemption);
             }
         }
     }
@@ -425,16 +425,16 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
                         TargetWaypoint = GetCloserPoint();
                         break;
                     case MovingPrioritets.Partner:
-                        var tr = GameManager.Instance.CurrentShip.Tr;
+                        var tr = GameManager.Instance.CurrentShip.transform;
                         TargetWaypoint = Vector3.ProjectOnPlane(DistantPoint(Tr.position, tr.position, 10f) - tr.position, tr.up) + tr.position;
                         break;
                     case MovingPrioritets.CapPoint:
-                        TargetWaypoint = Vector3.ProjectOnPlane(DistantPoint(Tr.position, HoldWaypoint, Random.Range(SelectedPoint.Radius * 0.7f, SelectedPoint.Radius * 0.3f)) - SelectedPoint.Tr.position, SelectedPoint.Tr.up) + SelectedPoint.Tr.position;
+                        TargetWaypoint = Vector3.ProjectOnPlane(DistantPoint(Tr.position, HoldWaypoint, Random.Range(SelectedPoint.Radius * 0.7f, SelectedPoint.Radius * 0.3f)) - SelectedPoint.transform.position, SelectedPoint.transform.up) + SelectedPoint.transform.position;
                         if (SelectedPoint.Owner == team)
                             MovingPriority = MovingPrioritets.Standart;
                         break;
                     case MovingPrioritets.ProtectPoint:
-                        TargetWaypoint = Vector3.ProjectOnPlane(DistantPoint(Tr.position, HoldWaypoint, Random.Range(SelectedPoint.Radius * 0.7f, SelectedPoint.Radius * 0.3f)) - SelectedPoint.Tr.position, SelectedPoint.Tr.up) + SelectedPoint.Tr.position;
+                        TargetWaypoint = Vector3.ProjectOnPlane(DistantPoint(Tr.position, HoldWaypoint, Random.Range(SelectedPoint.Radius * 0.7f, SelectedPoint.Radius * 0.3f)) - SelectedPoint.transform.position, SelectedPoint.transform.up) + SelectedPoint.transform.position;
                         break;
                     case MovingPrioritets.HoldPosition:
                         TargetWaypoint = HoldWaypoint;
@@ -523,7 +523,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
         if (!rockets)
             return false;
 
-        if (Vector3.Distance(Tr.position, MainEnamy.Tr.position) < 15)
+        if (Vector3.Distance(Tr.position, MainEnamy.transform.position) < 15)
             return false;
 
         return RocketsIsAimed(Target);
@@ -563,7 +563,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
         {
             if (Points[i].Owner != team)
             {
-                float d = Vector3.Distance(Points[i].Tr.position, Tr.position);
+                float d = Vector3.Distance(Points[i].transform.position, Tr.position);
                 if (d < dist)
                 {
                     dist = d;
@@ -575,7 +575,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
         {
             for (int i = 0; i < Points.Length; i++)
             {
-                float d = Vector3.Distance(Points[i].Tr.position, Tr.position);
+                float d = Vector3.Distance(Points[i].transform.position, Tr.position);
                 if (d < dist)
                 {
                     dist = d;
@@ -584,8 +584,8 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
             }
         }
         SelectedPoint = Points[point];
-        Vector3 res = DistantPoint(Tr.position, Points[point].Tr.position, Random.Range(20, 10));
-        return new Vector3(res.x, Points[point].Tr.position.y, res.z);
+        Vector3 res = DistantPoint(Tr.position, Points[point].transform.position, Random.Range(20, 10));
+        return new Vector3(res.x, Points[point].transform.position.y, res.z);
     }
     public Health GetCloserEnamy()
     {
@@ -594,10 +594,10 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
         bool found = false;
         for (int i = 0; i < Enamys.Count; i++)
         {
-            float d = Vector3.Distance(Enamys[i].Tr.position, Tr.position);
+            float d = Vector3.Distance(Enamys[i].transform.position, Tr.position);
             RaycastHit Hit;
             Vector3 self = Tr.position + Vector3.up;
-            Vector3 enamy = Enamys[i].Tr.position + Vector3.up;
+            Vector3 enamy = Enamys[i].transform.position + Vector3.up;
             if (Enamys[i].IsAlive)
             {
                 if (!Physics.Raycast(self, enamy - self, out Hit, d, GameValues.BotAimingLayer))

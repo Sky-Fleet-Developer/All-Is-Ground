@@ -30,12 +30,9 @@ public class Control : MonoBehaviourPlus, IDestroyeble
     [System.NonSerialized]
     AIBot Bot;
     float ScyncTimer = 0.1f;
-    [System.NonSerialized]
-    public Transform Tr;
     void Start()
     {
-        Tr = transform;
-        Forward = Tr.forward;
+        Forward = transform.forward;
         View = GetComponent<PhotonView>();
         Bot = GetComponent<AIBot>();
         IsAlive = true;
@@ -70,7 +67,7 @@ public class Control : MonoBehaviourPlus, IDestroyeble
             InputAxis = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
             Forward = MouseOrbit.Instance.Rotation * Vector3.forward;//Vector3.ProjectOnPlane(Vector3.ProjectOnPlane(MouseOrbit.Instance.Rotation * (Vector3.forward + Vector3.up), Tr.up), MouseOrbit.Instance.Tr.right).normalized;
             AimPoint = MouseOrbit.Instance.AimingHit.point;
-            Debug.DrawRay(Tr.position, Forward * 5);
+            Debug.DrawRay(transform.position, Forward * 5);
             ClampUp = Input.GetAxis("Jump");
             Fire1 = Input.GetButton("Fire1") && !UnlockCursor;
             Fire2 = Input.GetButton("Fire2") && !UnlockCursor;

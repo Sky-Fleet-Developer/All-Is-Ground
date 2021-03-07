@@ -12,8 +12,6 @@ public class Health : MonoBehaviourPlus, IDestroyeble
     [System.NonSerialized]
     public PhotonView View;
     [System.NonSerialized]
-    public Transform Tr;
-    [System.NonSerialized]
     public bool IsAlive;
     [System.NonSerialized]
     public Rigidbody Rigid;
@@ -31,7 +29,6 @@ public class Health : MonoBehaviourPlus, IDestroyeble
         View = GetComponent<PhotonView>();
         Rigid = GetComponent<Rigidbody>();
         control = GetComponent<Control>();
-        Tr = transform;
         IsAlive = true;
         Invoke("LateStart", 0.1f);
         Damage = new Dictionary<PhotonPlayer, float>();
@@ -39,7 +36,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
     }
     void Update()
     {
-        if(Tr.position.y < 0 && IsMine)
+        if(transform.position.y < 0 && IsMine)
         {
             AddDamage(100, PhotonNetwork.player);
         }
@@ -180,7 +177,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
         {
             if (HPBar)
                 HPBar.Image.fillAmount = 1;
-            View.RPC("Respawn", PhotonTargets.Others, HitPoints, Tr.position, Tr.rotation);
+            View.RPC("Respawn", PhotonTargets.Others, HitPoints, transform.position, transform.rotation);
         }
     }
 
@@ -213,8 +210,8 @@ public class Health : MonoBehaviourPlus, IDestroyeble
     [PunRPC]
     public void Respawn(float health, Vector3 position, Quaternion rotation)
     {
-        Tr.position = position;
-        Tr.rotation = rotation;
+        transform.position = position;
+        transform.rotation = rotation;
         Rigid.velocity = Vector3.zero;
         Rigid.angularVelocity = Vector3.zero;
         foreach (var hit in Damageble)
@@ -224,7 +221,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
     [PunRPC]
     public void ScyncLocalEffect(Vector3 localPosition, Quaternion localRotation, string EffectPoolName)
     {
-        Pooling.InstancesDic[EffectPoolName].Use(Tr.TransformPoint(localPosition), Tr.rotation * localRotation, null);
+        Pooling.InstancesDic[EffectPoolName].Use(transform.TransformPoint(localPosition), transform.rotation * localRotation, null);
     }
     [PunRPC]
     public void ScyncWorldEffect(Vector3 pos, Quaternion rot, string ExplosePoolName)

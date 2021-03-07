@@ -79,8 +79,8 @@ public class GameManager : MonoBehaviourPlus
         else
         {
             ship.Respawn();
-            ship.Tr.position = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition();
-            ship.Tr.rotation = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation;
+            ship.transform.position = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition();
+            ship.transform.rotation = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation;
             var rb = ship.Rigid;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;

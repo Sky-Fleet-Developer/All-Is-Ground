@@ -163,7 +163,6 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
     protected Vector3 Velocity;
     protected Vector3 AngularVelocity;
     protected Rigidbody Rigid;
-    protected Transform Tr;
     protected Vector3 InputAxis;
     protected float InputAxisMagnitude;
     protected Vector3 EngineForce;
@@ -175,10 +174,9 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
     {
         Rigid = GetComponent<Rigidbody>();
         Control = GetComponent<Control>();
-        Tr = transform;
         foreach (var Hit in Supports)
         {
-            Hit.parent = Tr;
+            Hit.parent = transform;
         }
         if (!GameValues.Instance)
             GameValues.Instance = Resources.Load<GameValues>("GameValues");
@@ -202,14 +200,14 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
             foreach (var Hit in Supports)
             {
                 Debug.DrawRay(Hit.position, Hit.direction * Hit.groundDistance, Color.green);
-                Debug.DrawLine(Hit.position + Hit.direction * Hit.targetDistance + Tr.forward * 0.1f, Hit.position + Hit.direction * Hit.targetDistance - Tr.forward * 0.1f, Color.yellow);
+                Debug.DrawLine(Hit.position + Hit.direction * Hit.targetDistance + transform.forward * 0.1f, Hit.position + Hit.direction * Hit.targetDistance - transform.forward * 0.1f, Color.yellow);
                 if (GameValues.EnableDebug)
                 {
                     UltiDraw.Begin();
 
-                    UltiDraw.DrawWiredSphere(Hit.position - Hit.direction * GameValues.SupportRayRadius, Tr.rotation, GameValues.SupportRayRadius * 2, new Color(1, 1, 1, 0.1f), Color.white);
+                    UltiDraw.DrawWiredSphere(Hit.position - Hit.direction * GameValues.SupportRayRadius, transform.rotation, GameValues.SupportRayRadius * 2, new Color(1, 1, 1, 0.1f), Color.white);
 
-                    UltiDraw.DrawWiredSphere(Hit.position + Hit.direction * (Hit.groundDistance - GameValues.SupportRayRadius), Tr.rotation, GameValues.SupportRayRadius * 2, new Color(1, 1, 1, 0.1f), Color.green);
+                    UltiDraw.DrawWiredSphere(Hit.position + Hit.direction * (Hit.groundDistance - GameValues.SupportRayRadius), transform.rotation, GameValues.SupportRayRadius * 2, new Color(1, 1, 1, 0.1f), Color.green);
 
                     UltiDraw.End();
                 }
@@ -217,19 +215,18 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
         }
         else
         {
-            Tr = transform;
             if (!GameValues.Instance)
                 GameValues.Instance = Resources.Load<GameValues>("GameValues");
             foreach (var Hit in Supports)
             {
-                Vector3 pos = Tr.TransformPoint(Hit.localPosition);
-                Vector3 dir = Tr.TransformDirection(Hit.localDirection);
+                Vector3 pos = transform.TransformPoint(Hit.localPosition);
+                Vector3 dir = transform.TransformDirection(Hit.localDirection);
                 Debug.DrawRay(pos, dir * Hit.length, Color.green);
-                Debug.DrawLine(pos + dir * Hit.targetDistance + Tr.forward * 0.1f, pos + dir * Hit.targetDistance - Tr.forward * 0.1f, Color.yellow);
+                Debug.DrawLine(pos + dir * Hit.targetDistance + transform.forward * 0.1f, pos + dir * Hit.targetDistance - transform.forward * 0.1f, Color.yellow);
                 if (GameValues.EnableDebug)
                 {
                     UltiDraw.Begin();
-                    UltiDraw.DrawWiredSphere(pos - dir * GameValues.SupportRayRadius, Tr.rotation, GameValues.SupportRayRadius * 2, new Color(1, 1, 1, 0.1f), Color.white);
+                    UltiDraw.DrawWiredSphere(pos - dir * GameValues.SupportRayRadius, transform.rotation, GameValues.SupportRayRadius * 2, new Color(1, 1, 1, 0.1f), Color.white);
                     UltiDraw.End();
                 }
             }
@@ -238,13 +235,13 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
 
     public virtual Vector3 GetInputAxis()
     {
-        Quaternion forwRot = Quaternion.LookRotation(Control.Forward, Tr.up);
-        return Tr.InverseTransformDirection(Vector3.ProjectOnPlane(forwRot * new Vector3(Control.InputAxis.y, 0f, Control.InputAxis.x), Tr.up).normalized);
+        Quaternion forwRot = Quaternion.LookRotation(Control.Forward, transform.up);
+        return transform.InverseTransformDirection(Vector3.ProjectOnPlane(forwRot * new Vector3(Control.InputAxis.y, 0f, Control.InputAxis.x), transform.up).normalized);
     }
     
     public virtual Vector3 GetGyroscopeForce()
     {
-        Vector3 localForward = Tr.InverseTransformDirection(Control.Forward);
+        Vector3 localForward = transform.InverseTransformDirection(Control.Forward);
         float YAngle = Mathf.Atan2(localForward.x, localForward.z) * Mathf.Rad2Deg;
         float TarY = Mathf.Clamp((YAngle - AngularVelocity.y * AngularPredictionValue) / 5, -1, 1) * RotationVelocty.y;
         return new Vector3(Mathf.Clamp(InputAxis.y * RotationVelocty.x - AngularVelocity.x * DragForce, -1, 1) * GyroscopeForce.x, Mathf.Clamp((TarY - AngularVelocity.y * DragForce), -1, 1) * GyroscopeForce.y, Mathf.Clamp(InputAxis.x * RotationVelocty.z - AngularVelocity.z * DragForce, -1, 1) * GyroscopeForce.z);
@@ -309,8 +306,8 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
         if (!IsAlive)
             return;
         
-        Velocity = Tr.InverseTransformDirection(Rigid.velocity);
-        AngularVelocity = Tr.InverseTransformDirection(Rigid.angularVelocity);
+        Velocity = transform.InverseTransformDirection(Rigid.velocity);
+        AngularVelocity = transform.InverseTransformDirection(Rigid.angularVelocity);
         int work = 0;
         foreach (var Hit in Supports)
         {
@@ -345,11 +342,11 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
 
         //Power = Mathf.MoveTowards(Power, 0f, EngineTenson / EngineInertia * Time.fixedDeltaTime);
 
-        Vector3 f = Tr.rotation * EngineForce * suppMP * FORCE * Time.fixedDeltaTime;
+        Vector3 f = transform.rotation * EngineForce * suppMP * FORCE * Time.fixedDeltaTime;
         f = ClampDistance(f, 0, 500000);
         if (float.IsNaN(f.x) || float.IsNaN(f.y) || float.IsNaN(f.z))
             f = Vector3.zero;
-        Rigid.AddForceAtPosition(f, Tr.TransformPoint(engineOffset + Rigid.centerOfMass));
+        Rigid.AddForceAtPosition(f, transform.TransformPoint(engineOffset + Rigid.centerOfMass));
         
         Vector3 gyroscopeForce = GiroscopeForce * FORCE;
         Vector3 g = gyroscopeForce * suppMP * Time.fixedDeltaTime;

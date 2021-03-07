@@ -18,7 +18,7 @@ public class CaptureblePoint : MonoBehaviour
     public PunTeams.Team Owner = PunTeams.Team.none;
 
     [System.NonSerialized]
-    public Transform Tr;
+    public Transform transform;
     [System.NonSerialized]
     public PhotonView View;
     UILink Red;
@@ -26,7 +26,7 @@ public class CaptureblePoint : MonoBehaviour
     UILink Background;
     void Awake()
     {
-        Tr = transform;
+        transform = base.transform;
         View = GetComponent<PhotonView>();
         PlayersInside = new List<Control>();
         Owner = PunTeams.Team.none;
@@ -53,7 +53,7 @@ public class CaptureblePoint : MonoBehaviour
 
                 foreach(var hit in FindObjectsOfType<Control>())
                 {
-                    if (Vector3.SqrMagnitude(hit.Tr.position - Tr.position) < Radius * Radius)
+                    if (Vector3.SqrMagnitude(hit.transform.position - transform.position) < Radius * Radius)
                         PlayersInside.Add(hit);
                 }
 
