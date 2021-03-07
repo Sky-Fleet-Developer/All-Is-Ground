@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Waiters;
 
 public class GameManager : MonoBehaviourPlus
 {
@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviourPlus
     void Start()
     {
         Instance = this;
-        //Invoke("InitPlayer", 1f);
-
+        this.Wait(1f,delegate { InitPlayer(); });
         StartCoroutine(GetPlayers());
         UILink.MainCanvas.GetChildByName("Exit").Button.onClick.AddListener(LeveBattle);
     }
@@ -164,7 +163,7 @@ public class GameManager : MonoBehaviourPlus
 
     void Spawn(string shipName)
     {
-
+        
 
         var ship = PhotonNetwork.Instantiate(shipName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
         UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(ship);

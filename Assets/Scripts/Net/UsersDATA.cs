@@ -39,6 +39,8 @@ public class UsersDATA : MonoBehaviourPlus
             GameValues.Init();
             PhotonNetwork.autoJoinLobby = true;
             PhotonNetwork.ConnectUsingSettings(PhotonNetwork.gameVersion);
+            PhotonNetwork.automaticallySyncScene = true;
+            PhotonNetwork.autoCleanUpPlayerObjects = false;
             Debug.Log("Start");
         }
         else

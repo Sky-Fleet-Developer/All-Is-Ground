@@ -1,10 +1,9 @@
 ﻿using System.Linq;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class DontDestroyOnLoad : System.Attribute { }
 
-public abstract class Singleton<T> : SerializedMonoBehaviour where T : Singleton<T>
+public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     protected static T _instance;
     private static Object _lock = new Object();
