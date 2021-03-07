@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: d992bb163bde0c547a8fb98089c4e517
+timeCreated: 1512755201
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BackCollider
+    100002: Box001
+    100004: Collider1
+    100006: Collider2
+    100008: FloorCollider
+    100010: FrontCollider
+    100012: FrontUpCollider
+    100014: Gun
+    100016: //RootNode
+    100018: RocketLCollider
+    100020: RocketRCollider
+    100022: RoofCollider
+    100024: SideBackLeft
+    100026: SideBackRightCollider
+    100028: SideFrontLeftCollider
+    100030: SideFrontRightCollider
+    100032: SideMiddleLeftCollider
+    100034: SideMiddleRightCollider
+    100036: Turret
+    100038: WindowCollider
+    100040: WingLCollider
+    100042: WingRCollider
+    400000: BackCollider
+    400002: Box001
+    400004: Collider1
+    400006: Collider2
+    400008: FloorCollider
+    400010: FrontCollider
+    400012: FrontUpCollider
+    400014: Gun
+    400016: //RootNode
+    400018: RocketLCollider
+    400020: RocketRCollider
+    400022: RoofCollider
+    400024: SideBackLeft
+    400026: SideBackRightCollider
+    400028: SideFrontLeftCollider
+    400030: SideFrontRightCollider
+    400032: SideMiddleLeftCollider
+    400034: SideMiddleRightCollider
+    400036: Turret
+    400038: WindowCollider
+    400040: WingLCollider
+    400042: WingRCollider
+    2300000: BackCollider
+    2300002: Box001
+    2300004: Collider1
+    2300006: Collider2
+    2300008: FloorCollider
+    2300010: FrontCollider
+    2300012: FrontUpCollider
+    2300014: Gun
+    2300016: RocketLCollider
+    2300018: RocketRCollider
+    2300020: RoofCollider
+    2300022: SideBackLeft
+    2300024: SideBackRightCollider
+    2300026: SideFrontLeftCollider
+    2300028: SideFrontRightCollider
+    2300030: SideMiddleLeftCollider
+    2300032: SideMiddleRightCollider
+    2300034: Turret
+    2300036: WindowCollider
+    2300038: WingLCollider
+    2300040: WingRCollider
+    3300000: BackCollider
+    3300002: Box001
+    3300004: Collider1
+    3300006: Collider2
+    3300008: FloorCollider
+    3300010: FrontCollider
+    3300012: FrontUpCollider
+    3300014: Gun
+    3300016: RocketLCollider
+    3300018: RocketRCollider
+    3300020: RoofCollider
+    3300022: SideBackLeft
+    3300024: SideBackRightCollider
+    3300026: SideFrontLeftCollider
+    3300028: SideFrontRightCollider
+    3300030: SideMiddleLeftCollider
+    3300032: SideMiddleRightCollider
+    3300034: Turret
+    3300036: WindowCollider
+    3300038: WingLCollider
+    3300040: WingRCollider
+    4300000: Box001
+    4300002: Turret
+    4300004: Gun
+    4300006: BackCollider
+    4300008: WingRCollider
+    4300010: WingLCollider
+    4300012: RocketLCollider
+    4300014: RocketRCollider
+    4300016: RoofCollider
+    4300018: WindowCollider
+    4300020: FrontUpCollider
+    4300022: FrontCollider
+    4300024: SideMiddleRightCollider
+    4300026: SideMiddleLeftCollider
+    4300028: SideFrontLeftCollider
+    4300030: SideFrontRightCollider
+    4300032: FloorCollider
+    4300034: SideBackLeft
+    4300036: SideBackRightCollider
+    4300038: Collider2
+    4300040: Collider1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

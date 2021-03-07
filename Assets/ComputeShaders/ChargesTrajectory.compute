@@ -1,0 +1,57 @@
+﻿#pragma kernel CSMain
+
+RWStructuredBuffer<float3>Trajectorys;
+RWStructuredBuffer<float3> ChargesPosition;
+RWStructuredBuffer<float3> ChargesVelocity;
+RWStructuredBuffer<float3> ChargesForces;
+StructuredBuffer<float3> ChargesParametrs; //X = Drag, y = Mass, z = polarity
+int ChargesCount;
+int ThreadsCount;
+int TrajectoryFrames;
+float FrameLength;
+float InteractionDistance;
+float InteractionForce;
+
+float Side(float value)
+{
+if (value == 0)
+return 0;
+return value / abs(value);
+}
+
+[numthreads(64,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	float3 Zero = float3(0,0,0);
+	float3 Gravity = float3(0, -9.81, 0);
+	for (int i = 0; i < TrajectoryFrames; i++)
+	{
+        for (int w = 0; w < ChargesCount; w++)
+	    {
+            float3 Force = float3(0,0,0);
+		    if(abs(ChargesParametrs[w].z) > 0.1){
+			    float3 FVector;
+			    float Distance = 0;
+			    for (int c = 0; c < ChargesCount; c++)
+			    {
+				    if (w == c)
+				        continue;
+				    FVector = ChargesPosition[w] - ChargesPosition[c];
+					Distance = distance(FVector, Zero);
+			        if (Distance < InteractionDistance)
+					    Force += FVector * (1 - (Distance * Distance) / (InteractionDistance * InteractionDistance)) * InteractionForce * sqrt(abs(ChargesParametrs[w].z) * abs(ChargesParametrs[c].z)) * Side(ChargesParametrs[w].z) * Side(ChargesParametrs[c].z);
+			    }
+			}
+			Force += Gravity * ChargesParametrs[w].y;
+			ChargesForces[w] = Force;
+
+		}
+		for (int w2 = 0; w2 < ChargesCount; w2++)
+	    {
+			ChargesVelocity[w2] += ChargesForces[w2] / ChargesParametrs[w2].y * FrameLength; 
+			ChargesVelocity[w2] *= 1 - (ChargesParametrs[w2].x * FrameLength);
+			ChargesPosition[w2] += ChargesVelocity[w2] * FrameLength;
+			Trajectorys[w2 * TrajectoryFrames + i] = ChargesPosition[w2];
+		}
+	}
+}

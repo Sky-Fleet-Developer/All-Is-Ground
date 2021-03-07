@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 72943a0445973ae43846170f9cca5ca4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Radar
+    100004: Rocket Launcher L
+    100006: Rocket Launcher R
+    100008: //RootNode
+    100010: Bottom Collider
+    100012: Collider
+    100014: Collider1
+    100016: Collider2
+    100018: Front Collider
+    100020: Radar Collider
+    100022: Rocket Cap L Collider
+    100024: Rocket Cap R Collider
+    100026: Rocket L Collider
+    100028: Rocket R Collider
+    100030: Roof Collider
+    100032: Side Back Collider
+    100034: Side Collider
+    100036: Side Up Collider
+    100038: Window Collider
+    400000: Box001
+    400002: Radar
+    400004: Rocket Launcher L
+    400006: Rocket Launcher R
+    400008: //RootNode
+    400010: Bottom Collider
+    400012: Collider
+    400014: Collider1
+    400016: Collider2
+    400018: Front Collider
+    400020: Radar Collider
+    400022: Rocket Cap L Collider
+    400024: Rocket Cap R Collider
+    400026: Rocket L Collider
+    400028: Rocket R Collider
+    400030: Roof Collider
+    400032: Side Back Collider
+    400034: Side Collider
+    400036: Side Up Collider
+    400038: Window Collider
+    2300000: Box001
+    2300002: Radar
+    2300004: Rocket Launcher L
+    2300006: Rocket Launcher R
+    2300008: //RootNode
+    2300010: Bottom Collider
+    2300012: Collider
+    2300014: Collider1
+    2300016: Collider2
+    2300018: Front Collider
+    2300020: Radar Collider
+    2300022: Rocket Cap L Collider
+    2300024: Rocket Cap R Collider
+    2300026: Rocket L Collider
+    2300028: Rocket R Collider
+    2300030: Roof Collider
+    2300032: Side Back Collider
+    2300034: Side Collider
+    2300036: Side Up Collider
+    2300038: Window Collider
+    3300000: Box001
+    3300002: Radar
+    3300004: Rocket Launcher L
+    3300006: Rocket Launcher R
+    3300008: //RootNode
+    3300010: Bottom Collider
+    3300012: Collider
+    3300014: Collider1
+    3300016: Collider2
+    3300018: Front Collider
+    3300020: Radar Collider
+    3300022: Rocket Cap L Collider
+    3300024: Rocket Cap R Collider
+    3300026: Rocket L Collider
+    3300028: Rocket R Collider
+    3300030: Roof Collider
+    3300032: Side Back Collider
+    3300034: Side Collider
+    3300036: Side Up Collider
+    3300038: Window Collider
+    4300000: Box001
+    4300002: Rocket Launcher R
+    4300004: Rocket Launcher L
+    4300006: Radar
+    4300008: Collider
+    4300010: Front Collider
+    4300012: Window Collider
+    4300014: Roof Collider
+    4300016: Rocket R Collider
+    4300018: Rocket L Collider
+    4300020: Radar Collider
+    4300022: Rocket Cap R Collider
+    4300024: Rocket Cap L Collider
+    4300026: Side Collider
+    4300028: Bottom Collider
+    4300030: Side Back Collider
+    4300032: Side Up Collider
+    4300034: Collider1
+    4300036: Collider2
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: 5fd5544bdf9c7d844831a6b42b60de7c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.8
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.02032
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

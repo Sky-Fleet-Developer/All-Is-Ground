@@ -1,0 +1,96 @@
+﻿#pragma kernel CSMain
+
+
+RWStructuredBuffer<float3> Directions;
+RWStructuredBuffer<float3> Positions;
+StructuredBuffer<float3> vertices;
+StructuredBuffer<int> triangles;
+
+float length;
+int ThreadsCount;
+int RaysCount;
+bool AddNormal;
+
+bool IntersectRayPlane(float3 rayOrigin, float3 rayDirection, float3 posOnPlane, float3 planeNormal, out float3 intersectionPoint)
+{
+  float rDotn = dot(rayDirection, -planeNormal);
+
+  //parallel to plane or pointing away from plane?
+  if (rDotn < 0.0000001 )
+    return false;
+ 
+  float s = dot(-planeNormal, (posOnPlane - rayOrigin)) / rDotn;
+	
+  intersectionPoint = rayOrigin + s * rayDirection;
+
+  return true;
+}
+
+bool RightCloser (float3 orign, float3 target, float3 normal, float3 tPoint)
+{
+  float3 right = cross(target - orign, normal);
+  float3 rDir = right - orign;
+  if (distance(orign + right, tPoint) >= distance(orign - right, tPoint))
+  return true;
+  return false;
+}
+
+float magnitude(float3 Vector)
+{
+	return sqrt(Vector.x * Vector.x + Vector.y * Vector.y + Vector.z * Vector.z);
+}
+
+float3 one(float3 Vector)
+{
+	float length = magnitude(Vector);
+	return Vector / length;
+}
+
+[numthreads(64,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    for (int i = id.x*3; i < triangles.Length - ThreadsCount * 3 - 2; i += 3 * ThreadsCount)
+    {
+		float3 points0;
+        float3 points1;
+        float3 points2;
+		points0 = vertices[triangles[i]];
+        points1 = vertices[triangles[i + 1]];
+        points2 = vertices[triangles[i + 2]];
+
+		float3 nrm = cross(points1 - points0, points2 - points0); //Normal(points0, points1, points2);
+		nrm = normalize (nrm);
+
+        float3 position;
+		float3 direction;
+		for (int r = 0; r < RaysCount; r++)
+		{
+		    position = Positions[r];
+			direction = one(Directions[r]);
+			if (length > distance(points0, position) || length > distance(points1, position) || length > distance(points2, position))
+       		{
+				float dist = 0;
+
+				float3 poi;
+				if (IntersectRayPlane(position, direction, points0, nrm, poi))
+				{
+					dist = distance(poi, position);
+				
+	            	if(RightCloser(points0, points1, nrm, poi) && RightCloser(points1, points2, nrm, poi) && RightCloser(points2, points0, nrm, poi))
+                	{
+					    if (dot((poi - position), direction) > 0)
+						{
+							float Mag = magnitude(Directions[r]);
+				 			if (Mag > dist)
+                 			{
+								Directions[r] = normalize(Directions[r])*dist;
+								if (AddNormal)
+								Directions[1] = nrm;
+               	    		}
+						}
+					}
+				}
+			}
+		}
+	}
+}

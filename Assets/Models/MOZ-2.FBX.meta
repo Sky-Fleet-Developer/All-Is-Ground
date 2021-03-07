@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 678cb7d1cab83944d99b5957d8ae136d
+timeCreated: 1513066584
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back Collider
+    100002: Bottom Collider
+    100004: Box001
+    100006: Collider 1
+    100008: Collider 2
+    100010: Collider 3
+    100012: Front Collider
+    100014: Gunpoint
+    100016: Gunpoint001
+    100018: Left Rocket Collider
+    100020: //RootNode
+    100022: Right Rocket Collider
+    100024: Roof Collider
+    100026: Side Collider
+    100028: Turel Back
+    100030: Turel Front
+    100032: Window Collider
+    100034: Back Side Collider
+    100036: Back Top Side Collider
+    100038: Btoom Collider
+    100040: Front Side Collider
+    100042: Front Slice Collider
+    100044: Front Up Collider
+    100046: Rocket Left Collider
+    100048: Rocket Right Collider
+    400000: Back Collider
+    400002: Bottom Collider
+    400004: Box001
+    400006: Collider 1
+    400008: Collider 2
+    400010: Collider 3
+    400012: Front Collider
+    400014: Gunpoint
+    400016: Gunpoint001
+    400018: Left Rocket Collider
+    400020: //RootNode
+    400022: Right Rocket Collider
+    400024: Roof Collider
+    400026: Side Collider
+    400028: Turel Back
+    400030: Turel Front
+    400032: Window Collider
+    400034: Back Side Collider
+    400036: Back Top Side Collider
+    400038: Btoom Collider
+    400040: Front Side Collider
+    400042: Front Slice Collider
+    400044: Front Up Collider
+    400046: Rocket Left Collider
+    400048: Rocket Right Collider
+    2300000: Back Collider
+    2300002: Bottom Collider
+    2300004: Box001
+    2300006: Collider 1
+    2300008: Collider 2
+    2300010: Collider 3
+    2300012: Front Collider
+    2300014: Gunpoint
+    2300016: Gunpoint001
+    2300018: Left Rocket Collider
+    2300020: Right Rocket Collider
+    2300022: Roof Collider
+    2300024: Side Collider
+    2300026: Turel Back
+    2300028: Turel Front
+    2300030: Window Collider
+    2300032: Back Side Collider
+    2300034: Back Top Side Collider
+    2300036: Btoom Collider
+    2300038: Front Side Collider
+    2300040: Front Slice Collider
+    2300042: Front Up Collider
+    2300044: Rocket Left Collider
+    2300046: Rocket Right Collider
+    3300000: Back Collider
+    3300002: Bottom Collider
+    3300004: Box001
+    3300006: Collider 1
+    3300008: Collider 2
+    3300010: Collider 3
+    3300012: Front Collider
+    3300014: Gunpoint
+    3300016: Gunpoint001
+    3300018: Left Rocket Collider
+    3300020: Right Rocket Collider
+    3300022: Roof Collider
+    3300024: Side Collider
+    3300026: Turel Back
+    3300028: Turel Front
+    3300030: Window Collider
+    3300032: Back Side Collider
+    3300034: Back Top Side Collider
+    3300036: Btoom Collider
+    3300038: Front Side Collider
+    3300040: Front Slice Collider
+    3300042: Front Up Collider
+    3300044: Rocket Left Collider
+    3300046: Rocket Right Collider
+    4300000: Box001
+    4300002: Turel Front
+    4300004: Gunpoint
+    4300006: Turel Back
+    4300008: Gunpoint001
+    4300010: Roof Collider
+    4300012: Collider 1
+    4300014: Front Collider
+    4300016: Side Collider
+    4300018: Right Rocket Collider
+    4300020: Left Rocket Collider
+    4300022: Back Collider
+    4300024: Bottom Collider
+    4300026: Window Collider
+    4300028: Collider 2
+    4300030: Collider 3
+    4300032: Front Slice Collider
+    4300034: Front Up Collider
+    4300036: Btoom Collider
+    4300038: Front Side Collider
+    4300040: Rocket Left Collider
+    4300042: Rocket Right Collider
+    4300044: Back Side Collider
+    4300046: Back Top Side Collider
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
