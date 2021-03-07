@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviourPlus
 {
     public static GameManager Instance;
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviourPlus
     void Start()
     {
         Instance = this;
-        Invoke("Spawn", 1f);
+        //Invoke("InitPlayer", 1f);
+
         StartCoroutine(GetPlayers());
         UILink.MainCanvas.GetChildByName("Exit").Button.onClick.AddListener(LeveBattle);
     }
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviourPlus
         BlueTeam.Sort();
     }
 
-    void Spawn()
+    private void InitPlayer()
     {
         int red = 0;
         int blue = 0;
@@ -157,12 +159,18 @@ public class GameManager : MonoBehaviourPlus
         }
 
         PhotonNetwork.player.SetTeam(playerTeam);
+        Spawn(UsersDATA.currentAccount.ShoosedMachine.PrefabName);
+    }
 
-        var ship = PhotonNetwork.Instantiate(UsersDATA.currentAccount.ShoosedMachine.PrefabName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
+    void Spawn(string shipName)
+    {
+
+
+        var ship = PhotonNetwork.Instantiate(shipName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
         UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(ship);
         ship.AddComponent<ShowFriendUI>();
         CurrentShip = ship.GetComponent<Health>();
-        
+
         MouseOrbit.Instance.target = ship.transform;
 
         switch (playerTeam)
@@ -193,5 +201,11 @@ public class GameManager : MonoBehaviourPlus
         }
 
         AIShip = ship.GetComponent<AIBot>();
+    }
+
+    public void ChangedShip(string name)
+    {
+        PhotonNetwork.Destroy(CurrentShip.View);
+        Spawn(name);
     }
 }
