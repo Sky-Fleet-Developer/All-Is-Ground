@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Waiters;
+using UnityEngine.SceneManagement;
 
 public class Garage : MonoBehaviour, IAccountEvents
 {
     public static Garage Instance;
-    public UILink GarageWindow;
-    public UILink ShipsScroll;
-    public UILink SetVariantsMenu;
-    public UILink UserShip;
-    public UILink AIShip; 
     public ShipSetUI CurrentSet;
     public Transform UserPlace;
     public Transform AIPlace;
@@ -19,12 +16,18 @@ public class Garage : MonoBehaviour, IAccountEvents
     public Transform[] MachinePrefabs;
     public Transform[] MachineInstances;
 
+    UILink _Garage;
     UILink ModernizationsButton;
     UILink ToSelfButton;
     UILink ToBotButton;
     UILink ExploreButton;
     UILink SetWindow;
     UILink ExploreButtonText;
+    UILink ShipsScroll;
+    UILink UserShip;
+    UILink AIShip;
+
+    public static bool shipDirty;
 
     StorageEditor Modernizations;
 
@@ -63,10 +66,10 @@ public class Garage : MonoBehaviour, IAccountEvents
             machine.GetDescription(ref Parameters, ref Values);
             foreach (var hit in Parameters)
             {
-                if(hit != string.Empty)
-                Params += hit + ":\n";
+                if (hit != string.Empty)
+                    Params += hit + ":\n";
                 else
-                Params += hit + "\n";
+                    Params += hit + "\n";
             }
             foreach (var hit in Values)
             {
@@ -86,21 +89,25 @@ public class Garage : MonoBehaviour, IAccountEvents
         CurrentSet = new ShipSetUI();
         MachinePrefabs = new Transform[storage.Ships.Count];
         MachineInstances = new Transform[storage.Ships.Count];
-        for (int i = 0; i < MachinePrefabs.Length; i++)
-        {
-            MachinePrefabs[i] = Resources.Load<Transform>(storage.Ships[i].PrefabName);
-            InstanceShip(ref MachineInstances[i], storage.Ships[i].PrefabName);
-        }
-        Invoke("LateStart", 0.1f);
+
+        this.Wait(0.1f, LateStart);
     }
 
-    void LateStart ()
+    void GetUI()
     {
-        SetWindow = GarageWindow.GetChildByName("SelectedSet", false);
-        ToSelfButton = SetVariantsMenu.GetChildByName("ToSelf");
-        ToBotButton = SetVariantsMenu.GetChildByName("ToBot");
-        ExploreButton = SetVariantsMenu.GetChildByName("Explore");
-        ModernizationsButton = SetVariantsMenu.GetChildByName("Modernizations");
+        SetWindow = _Garage.GetChildByName("SelectedSet", false);
+        ToSelfButton = _Garage.GetChildByName("ToSelf", false);
+        ToBotButton = _Garage.GetChildByName("ToBot", false);
+        ExploreButton = _Garage.GetChildByName("Explore", false);
+        ModernizationsButton = _Garage.GetChildByName("Modernizations", false);
+        ShipsScroll = _Garage.GetChildByName("Ring");
+        UserShip = _Garage.GetChildByName("PlayerShipValue");
+        AIShip = _Garage.GetChildByName("AIShipValue");
+
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            UILink.ToggleGarage.Button.onClick.AddListener(ToggleActive);
+        }
 
         ToSelfButton.Button.onClick.AddListener(SetSelfMachine);
         ToBotButton.Button.onClick.AddListener(SetBotfMachine);
@@ -108,11 +115,29 @@ public class Garage : MonoBehaviour, IAccountEvents
         ModernizationsButton.Button.onClick.AddListener(OpenModernizations);
 
         ExploreButtonText = ExploreButton.GetChildByName("Text");
-        if (PhotonNetwork.connected && UsersDATA.currentAccount != null)
-            Setup();
     }
 
-    void OpenModernizations()
+    public void ToggleActive()
+    {
+        _Garage.gameObject.SetActive(!_Garage.gameObject.activeSelf);
+    }
+
+    public void LateStart()
+    {
+        for (int i = 0; i < MachinePrefabs.Length; i++)
+        {
+            MachinePrefabs[i] = Resources.Load<Transform>(storage.Ships[i].PrefabName);
+            InstanceShip(ref MachineInstances[i], storage.Ships[i].PrefabName);
+        }
+
+        int bi = SceneManager.GetActiveScene().buildIndex;
+        _Garage = bi == 0 ? UILink.Garage : UILink.BattleGarage;
+        GetUI();
+
+        if (PhotonNetwork.connected && UsersDATA.currentAccount != null) Setup();
+    }
+
+    public void OpenModernizations()
     {
         int shipN = ShipsScroll.ScrollRing.Value;
         StorageEditor.SelectedShip = storage.Ships[shipN];
@@ -121,7 +146,7 @@ public class Garage : MonoBehaviour, IAccountEvents
         StartCoroutine(UsersDATA.Instance.GetItemsCosts(storage.Ships[shipN]));
     }
 
-    void CloseModernizations()
+    public void CloseModernizations()
     {
         UILink.MainCanvas.GetChildByName("Background").gameObject.SetActive(false);
     }
@@ -160,7 +185,8 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SetShipInstance(ref Transform ship, int N, Transform place)
     {
-        if (ship)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            if (ship)
             Destroy(ship.gameObject);
         ship = Instantiate(MachineInstances[N], place);
         ship.localPosition = Vector3.zero;
@@ -182,10 +208,12 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SelectMachine(int i, string setName)
     {
+        if (SceneManager.GetActiveScene().buildIndex != 0) shipDirty = true;
+
         ShipsScroll.ScrollRing.Value = i;
         storage.Ships[i].ApplyGrowth(MachineInstances[i].gameObject);
         CurrentSet.Set(SetWindow, storage.Ships[i], setName, MachineInstances[i].GetComponent<Health>());
-        if(storage.MyShips.Contains(storage.Ships[i].PrefabName))
+        if (storage.MyShips.Contains(storage.Ships[i].PrefabName))
         {
             ExploreButton.gameObject.SetActive(false);
             ToBotButton.gameObject.SetActive(true);
@@ -221,12 +249,13 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void OnEnterAccount(MonoBehaviourPlus.Account account)
     {
-        Invoke("Setup", 0.1f);
+        this.Wait(0.1f, Setup);
     }
 
     public void Setup()
     {
-        GarageWindow.gameObject.SetActive(true);
+        _Garage.gameObject.SetActive(true);
+
         for (int i = 0; i < storage.Ships.Count; i++)
         {
             var hit = ShipsScroll.GetChildByName(string.Format("Item ({0})", i));
@@ -238,5 +267,6 @@ public class Garage : MonoBehaviour, IAccountEvents
         SetShipInstance(ref AIInstance, 0, AIPlace);
         UserShip.Text.text = UsersDATA.currentAccount.ShoosedMachine.FullName;
         AIShip.Text.text = UsersDATA.currentAccount.AIMachine.FullName;
+        if (SceneManager.GetActiveScene().buildIndex != 0) _Garage.gameObject.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using Waiters;
 
 public class UsersDATA : MonoBehaviourPlus
 {
@@ -88,6 +89,14 @@ public class UsersDATA : MonoBehaviourPlus
         if (PhotonNetwork.isMasterClient)
             PhotonNetwork.LoadLevel(GameValues.Levels[LevelToCreate].BuildID);
         //StartCoroutine(LoadSceneAsync());
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level != 0)
+        {
+            this.Wait(1, Garage.Instance.LateStart);
+        }
     }
 
 

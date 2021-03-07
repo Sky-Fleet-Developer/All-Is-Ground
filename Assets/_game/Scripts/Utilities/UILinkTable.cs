@@ -9,6 +9,9 @@ public partial class UILink
     public static UILink DarkScreen;
     public static UILink MainCanvas;
     public static UILink LevelLoad;
+    public static UILink Garage;
+    public static UILink ToggleGarage;
+    public static UILink BattleGarage;
     public StaticObjectTypes StaticObject = StaticObjectTypes.None;
     public enum StaticObjectTypes
     {
@@ -20,6 +23,9 @@ public partial class UILink
         DarkScreen = 4,
         MainCanvas = 5,
         LevelLoad = 6,
+        Garage = 7,
+        ToggleGarage = 8,
+        BattleGarage = 9,
     }
     public void OnInit()
     {
@@ -45,6 +51,15 @@ public partial class UILink
                 break;
             case StaticObjectTypes.LevelLoad:
                 LevelLoad = this;
+                break;
+            case StaticObjectTypes.Garage:
+                Garage = this;
+                break;
+            case StaticObjectTypes.ToggleGarage:
+                ToggleGarage = this;
+                break;
+            case StaticObjectTypes.BattleGarage:
+                BattleGarage = this;
                 break;
         }
     }

@@ -20,3 +20,6 @@ MonoBehaviour:
   - DarkScreen
   - MainCanvas
   - LevelLoad
+  - Garage
+  - ToggleGarage
+  - BattleGarage

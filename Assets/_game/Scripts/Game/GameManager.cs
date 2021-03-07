@@ -71,13 +71,21 @@ public class GameManager : MonoBehaviourPlus
 
     void Respawn(Health ship)
     {
-        ship.Respawn();
-        ship.Tr.position = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition();
-        ship.Tr.rotation = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation;
-        var rb = ship.Rigid;
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        StartCoroutine(Unfreeze(ship));
+        if (Garage.shipDirty)
+        {
+            Garage.shipDirty = false;
+            Spawn(UsersDATA.currentAccount.ShoosedMachine.PrefabName);
+        }
+        else
+        {
+            ship.Respawn();
+            ship.Tr.position = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition();
+            ship.Tr.rotation = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation;
+            var rb = ship.Rigid;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            StartCoroutine(Unfreeze(ship));
+        }
     }
 
     IEnumerator Unfreeze(Health ship)
@@ -163,11 +171,12 @@ public class GameManager : MonoBehaviourPlus
 
     void Spawn(string shipName)
     {
-        
-
         var ship = PhotonNetwork.Instantiate(shipName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
         UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(ship);
         ship.AddComponent<ShowFriendUI>();
+
+
+        if (CurrentShip != null) PhotonNetwork.Destroy(CurrentShip.View);
         CurrentShip = ship.GetComponent<Health>();
 
         MouseOrbit.Instance.target = ship.transform;
@@ -199,12 +208,7 @@ public class GameManager : MonoBehaviourPlus
                 break;
         }
 
+        if (AIShip != null) PhotonNetwork.Destroy(AIShip.GetComponent<PhotonView>());
         AIShip = ship.GetComponent<AIBot>();
-    }
-
-    public void ChangedShip(string name)
-    {
-        PhotonNetwork.Destroy(CurrentShip.View);
-        Spawn(name);
     }
 }
