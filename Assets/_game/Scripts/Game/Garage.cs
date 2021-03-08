@@ -27,9 +27,8 @@ public class Garage : MonoBehaviour, IAccountEvents
     UILink UserShip;
     UILink AIShip;
 
-    public static bool shipDirty = false;
-
-    StorageEditor Modernizations;
+    public static bool selfShipDirty = false;
+    public static bool aiShipDirty = false;
 
     public class ShipSetUI
     {
@@ -85,7 +84,6 @@ public class Garage : MonoBehaviour, IAccountEvents
     {
         Instance = this;
         storage = Resources.Load<Storage>("Storage");
-        Modernizations = GetComponent<StorageEditor>();
         CurrentSet = new ShipSetUI();
         MachinePrefabs = new Transform[storage.Ships.Count];
         MachineInstances = new Transform[storage.Ships.Count];
@@ -107,6 +105,7 @@ public class Garage : MonoBehaviour, IAccountEvents
         if (isGame)
         {
             UILink.ToggleGarage.Button.onClick.AddListener(ToggleActive);
+            InputEvents.Instance.OnButtonDown("Cancel").AddListener(() => ToggleActive(false));
         }
 
         ToSelfButton.Button.onClick.AddListener(SetSelfMachine);
@@ -120,6 +119,12 @@ public class Garage : MonoBehaviour, IAccountEvents
     public void ToggleActive()
     {
         _Garage.gameObject.SetActive(!_Garage.gameObject.activeSelf);
+        MouseOrbit.ForceUnlockCursor = _Garage.gameObject.activeSelf;
+    }
+    public void ToggleActive(bool value)
+    {
+        _Garage.gameObject.SetActive(value);
+        MouseOrbit.ForceUnlockCursor = value;
     }
 
     public void LateStart()
@@ -158,6 +163,8 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SetSelfMachine()
     {
+        if (isGame) selfShipDirty = true;
+
         int shipN = ShipsScroll.ScrollRing.Value;
         if (storage.MyShips.Contains(storage.Ships[shipN].PrefabName))
         {
@@ -169,6 +176,8 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SetBotfMachine()
     {
+        if (isGame) aiShipDirty = true;
+
         int shipN = ShipsScroll.ScrollRing.Value;
         if (storage.MyShips.Contains(storage.Ships[shipN].PrefabName))
         {
@@ -210,12 +219,6 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     public void SelectMachine(int i, string setName)
     {
-        if (!isGame)
-        {
-            shipDirty = true;
-            Debug.Log("Ёбана");
-        }
-
         ShipsScroll.ScrollRing.Value = i;
         storage.Ships[i].ApplyGrowth(MachineInstances[i].gameObject);
         CurrentSet.Set(SetWindow, storage.Ships[i], setName, MachineInstances[i].GetComponent<Health>());

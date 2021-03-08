@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Camera-Control/Mouse Orbit")]
-public class MouseOrbit : MonoBehaviourPlus
+public class MouseOrbit : MonoBehaviour
 {
     public static MouseOrbit Instance;
     public static Camera MainCamera;
@@ -88,7 +88,7 @@ public class MouseOrbit : MonoBehaviourPlus
 
         d = Mathf.Lerp(Distance.x, Distance.y, Pose);
         
-        y = ClampAngle(y);
+        y = y.ClampAngle();
 
         Zoom = Mathf.Lerp(ZoomMinMax.x, ZoomMinMax.y, zomm);
 
@@ -119,6 +119,48 @@ public class MouseOrbit : MonoBehaviourPlus
         Vector3 scP = MainCamera.WorldToScreenPoint(AimingHit.point);
 
         Crosshair.RectTransform.anchoredPosition = new Vector2(scP.x, Screen.height - scP.y);
+    }
+
+    private static bool _forceUnlockCursor = false;
+    public static bool ForceUnlockCursor
+    {
+        get => _forceUnlockCursor;
+        set
+        {
+            if (value)
+            {
+                UnlockCursor();
+            }
+            _forceUnlockCursor = value;
+        }
+    }
+
+    public static void LockCursor()
+    {
+        if (ForceUnlockCursor) return;
+        if (Application.isPlaying)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+    public static void ConfinedCursor()
+    {
+        if (ForceUnlockCursor) return;
+        if (Application.isPlaying)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+        }
+    }
+    public static void UnlockCursor()
+    {
+        if (ForceUnlockCursor) return;
+        if (Application.isPlaying)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     /* private void OnGUI()

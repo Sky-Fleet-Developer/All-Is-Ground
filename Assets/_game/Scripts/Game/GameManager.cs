@@ -71,10 +71,18 @@ public class GameManager : MonoBehaviourPlus
 
     void Respawn(Health ship)
     {
-        if (Garage.shipDirty)
+        bool selfDirty = ship == CurrentShip && Garage.selfShipDirty;
+        bool aiDirty = ship.gameObject == AIShip.gameObject && Garage.aiShipDirty;
+
+        if (selfDirty)
         {
-            Garage.shipDirty = false;
-            Spawn(UsersDATA.currentAccount.ShoosedMachine.PrefabName);
+            Garage.selfShipDirty = false;
+            SpawnSelf();
+        }
+        else if (aiDirty)
+        {
+            Garage.aiShipDirty = false;
+            SpawnAI();
         }
         else
         {
@@ -166,20 +174,6 @@ public class GameManager : MonoBehaviourPlus
         }
 
         PhotonNetwork.player.SetTeam(playerTeam);
-        Spawn(UsersDATA.currentAccount.ShoosedMachine.PrefabName);
-    }
-
-    void Spawn(string shipName)
-    {
-        var ship = PhotonNetwork.Instantiate(shipName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
-        UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(ship);
-        ship.AddComponent<ShowFriendUI>();
-
-
-        if (CurrentShip != null) PhotonNetwork.Destroy(CurrentShip.View);
-        CurrentShip = ship.GetComponent<Health>();
-
-        MouseOrbit.Instance.target = ship.transform;
 
         switch (playerTeam)
         {
@@ -193,7 +187,26 @@ public class GameManager : MonoBehaviourPlus
                 break;
         }
 
-        ship = PhotonNetwork.Instantiate(UsersDATA.currentAccount.AIMachine.PrefabName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
+        SpawnSelf();
+        SpawnAI();
+    }
+
+    void SpawnSelf()
+    {
+        var ship = PhotonNetwork.Instantiate(UsersDATA.currentAccount.ShoosedMachine.PrefabName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
+        UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(ship);
+        ship.AddComponent<ShowFriendUI>();
+
+
+        if (CurrentShip != null) PhotonNetwork.Destroy(CurrentShip.View);
+        CurrentShip = ship.GetComponent<Health>();
+
+        MouseOrbit.Instance.target = ship.transform;
+    }
+
+    void SpawnAI()
+    {
+        var ship = PhotonNetwork.Instantiate(UsersDATA.currentAccount.AIMachine.PrefabName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
         UsersDATA.currentAccount.AIMachine.ApplyGrowth(ship);
         switch (ship.GetComponent<Control>().LocomotionType)
         {

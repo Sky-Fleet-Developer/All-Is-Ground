@@ -80,6 +80,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
             InputEvents.Instance.OnButtonDown("Destroy").AddListener(Autodestroy);
             HPBar = UILink.MainCanvas.GetChildByName("HPBar").GetChildByName("Bar");
             HPBar.Image.color = PunTeamsColors[(int)PhotonNetwork.player.GetTeam()];
+            HPBar.Image.fillAmount = 1;
         }
     }
 
@@ -124,8 +125,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
                     WriteDamage(from, HitPoints - hp);
             }
             HitPoints = hp;
-            if (HPBar)
-                HPBar.Image.fillAmount = HitPoints / 100;
+            if (HPBar) HPBar.Image.fillAmount = HitPoints / 100;
             if (hp == 0f || float.IsNaN(HitPoints))
             {
                 GameManager.WaitForSpawn(this);
@@ -175,8 +175,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
         HitPoints = 100;
         if (IsMine)
         {
-            if (HPBar)
-                HPBar.Image.fillAmount = 1;
+            if (HPBar) HPBar.Image.fillAmount = 1;
             View.RPC("Respawn", PhotonTargets.Others, HitPoints, transform.position, transform.rotation);
         }
     }

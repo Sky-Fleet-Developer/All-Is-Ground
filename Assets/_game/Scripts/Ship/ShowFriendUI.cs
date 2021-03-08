@@ -7,7 +7,6 @@ public class ShowFriendUI : MonoBehaviourPlus
     public Health[] All;
     public List<Health> Friends;
     Camera mainCam;
-    Transform CamTr;
     Texture2D bg;
     Texture2D fill;
     Color teamColor;
@@ -29,7 +28,6 @@ public class ShowFriendUI : MonoBehaviourPlus
     private void Start()
     {
         mainCam = Camera.main;
-        CamTr = mainCam.transform;
         StartCoroutine(UpdateList());
         bg = Resources.Load<Texture2D>("UI/HPBar1");
         fill = Resources.Load<Texture2D>("UI/HPBar2");
@@ -63,7 +61,8 @@ public class ShowFriendUI : MonoBehaviourPlus
         GUI.skin = skin;
         foreach (var Hit in Friends)
         {
-            if (CamTr.InverseTransformPoint(Hit.transform.position).z > 0)
+            if (Hit == null) continue;
+            if (mainCam.transform.InverseTransformPoint(Hit.transform.position).z > 0)
             {
                 scrPos = mainCam.WorldToScreenPoint(Hit.transform.position + Hit.transform.up + Vector3.up * 5f);
                 Vector2 pos = new Vector2(scrPos.x - 100, Screen.height - scrPos.y - 35);

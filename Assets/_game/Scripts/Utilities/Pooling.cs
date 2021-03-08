@@ -166,6 +166,11 @@ public class Pooling : MonoBehaviour
         }
     }
 
+    public void Deactive(GameObject Obj)
+    {
+        var po = Obj.GetComponent<PoolObject>();
+        if (po) Deactive(po);
+    }
     public void Deactive(PoolObject Obj)
     {
         Obj.StopAllCoroutines();

@@ -231,6 +231,20 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
         }*/
     }
 
+    public void ReturnUI()
+    {
+        var pooling = UILink.MainCanvas.GetChildByName("Weapon").GetChildByName("Aiming").Pooling;
+        foreach (var hit in Aiming)
+        {
+            pooling.Deactive(hit.gameObject);
+        }
+        pooling = UILink.MainCanvas.GetChildByName("Weapon").GetChildByName("Crosshair").GetChildByName("Reloading").Pooling;
+        foreach (var hit in Reloading)
+        {
+            pooling.Deactive(hit.gameObject);
+        }
+    }
+
     protected virtual void OnStart() { }
 
     protected virtual void Discharge()
@@ -240,7 +254,7 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
 
         for (int I = lastShoot; I < Blocks.Count + lastShoot; I++)
         {
-            int i = (int)Mathf.Repeat(lastShoot+1, Blocks.Count);
+            int i = (int)Mathf.Repeat(lastShoot + 1, Blocks.Count);
             if (Blocks[i].Charged)
             {
                 if (Blocks[i].ChargesCount == 0)
@@ -263,12 +277,12 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
                     Blocks[i].audio.Play();
                 DischargeTimer = GameValues.DischargeDelay;
                 lastShoot = i;
-                if(Control.UserControl)
+                if (Control.UserControl)
                 {
-                    if(ReloadUIBatType == UIReloadingBarTypes.ReloadIsCharges)
-                    Reloading[i].Image.fillAmount = 1 - (float)Blocks[i].ChargesCount / Blocks[i].StartChargesCount;
-                    if(ReloadUIBatType == UIReloadingBarTypes.ReloadIsClips)
-                    Reloading[i].Image.fillAmount = 1 - (float)Blocks[i].Clips / Blocks[i].StartClipsCount;
+                    if (ReloadUIBatType == UIReloadingBarTypes.ReloadIsCharges)
+                        Reloading[i].Image.fillAmount = 1 - (float)Blocks[i].ChargesCount / Blocks[i].StartChargesCount;
+                    if (ReloadUIBatType == UIReloadingBarTypes.ReloadIsClips)
+                        Reloading[i].Image.fillAmount = 1 - (float)Blocks[i].Clips / Blocks[i].StartClipsCount;
                 }
                 break;
             }
@@ -305,8 +319,9 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
         for (int i = 0; i < Blocks.Count; i++)
         {
             Blocks[i].ClipReloadTimer = Mathf.MoveTowards(Blocks[i].ClipReloadTimer, 0f, Time.deltaTime);
-            if (Control.UserControl && ReloadUIBatType == UIReloadingBarTypes.ReloadIsClip)
-                Reloading[i].Image.fillAmount = Blocks[i].ClipReloadTimer / Blocks[i].ClipReloadDelay;
+
+            if (Control.UserControl && ReloadUIBatType == UIReloadingBarTypes.ReloadIsClip) Reloading[i].Image.fillAmount = Blocks[i].ClipReloadTimer / Blocks[i].ClipReloadDelay;
+
             if (!Blocks[i].ClipCharged)
             {
                 if (Blocks[i].ClipReloadTimer == 0 && Blocks[i].Clips > 0)
@@ -319,8 +334,9 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
             else
             {
                 Blocks[i].ReloadTimer = Mathf.MoveTowards(Blocks[i].ReloadTimer, 0f, Time.deltaTime);
-                if (Control.UserControl && ReloadUIBatType == UIReloadingBarTypes.ReloadIsGun)
-                    Reloading[i].Image.fillAmount = Blocks[i].ReloadTimer / Blocks[i].ReloadDelay;
+
+                if (Control.UserControl && ReloadUIBatType == UIReloadingBarTypes.ReloadIsGun) Reloading[i].Image.fillAmount = Blocks[i].ReloadTimer / Blocks[i].ReloadDelay;
+
                 if (!Blocks[i].Charged && Blocks[i].ReloadTimer == 0f)
                 {
                     if (Blocks[i].ChargesCount > 0)
@@ -360,7 +376,7 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
         float time = 0f;
         int shoots = 0;
         int charges = chargetInClip;
-        while(time < 60)
+        while (time < 60)
         {
             if (charges-- > 0)
             {
@@ -401,5 +417,10 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
                 Values.Add(reload.ToString() + "сек");
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        if (Control && Control.UserControl) ReturnUI();
     }
 }

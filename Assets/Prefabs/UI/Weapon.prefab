@@ -59,6 +59,8 @@ MonoBehaviour:
   InitOnStart: 1
   FirstIndex: 0
   DeteachActive: 0
+  DisabledObject: []
+  EnabledObject: []
 --- !u!114 &7761880047241921433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,23 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectTransform: {fileID: 0}
-  Image: {fileID: 0}
-  Button: {fileID: 0}
-  Text: {fileID: 0}
-  Slider: {fileID: 0}
-  Scrollbar: {fileID: 0}
-  InputField: {fileID: 0}
-  Outline: {fileID: 0}
-  ColorFaiding: {fileID: 0}
-  ScrollRing: {fileID: 0}
-  AllChildrens: []
-  Pooling: {fileID: 0}
-  PoolObject: {fileID: 0}
   HideChildsAtStart: 0
   HideSelfAtStart: 0
-  Ch: 0
-  SiaticObject: 0
+  StaticObject: 1000
 --- !u!1 &1990631394730692808
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +138,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -175,23 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectTransform: {fileID: 0}
-  Image: {fileID: 0}
-  Button: {fileID: 0}
-  Text: {fileID: 0}
-  Slider: {fileID: 0}
-  Scrollbar: {fileID: 0}
-  InputField: {fileID: 0}
-  Outline: {fileID: 0}
-  ColorFaiding: {fileID: 0}
-  ScrollRing: {fileID: 0}
-  AllChildrens: []
-  Pooling: {fileID: 0}
-  PoolObject: {fileID: 0}
   HideChildsAtStart: 0
   HideSelfAtStart: 0
-  Ch: 0
-  SiaticObject: 0
+  StaticObject: 1000
 --- !u!1 &5968285140345131472
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,23 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectTransform: {fileID: 0}
-  Image: {fileID: 0}
-  Button: {fileID: 0}
-  Text: {fileID: 0}
-  Slider: {fileID: 0}
-  Scrollbar: {fileID: 0}
-  InputField: {fileID: 0}
-  Outline: {fileID: 0}
-  ColorFaiding: {fileID: 0}
-  ScrollRing: {fileID: 0}
-  AllChildrens: []
-  Pooling: {fileID: 0}
-  PoolObject: {fileID: 0}
   HideChildsAtStart: 0
   HideSelfAtStart: 0
-  Ch: 0
-  SiaticObject: 0
+  StaticObject: 1000
 --- !u!1 &6591513296593818060
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SourcePrefab: {fileID: 3363223620970172827, guid: 486bf2a995661714099b4304a889e2cc,
     type: 3}
-  MassiveSize: 4
+  MassiveSize: 8
   DisableDelay: 0
   Messege: 
   SendOnStart: 0
@@ -318,6 +279,8 @@ MonoBehaviour:
   InitOnStart: 1
   FirstIndex: 0
   DeteachActive: 0
+  DisabledObject: []
+  EnabledObject: []
 --- !u!114 &7420600834831093753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,20 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectTransform: {fileID: 0}
-  Image: {fileID: 0}
-  Button: {fileID: 0}
-  Text: {fileID: 0}
-  Slider: {fileID: 0}
-  Scrollbar: {fileID: 0}
-  InputField: {fileID: 0}
-  Outline: {fileID: 0}
-  ColorFaiding: {fileID: 0}
-  ScrollRing: {fileID: 0}
-  AllChildrens: []
-  Pooling: {fileID: 0}
-  PoolObject: {fileID: 0}
   HideChildsAtStart: 0
   HideSelfAtStart: 0
-  Ch: 0
-  SiaticObject: 0
+  StaticObject: 1000

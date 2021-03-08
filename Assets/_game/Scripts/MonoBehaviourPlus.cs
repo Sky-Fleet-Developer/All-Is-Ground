@@ -765,23 +765,7 @@ public class MonoBehaviourPlus : MonoBehaviour
         return Vector3.Angle(gunpoint.forward, point - gunpoint.position) < Angle;
     }
 
-    public static float ClampAngle(float value)
-    {
-        if (value >= 180f)
-            value -= 360f;
-        if (value <= -180f)
-            value += 360f;
-        return value;
-    }
 
-    public static float ClampAngle(float value, float less, float more)
-    {
-        if (value >= less)
-            value -= 360f;
-        if (value <= more)
-            value += 360f;
-        return value;
-    }
 
     public bool PointInZone(Transform root, Vector3 point, float minAngle, float maxAngle, float distance = Mathf.Infinity)
     {
@@ -791,31 +775,6 @@ public class MonoBehaviourPlus : MonoBehaviour
     public bool PointInZone(Transform root, Vector3 point, float distance)
     {
         return (point - root.position).magnitude < distance;
-    }
-
-    public static void LockCursor()
-    {
-        if (Application.isPlaying)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-    }
-    public static void ConfinedCursor()
-    {
-        if (Application.isPlaying)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
-        }
-    }
-    public static void UnlockCursor()
-    {
-        if (Application.isPlaying)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
     }
 
     public Vector3 SetDefaultPreemption(Vector3 EnamyCentr, Vector3 EnamyVelocity, Vector3 MyCentr, Vector3 MyVelocity, float ChSp)
