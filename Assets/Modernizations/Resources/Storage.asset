@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -22,173 +23,905 @@ MonoBehaviour:
   onResourcesChainge:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Items:
-  - Name: Main
+  - Name: MMZ
     Stock: []
     Modernizations:
-    - Name: Weapon
-      Description: Standart tank weapon
+    - Name: Engine
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u044F"
       Sprite: {fileID: 0}
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 132
-        y: 503
+        x: 149
+        y: -169
         width: 130
         height: 30
-      position: {x: -97, y: 151}
+      position: {x: -28, y: -30}
       AvailableBySingle: 0
-      id: 602.5745
+      id: 501.82312
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 248,8557
+      - 782,5667
+      - 266,0112
       Properties:
       - property:
-          Name: TurelControl.RotationSpeed
-          FieldName: RotationSpeed
-          Description: Turret rotation speed
-          Type: 0
+          Name: ForwardLocomotor.Speed
+          FieldName: Speed
+          Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+            \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+          Type: 2
         groupName: 
-        id: 771.4077
+        id: 684.0017
         ApplyType: 0
         Group: 0
-        fVal: 60
+        fVal: 0
         iVal: 0
+        v2Val: {x: 25, y: 16}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: '{"x":25.0,"y":16.0}'
+      - property:
+          Name: ForwardLocomotor.YDrag
+          FieldName: YDrag
+          Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+            \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 811.5247
+        ApplyType: 0
+        Group: 0
+        fVal: 170
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 170
+      - property:
+          Name: ForwardLocomotor.VibroengineForce
+          FieldName: VibroengineForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
+          Type: 0
+        groupName: ' (group:280) '
+        id: 201.75171
+        ApplyType: 0
+        Group: 280
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0
+      - property:
+          Name: ForwardLocomotor.SpaceEngineForce
+          FieldName: SpaceEngineForce
+          Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: ' (group:260) '
+        id: 429.70212
+        ApplyType: 0
+        Group: 260
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0
+      - property:
+          Name: ForwardLocomotor.GyroscopeForce
+          FieldName: GyroscopeForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+          Type: 3
+        groupName: 
+        id: 951.26965
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 400, y: 750, z: 400}
+        bVal: 0
+        sVal: 
+        _value: '{"x":400.0,"y":750.0,"z":400.0}'
+    - Name: Engine2.0
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u0442\u0440\u0430\u043D\u0441\u0444\u043E\u0440\u043C\u0430\u0442\u043E\u0440\u0430
+        \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043C\u0430\u0433\u043D\u0438\u0442\u043D\u043E\u0433\u043E
+        \u0434\u0432\u0438\u0436\u0438\u0442\u0435\u043B\u044F"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: -249
+        width: 130
+        height: 30
+      position: {x: 149, y: -102}
+      AvailableBySingle: 0
+      id: 782.56665
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 450
+      SelfResourceDependences: []
+      Connections:
+      - 141,2355
+      - 400,9039
+      - 996,4609
+      Properties:
+      - property:
+          Name: ForwardLocomotor.Speed
+          FieldName: Speed
+          Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+            \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+          Type: 2
+        groupName: 
+        id: 969.4096
+        ApplyType: 1
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 6, y: 6}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: '{"x":6.0,"y":6.0}'
+    - Name: Engine2.5
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u043C\u043E\u0442\u043E\u0440\u0430
+        \u043A\u043E\u043B\u0435\u0431\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0433\u043E
+        \u0437\u0432\u0435\u043D\u0430"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: -89
+        width: 130
+        height: 30
+      position: {x: 147, y: 46}
+      AvailableBySingle: 0
+      id: 266.01117
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 470
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ForwardLocomotor.VibroengineForce
+          FieldName: VibroengineForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
+          Type: 0
+        groupName: 
+        id: 321.81125
+        ApplyType: 0
+        Group: 0
+        fVal: 360
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 360
+    - Name: Engine3.25
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0439
+        \u042D\u041C \u043F\u043B\u0430\u0441\u0442\u0438\u043D\u044B"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: -329
+        width: 130
+        height: 30
+      position: {x: 352, y: -190}
+      AvailableBySingle: 0
+      id: 141.23547
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 450
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ForwardLocomotor.YDrag
+          FieldName: YDrag
+          Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+            \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 538.7086
+        ApplyType: 1
+        Group: 0
+        fVal: 95
+        iVal: 0
+        v2Val: {x: 6, y: 6}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 95
+    - Name: Engine3.5
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u044B\u0445
+        \u042D\u041C \u043F\u043B\u0430\u0441\u0442\u0438\u043D"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: -249
+        width: 130
+        height: 30
+      position: {x: 346, y: -106}
+      AvailableBySingle: 0
+      id: 400.90387
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 525
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ForwardLocomotor.SpaceEngineForce
+          FieldName: SpaceEngineForce
+          Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 21.155952
+        ApplyType: 1
+        Group: 0
+        fVal: 55
+        iVal: 0
+        v2Val: {x: 6, y: 6}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 55
+    - Name: Engine3.75
+      Description: 
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: -169
+        width: 130
+        height: 30
+      position: {x: 355, y: -32}
+      AvailableBySingle: 0
+      id: 996.46094
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 420
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ForwardLocomotor.GyroscopeForce
+          FieldName: GyroscopeForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+          Type: 3
+        groupName: 
+        id: 884.0777
+        ApplyType: 2
+        Group: 0
+        fVal: 55
+        iVal: 0
+        v2Val: {x: 6, y: 6}
+        v3Val: {x: 1.5, y: 1.5, z: 1.5}
+        bVal: 0
+        sVal: 
+        _value: '{"x":1.5,"y":1.5,"z":1.5}'
+    - Name: Suspension
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 91
+        width: 130
+        height: 30
+      position: {x: -36, y: 233}
+      AvailableBySingle: 0
+      id: 293.209
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 256,2918
+      Properties:
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 572.18567
+        ApplyType: 0
+        Group: 0
+        fVal: 2.7
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 2,7
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 658.7712
+        ApplyType: 0
+        Group: 1
+        fVal: 2.8
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 2,8
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 22.1138
+        ApplyType: 0
+        Group: 0
+        fVal: 1.3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,3
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 497.37448
+        ApplyType: 0
+        Group: 1
+        fVal: 1.4
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,4
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: 
+        id: 67.978264
+        ApplyType: 0
+        Group: -1
+        fVal: 1000
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1000
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 935.0276
+        ApplyType: 0
+        Group: 0
+        fVal: 500
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 500
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 537.76355
+        ApplyType: 0
+        Group: 1
+        fVal: 800
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 800
+    - Name: Suspension2.0
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043C\u0430\u0433\u043D\u0438\u0442\u043D\u044B\u0445
+        \u0437\u0430\u0445\u0432\u0430\u0442\u043E\u0432"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 91
+        width: 130
+        height: 30
+      position: {x: 153, y: 236}
+      AvailableBySingle: 0
+      id: 256.2918
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 370
+      SelfResourceDependences: []
+      Connections:
+      - 708,3906
+      - 999,2561
+      Properties:
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 235.83556
+        ApplyType: 1
+        Group: 0
+        fVal: 0.3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,3
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 42.2858
+        ApplyType: 1
+        Group: 1
+        fVal: 0.34
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,34
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 665.32776
+        ApplyType: 1
+        Group: 0
+        fVal: 0.15
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,15
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 681.61285
+        ApplyType: 1
+        Group: 1
+        fVal: 0.16
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,16
+    - Name: Suspension3.0
+      Description: "\u0420\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u043A\u0430
+        \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043C\u0430\u0433\u043D\u0438\u0442\u043D\u044B\u0445
+        \u0437\u0430\u0445\u0432\u0430\u0442\u043E\u0432"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 51
+        width: 130
+        height: 30
+      position: {x: 345, y: 186}
+      AvailableBySingle: 0
+      id: 708.39056
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 340
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: 
+        id: 984.0232
+        ApplyType: 2
+        Group: -1
+        fVal: 1.22
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,22
+    - Name: Suspension3.5
+      Description: 
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 151
+        width: 130
+        height: 30
+      position: {x: 349, y: 293}
+      AvailableBySingle: 0
+      id: 999.2561
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 340
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: 
+        id: 276.11224
+        ApplyType: 2
+        Group: -1
+        fVal: 1.3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,3
+    - Name: Rockets
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0440\u0430\u043A\u0435\u0442"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 331
+        width: 130
+        height: 30
+      position: {x: -35, y: 465}
+      AvailableBySingle: 0
+      id: 125.99099
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 306,9753
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 842.863
+        ApplyType: 0
+        Group: 0
+        fVal: 0.6
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,6
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 857.7467
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 20
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 20
+    - Name: Rockets2.0
+      Description: 
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 331
+        width: 130
+        height: 30
+      position: {x: 144, y: 471}
+      AvailableBySingle: 0
+      id: 306.9753
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 656,4057
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 930.90894
+        ApplyType: 0
+        Group: 0
+        fVal: 0.35
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,35
+    - Name: Rockets3.0
+      Description: 
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 331
+        width: 130
+        height: 30
+      position: {x: 353, y: 474}
+      AvailableBySingle: 0
+      id: 656.4057
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 650.09143
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 60
         v2Val: {x: 0, y: 0}
         v3Val: {x: 0, y: 0, z: 0}
         bVal: 0
         sVal: 
         _value: 60
-      - property:
-          Name: TurelControl.MaxDamage
-          FieldName: MaxDamage
-          Description: Maximal damage
-          Type: 0
-        groupName: 
-        id: 573.6969
-        ApplyType: 0
-        Group: 0
-        fVal: 1010
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 1010
-      - property:
-          Name: TurelControl.MinDamage
-          FieldName: MinDamage
-          Description: Minimal damage
-          Type: 0
-        groupName: 
-        id: 248.7439
-        ApplyType: 0
-        Group: 0
-        fVal: 750
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 750
-      - property:
-          Name: TurelControl.ReloadTimer
-          FieldName: ReloadTimer
-          Description: Reloading time
-          Type: 0
-        groupName: 
-        id: 405.74878
-        ApplyType: 0
-        Group: 0
-        fVal: 5
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 5
-    - Name: Movement 1.6
-      Description: Replacing the transmission
-      Sprite: {fileID: 0}
-      IsDefault: 0
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 403
-        width: 130
-        height: 30
-      position: {x: 277.5, y: 54.5}
-      AvailableBySingle: 0
-      id: 117.61522
-      GlobalResourceDependences:
-      - ResourceName: Money
-        Cost: 100
-      - ResourceName: Experience
-        Cost: 400
-      SelfResourceDependences: []
-      Connections: []
-      Properties:
-      - property:
-          Name: TankControl.MaxEngineRPM
-          FieldName: MaxEngineRPM
-          Description: Maximal RPM
-          Type: 0
-        groupName: 
-        id: 205.8556
-        ApplyType: 1
-        Group: 0
-        fVal: 65
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 65
-    - Name: Movement
-      Description: Standart tank movement
+    - Name: Protection
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0431\u0440\u043E\u043D\u0438"
       Sprite: {fileID: 0}
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 132
-        y: 363
+        x: 149
+        y: 531
         width: 130
         height: 30
-      position: {x: -92.5, y: 14}
+      position: {x: -28, y: 677}
       AvailableBySingle: 0
-      id: 808.10156
+      id: 458.4258
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 272,6594
+      - 990,4107
+      - 588,4661
       Properties:
       - property:
-          Name: TankControl.MaxEngineRPM
-          FieldName: MaxEngineRPM
-          Description: Maximal RPM
+          Name: ArmorGroup.ArmorThickness
+          FieldName: ArmorThickness
+          Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
           Type: 0
-        groupName: 
-        id: 86.04455
+        groupName: ' (group:0) '
+        id: 694.7957
         ApplyType: 0
         Group: 0
-        fVal: 300
+        fVal: 18
         iVal: 0
         v2Val: {x: 0, y: 0}
         v3Val: {x: 0, y: 0, z: 0}
         bVal: 0
         sVal: 
-        _value: 300
+        _value: 18
       - property:
-          Name: TankControl.EnginePower
-          FieldName: EnginePower
-          Description: Engine power
+          Name: ArmorGroup.ArmorThickness
+          FieldName: ArmorThickness
+          Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 165.24565
+        ApplyType: 0
+        Group: 1
+        fVal: 14
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 14
+      - property:
+          Name: ArmorGroup.ArmorThickness
+          FieldName: ArmorThickness
+          Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: ' (group:2) '
+        id: 998.38196
+        ApplyType: 0
+        Group: 2
+        fVal: 20
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 20
+      - property:
+          Name: ArmorGroup.ARC
+          FieldName: ARC
+          Description: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 324.60947
+        ApplyType: 0
+        Group: 0
+        fVal: 1900
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1900
+      - property:
+          Name: ArmorGroup.ARC
+          FieldName: ARC
+          Description: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 557.19586
+        ApplyType: 0
+        Group: 1
+        fVal: 1900
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1900
+      - property:
+          Name: ArmorGroup.ARC
+          FieldName: ARC
+          Description: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: ' (group:2) '
+        id: 273.02426
+        ApplyType: 0
+        Group: 2
+        fVal: 1900
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1900
+    - Name: Protection2.0
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u043B\u043E\u0431\u043E\u0432\u043E\u0439
+        \u0431\u0440\u043E\u043D\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 491
+        width: 130
+        height: 30
+      position: {x: 157, y: 623}
+      AvailableBySingle: 0
+      id: 990.4107
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 360
+      SelfResourceDependences: []
+      Connections:
+      - 12,44998
+      Properties:
+      - property:
+          Name: ArmorGroup.ArmorThickness
+          FieldName: ArmorThickness
+          Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
           Type: 0
         groupName: 
-        id: 919.97705
-        ApplyType: 0
+        id: 10.901332
+        ApplyType: 1
+        Group: 0
+        fVal: 2.5
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 2,5
+    - Name: Protection2.5
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u0431\u0440\u043E\u043D\u0435\u0441\u0442\u0435\u043A\u043B\u0430"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 591
+        width: 130
+        height: 30
+      position: {x: 144, y: 726}
+      AvailableBySingle: 0
+      id: 588.4661
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 470
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ArmorGroup.ArmorThickness
+          FieldName: ArmorThickness
+          Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: ' (group:2) '
+        id: 684.24976
+        ApplyType: 1
+        Group: 2
+        fVal: 3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 3
+      - property:
+          Name: ArmorGroup.ARC
+          FieldName: ARC
+          Description: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u0431\u0440\u043E\u043D\u0438"
+          Type: 0
+        groupName: 
+        id: 615.16425
+        ApplyType: 1
         Group: 0
         fVal: 100
         iVal: 0
@@ -197,269 +930,186 @@ MonoBehaviour:
         bVal: 0
         sVal: 
         _value: 100
-    - Name: Weapon 1.0
-      Description: Replace the reloading system
+    - Name: Protection3.0
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u0431\u043E\u043A\u043E\u0432\u044B\u0445,
+        \u0437\u0430\u0434\u043D\u0438\u0445, \u0432\u0435\u0440\u0445\u043D\u0438\u0445
+        \u0438 \u043D\u0438\u0436\u043D\u0438\u0445 \u0431\u0440\u043E\u043D\u0435\u043F\u043B\u0430\u0441\u0442\u0438\u043D"
       Sprite: {fileID: 0}
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 312
-        y: 503
+        x: 529
+        y: 491
         width: 130
         height: 30
-      position: {x: 93.5, y: 154}
+      position: {x: 342, y: 627}
       AvailableBySingle: 0
-      id: 248.85571
+      id: 12.44998
       GlobalResourceDependences:
-      - ResourceName: Money
-        Cost: 45
       - ResourceName: Experience
-        Cost: 90
+        Cost: 490
       SelfResourceDependences: []
       Connections:
-      - 229,0045
+      - 521,4918
       Properties:
       - property:
-          Name: TurelControl.ReloadTimer
-          FieldName: ReloadTimer
-          Description: Reloading time
+          Name: ArmorGroup.ArmorThickness
+          FieldName: ArmorThickness
+          Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
           Type: 0
-        groupName: 
-        id: 745.7861
-        ApplyType: 2
-        Group: 0
-        fVal: 0.7
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 0,7
-    - Name: Weapon 2.0
-      Description: Replace the gun
-      Sprite: {fileID: 0}
-      IsDefault: 0
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 503
-        width: 130
-        height: 30
-      position: {x: 268, y: 153}
-      AvailableBySingle: 0
-      id: 229.0045
-      GlobalResourceDependences:
-      - ResourceName: Money
-        Cost: 220
-      - ResourceName: Experience
-        Cost: 500
-      SelfResourceDependences: []
-      Connections:
-      - 815,7057
-      Properties:
-      - property:
-          Name: TurelControl.ReloadTimer
-          FieldName: ReloadTimer
-          Description: Reloading time
-          Type: 0
-        groupName: 
-        id: 914.09204
-        ApplyType: 0
-        Group: 0
-        fVal: 4.8
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 4,8
-      - property:
-          Name: TurelControl.MaxDamage
-          FieldName: MaxDamage
-          Description: Maximal damage
-          Type: 0
-        groupName: 
-        id: 788.79596
-        ApplyType: 0
-        Group: 0
-        fVal: 1180
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 1180
-      - property:
-          Name: TurelControl.MinDamage
-          FieldName: MinDamage
-          Description: Minimal damage
-          Type: 0
-        groupName: 
-        id: 547.67914
-        ApplyType: 0
-        Group: 0
-        fVal: 860
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 860
-    - Name: Weapon 3.0
-      Description: Replace the gun rotation system
-      Sprite: {fileID: 0}
-      IsDefault: 0
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 503
-        width: 130
-        height: 30
-      position: {x: 447, y: 147.5}
-      AvailableBySingle: 0
-      id: 815.70575
-      GlobalResourceDependences:
-      - ResourceName: Money
-        Cost: 180
-      - ResourceName: Experience
-        Cost: 650
-      SelfResourceDependences: []
-      Connections: []
-      Properties:
-      - property:
-          Name: TurelControl.RotationSpeed
-          FieldName: RotationSpeed
-          Description: Turret rotation speed
-          Type: 0
-        groupName: 
-        id: 942.9644
-        ApplyType: 2
-        Group: 0
-        fVal: 1.2
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 1,2
-    - Name: Movement 1.3
-      Description: Replace the engine turbine
-      Sprite: {fileID: 0}
-      IsDefault: 0
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 323
-        width: 130
-        height: 30
-      position: {x: 269, y: -28}
-      AvailableBySingle: 0
-      id: 449.29724
-      GlobalResourceDependences:
-      - ResourceName: Money
-        Cost: 120
-      - ResourceName: Experience
-        Cost: 400
-      SelfResourceDependences: []
-      Connections: []
-      Properties:
-      - property:
-          Name: TankControl.EnginePower
-          FieldName: EnginePower
-          Description: Engine power
-          Type: 0
-        groupName: 
-        id: 758.849
+        groupName: ' (group:1) '
+        id: 131.79779
         ApplyType: 1
-        Group: 0
-        fVal: 25
+        Group: 1
+        fVal: 2.5
         iVal: 0
         v2Val: {x: 0, y: 0}
         v3Val: {x: 0, y: 0, z: 0}
         bVal: 0
         sVal: 
-        _value: 25
-    - Name: Movement 1.0
-      Description: Replacing the tank engine
-      Sprite: {fileID: 21300000, guid: 2303c773272e7f945be9cb4bda27a799, type: 3}
+        _value: 2,5
+    - Name: Protection4.0
+      Description: "\u0417\u0430\u043A\u0430\u043B\u043A\u0430 \u0438 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0430
+        \u0432\u0441\u0435\u0439 \u0431\u0440\u043E\u043D\u0438"
+      Sprite: {fileID: 0}
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 312
-        y: 363
+        x: 729
+        y: 491
         width: 130
         height: 30
-      position: {x: 82.5, y: 13}
+      position: {x: 552, y: 633}
       AvailableBySingle: 0
-      id: 272.65936
+      id: 521.4918
       GlobalResourceDependences:
-      - ResourceName: Money
-        Cost: 80
       - ResourceName: Experience
-        Cost: 120
+        Cost: 490
       SelfResourceDependences: []
-      Connections:
-      - 449,2972
-      - 117,6152
+      Connections: []
       Properties:
       - property:
-          Name: TankControl.MaxEngineRPM
-          FieldName: MaxEngineRPM
-          Description: Maximal RPM
+          Name: ArmorGroup.ARC
+          FieldName: ARC
+          Description: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u0431\u0440\u043E\u043D\u0438"
           Type: 0
         groupName: 
-        id: 281.0355
-        ApplyType: 0
-        Group: 0
-        fVal: 320
+        id: 565.08154
+        ApplyType: 2
+        Group: -1
+        fVal: 1.35
         iVal: 0
         v2Val: {x: 0, y: 0}
         v3Val: {x: 0, y: 0, z: 0}
         bVal: 0
         sVal: 
-        _value: 320
-      - property:
-          Name: TankControl.EnginePower
-          FieldName: EnginePower
-          Description: Engine power
-          Type: 0
-        groupName: 
-        id: 438.74948
-        ApplyType: 0
-        Group: 0
-        fVal: 130
-        iVal: 0
-        v2Val: {x: 0, y: 0}
-        v3Val: {x: 0, y: 0, z: 0}
-        bVal: 0
-        sVal: 
-        _value: 130
+        _value: 1,35
     Resources: []
   Skin: {fileID: 11400000, guid: 7ff46521dd6b2cb4eb7367d373a2029b, type: 2}
   SavedProperties:
-  - Name: TankControl.MaxEngineRPM
-    FieldName: MaxEngineRPM
-    Description: Maximal RPM
+  - Name: ForwardLocomotor.Speed
+    FieldName: Speed
+    Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+    Type: 2
+  - Name: ForwardLocomotor.YDrag
+    FieldName: YDrag
+    Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+      \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
     Type: 0
-  - Name: TankControl.EnginePower
-    FieldName: EnginePower
-    Description: Engine power
+  - Name: ForwardLocomotor.VibroengineForce
+    FieldName: VibroengineForce
+    Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
     Type: 0
-  - Name: TurelControl.RotationSpeed
-    FieldName: RotationSpeed
-    Description: Turret rotation speed
+  - Name: ForwardLocomotor.SpaceEngineForce
+    FieldName: SpaceEngineForce
+    Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
     Type: 0
-  - Name: TurelControl.MaxDamage
-    FieldName: MaxDamage
-    Description: Maximal damage
+  - Name: ForwardLocomotor.GyroscopeForce
+    FieldName: GyroscopeForce
+    Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+    Type: 3
+  - Name: Locomotor.Speed
+    FieldName: Speed
+    Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+    Type: 2
+  - Name: Locomotor.YDrag
+    FieldName: YDrag
+    Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+      \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
     Type: 0
-  - Name: TurelControl.MinDamage
-    FieldName: MinDamage
-    Description: Minimal damage
+  - Name: Locomotor.VibroengineForce
+    FieldName: VibroengineForce
+    Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
     Type: 0
-  - Name: TurelControl.ReloadTimer
-    FieldName: ReloadTimer
-    Description: Reloading time
+  - Name: Locomotor.SpaceEngineForce
+    FieldName: SpaceEngineForce
+    Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
+    Type: 0
+  - Name: Locomotor.GyroscopeForce
+    FieldName: GyroscopeForce
+    Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+    Type: 3
+  - Name: Support.length
+    FieldName: length
+    Description: "\u0414\u043B\u0438\u043D\u0430"
+    Type: 0
+  - Name: Support.targetDistance
+    FieldName: targetDistance
+    Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+    Type: 0
+  - Name: Support.Force
+    FieldName: Force
+    Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+    Type: 0
+  - Name: Support.Dumping
+    FieldName: Dumping
+    Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+    Type: 0
+  - Name: Turel.HorizontalRotationSpeed
+    FieldName: HorizontalRotationSpeed
+    Description: "\u0413\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u0430\u044F
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+    Type: 0
+  - Name: Turel.HorizontalRotationAngle
+    FieldName: HorizontalRotationAngle
+    Description: "\u0423\u0433\u043E\u043B \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442\u0430\u043B\u044C\u043D\u043E\u0433\u043E
+      \u043D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F"
+    Type: 2
+  - Name: Turel.VerticalRotationSpeed
+    FieldName: VerticalRotationSpeed
+    Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+    Type: 0
+  - Name: Turel.VerticalRotationAngle
+    FieldName: VerticalRotationAngle
+    Description: "\u0423\u0433\u043E\u043B \u0432\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0433\u043E
+      \u043D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F"
+    Type: 2
+  - Name: ChargeBlock.ReloadDelay
+    FieldName: ReloadDelay
+    Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+    Type: 0
+  - Name: ChargeBlock.ChargesCount
+    FieldName: ChargesCount
+    Description: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+    Type: 1
+  - Name: ChargeBlock.Clips
+    FieldName: Clips
+    Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+    Type: 1
+  - Name: ChargeBlock.ClipReloadDelay
+    FieldName: ClipReloadDelay
+    Description: "\u041F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0430"
+    Type: 0
+  - Name: ArmorGroup.ArmorThickness
+    FieldName: ArmorThickness
+    Description: "\u0422\u043E\u043B\u0449\u0438\u043D\u0430 \u0431\u0440\u043E\u043D\u0438"
+    Type: 0
+  - Name: ArmorGroup.ARC
+    FieldName: ARC
+    Description: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u0431\u0440\u043E\u043D\u0438"
     Type: 0
   BackgroundMesh: {fileID: 2800000, guid: 677d247f7fe5c124cb685bb8a4324243, type: 3}
   BlockGUISize: {x: 130, y: 30}

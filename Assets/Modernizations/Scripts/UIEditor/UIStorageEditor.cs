@@ -36,10 +36,7 @@ namespace Modernizations
         void Start()
         {
             SelectedBlock.Block = null;
-            StorageEditor.OnCloseWindow.AddListener(delegate
-            {
-                gameObject.SetActive(false);
-            });
+            StorageEditor.OnCloseWindow += () => gameObject.SetActive(false);
         }
     }
 }

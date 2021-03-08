@@ -250,7 +250,7 @@ namespace Modernizations
         float delta;
         bool mDown = false;
         bool drag = false;
-        public bool AvailableBySingle = true; //TODO
+        public bool AvailableBySingle; //TODO
         public float id;
         [Header("---------------")]
         public List<ResourceDependence> GlobalResourceDependences;
@@ -1098,6 +1098,7 @@ namespace Modernizations
                 Description = string.Empty;
                 Connections = new List<string>();
                 Properties = new List<Property>();
+                AvailableBySingle = false;
                 position = new Vector2(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100));
                 id = UnityEngine.Random.Range(0, 1000.0f);
                 GlobalResourceDependences = new List<ResourceDependence>();

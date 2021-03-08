@@ -80,15 +80,6 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IModifia
         public float groundDistance;
         [HideInInspector]
         public float lastGroundDistance;
-        public void SetProperties(PropertyBlock entity)
-        {
-            foreach (var Hit in entity.Properties)
-            {
-                object Value = null;
-                Value = Hit.GetValue(Value);
-                SetField(Hit.Name, Value, Hit.GetZero(GetFieldType(Hit.Name)));
-            }
-        }
 
         public bool Work(Locomotor locomotor)
         {

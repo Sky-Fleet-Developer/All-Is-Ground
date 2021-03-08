@@ -35,7 +35,7 @@ public class StorageEditor : MonoBehaviour
             storage.IsEditor = value;
         }
     }
-    public static UnityEvent OnCloseWindow;
+    public static System.Action OnCloseWindow;
     #endregion
 
     private static bool control;
@@ -112,7 +112,7 @@ public class StorageEditor : MonoBehaviour
     #endregion
     public static void Init()
     {
-        OnCloseWindow = new UnityEvent();
+        OnCloseWindow = () => { };
         storage = Storage.Instance;
         storage.RefreshPropertiesList();
         ScyncChainges();
@@ -124,6 +124,7 @@ public class StorageEditor : MonoBehaviour
         {
             SavedProperties.Add(storage.SavedProperties[i].Name, storage.SavedProperties[i].Description);
         }
+        IsEditor = !Application.isPlaying;
     }
 
 

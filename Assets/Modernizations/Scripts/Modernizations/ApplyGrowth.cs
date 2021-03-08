@@ -15,7 +15,7 @@ public class ApplyGrowth : MonoBehaviour
     {
         if(ApplyOnStart)
             Apply();
-        StorageEditor.OnCloseWindow.AddListener(Apply);
+        StorageEditor.OnCloseWindow += Apply;
     }
     public void Apply()
     {

@@ -37,7 +37,7 @@ namespace Modernizations
             Exit.onClick.AddListener(delegate
             {
                 Item = null;
-                StorageEditor.OnCloseWindow.Invoke();
+                StorageEditor.OnCloseWindow?.Invoke();
             });
         }
 

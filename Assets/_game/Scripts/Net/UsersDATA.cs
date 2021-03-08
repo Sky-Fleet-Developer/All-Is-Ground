@@ -57,6 +57,23 @@ public class UsersDATA : MonoBehaviourPlus
         State.text = "<color=green>Ожидание...</color>";
     }
 
+    [ContextMenu("WriteItemsInDB")]
+    public void WriteItemsInDB()
+    {
+        string send = string.Empty;
+        foreach (var ship in Garage.Instance.Ships)
+        {
+            var item = Storage.GetItem(ship.PrefabName);
+            if (item == null) continue;
+            foreach (var property in item.Modernizations)
+            {
+                if (property.GlobalResourceDependences.Count != 0)
+                    send += ship.PrefabName + "." + property.Name + ":" + property.GlobalResourceDependences[0].Cost + ",";
+            }
+        }
+        StartCoroutine(SetItemsCosts(send));
+    }
+
     #region Public
     public static void AddExperience(string PlayerName, int expToAdd)
     {
@@ -405,7 +422,8 @@ public class UsersDATA : MonoBehaviourPlus
             foreach (var hit in dic)
             {
                 string key = hit.Key.Replace(ship.PrefabName + ".", "");
-                ship.GrowthStock.Where(x => x.Name == key).SingleOrDefault().Cost = int.Parse(hit.Value);
+                var pb = ship.GrowthStock.FirstOrDefault(x => x.Name == key);
+                if(pb != null) pb.GlobalResourceDependences[0].Cost = int.Parse(hit.Value);
             }
         }
     }
@@ -419,8 +437,6 @@ public class UsersDATA : MonoBehaviourPlus
             string answer = SelectString(www.downloadHandler.text);
 
             Debug.Log(answer);
-
-
         }
     }
 

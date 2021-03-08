@@ -24,17 +24,7 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
 
         public void ApplyGrowth(GameObject Instance)
         {
-            ShipInstance SI = new ShipInstance(Instance);
-            List<string> Exist = new List<string>();
-            foreach (var Hit in GrowthEntries)
-            {
-                if (BlocksInStock.Contains(Hit))
-                {
-                    var entry = GrowthStock.Where(x => x.Name == Hit).SingleOrDefault();
-                    Exist.Add(entry.Name);
-                    entry.Apply(SI, GrowthStock, BlocksInStock, Exist);
-                }
-            }
+            Storage.ApplyGrowth(PrefabName, Instance);
         }
     }
 
@@ -199,13 +189,18 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
         int shipN = ShipsScroll.ScrollRing.Value;
         //SelectedShip = Ships[shipN];
         //StorageEditor.Back.AddListener(CloseModernizations);
-        UILink.MainCanvas.GetChildByName("Background").gameObject.SetActive(true);
+        var bg = UILink.MainCanvas.GetChildByName("Background");
+        if(bg) bg.gameObject.SetActive(true);
         StartCoroutine(UsersDATA.Instance.GetItemsCosts(Ships[shipN]));
+        StorageEditor.SelectedItem = Storage.GetItem(Ships[shipN].PrefabName);
+        StorageEditor.OnCloseWindow += CloseModernizations;
     }
 
     public void CloseModernizations()
     {
-        UILink.MainCanvas.GetChildByName("Background").gameObject.SetActive(false);
+        StorageEditor.OnCloseWindow -= CloseModernizations;
+        var bg = UILink.MainCanvas.GetChildByName("Background");
+        if (bg) bg.gameObject.SetActive(false);
     }
 
     void ExploreShip()
