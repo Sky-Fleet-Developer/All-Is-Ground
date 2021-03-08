@@ -87,6 +87,7 @@ public class Charge : MonoBehaviourPlus, IDescription
             }
             else
             {
+                if (this is SoundWawe) return;
                 if (explose)
                 {
                     Explose(Hit.point, Quaternion.LookRotation(Hit.normal));

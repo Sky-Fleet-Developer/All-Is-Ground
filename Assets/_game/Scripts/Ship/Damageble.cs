@@ -32,7 +32,7 @@ public class Damageble : MonoBehaviourPlus, IDestroyeble
 
         if (ChargeIsMine)
         {
-            health.AddDamage(6.5f * DamageMP * wave.Force / health.DamageblePartsCount / Armor * (1 - CentrDist) / Mathf.Pow(wave.RealSize, 0.75f), PhotonNetwork.player);
+            health.AddDamage(9f * DamageMP * wave.Force / health.DamageblePartsCount / Armor * (1 - CentrDist) / Mathf.Pow(wave.RealSize, 0.75f), PhotonNetwork.player);
         }
     }
 

@@ -760,7 +760,7 @@ MonoBehaviour:
   - name: Gun
     Group: 0
     Launcher: {fileID: 495845230746098950}
-    ReloadDelay: 6
+    ReloadDelay: 4.7
     Charged: 0
     ChargesCount: 1
     Clips: 40
