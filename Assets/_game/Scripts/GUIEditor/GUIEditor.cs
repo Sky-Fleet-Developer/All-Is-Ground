@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GUIEditor : MonoBehaviourPlus
+public static class GUIEditor
 {
-    protected Vector2 DragAndDropStart;
-    bool drag = false;
+    static Vector2 DragAndDropStart;
+    static bool drag = false;
 
-    Vector2 GetNearest(List<Vector2> list, Vector2 to)
+    public static Vector2 GetNearest(List<Vector2> list, Vector2 to)
     {
         Vector2 result = Vector2.zero;
         float dist = 10000000;
@@ -24,7 +24,7 @@ public class GUIEditor : MonoBehaviourPlus
         return result;
     }
 
-    protected bool DragAndDrop(Vector2 position, bool down, List<Vector2> Snaps)
+    public static bool DragAndDrop(Vector2 position, bool down, List<Vector2> Snaps)
     {
         Vector2 nearest = GetNearest(Snaps, position);
         if (Vector2.SqrMagnitude(nearest - position) < 100)
@@ -117,13 +117,52 @@ public class GUIEditor : MonoBehaviourPlus
     static Dictionary<string, string> FieldStringValues = new Dictionary<string, string>();
     static Dictionary<string, bool> FieldFocuses = new Dictionary<string, bool>();
     static Dictionary<string, bool> FieldDown = new Dictionary<string, bool>();
-    static List<System.Tuple<int, Rect>> Walls;
-    static int time;
     public static bool popupIsOpen;
-    static Texture2D pixel;
-    public static Rect Default;
-    public static Rect Last;
+    static Texture2D line;
+    static Texture2D arrow;
+
     static float delta;
+    public static Vector2 GetPointFromAlignment(Rect rect, SpriteAlignment alignment, bool invert = false)
+    {
+        Vector2 ret = new Vector2();
+        switch (alignment)
+        {
+            case SpriteAlignment.Center:
+                ret = rect.center;
+                break;
+            case SpriteAlignment.TopLeft:
+                ret = rect.position;
+                break;
+            case SpriteAlignment.TopCenter:
+                ret = rect.position + new Vector2(rect.size.x * 0.5f, 0);
+                break;
+            case SpriteAlignment.TopRight:
+                ret = rect.position + new Vector2(rect.size.x, 0);
+                break;
+            case SpriteAlignment.LeftCenter:
+                ret = rect.position + new Vector2(0, rect.size.y * 0.5f);
+                break;
+            case SpriteAlignment.RightCenter:
+                ret = rect.position + new Vector2(rect.size.x, rect.size.y * 0.5f);
+                break;
+            case SpriteAlignment.BottomLeft:
+                ret = rect.position + new Vector2(0, rect.size.y);
+                break;
+            case SpriteAlignment.BottomCenter:
+                ret = rect.position + new Vector2(rect.size.x * 0.5f, rect.size.y);
+                break;
+            case SpriteAlignment.BottomRight:
+                ret = rect.position + new Vector2(rect.size.x, rect.size.y);
+                break;
+        }
+        if (invert)
+        {
+            ret -= rect.center;
+            ret *= -1;
+            ret += rect.center;
+        }
+        return ret;
+    }
     public static float DelayedFloatField(float value, string name)
     {
         if (!FieldFocuses.ContainsKey(name))
@@ -191,10 +230,11 @@ public class GUIEditor : MonoBehaviourPlus
             {
                 delta = 0f;
                 FieldDown[name] = false;
+                Event.current.Use();
             }
             GUILayout.TextField(value + "");
-            delta = delta + Event.current.delta.y * 0.15f;
-            value = Mathf.Ceil((value + Event.current.delta.y * Mathf.Clamp(Mathf.Abs(delta), 0.3f, 100f) * 0.1f) * 200) / 200;
+            delta = delta - Event.current.delta.y * 0.1f;
+            value = Mathf.Ceil((value - Event.current.delta.y * Mathf.Clamp(Mathf.Abs(delta), 0.3f, 100f) * 0.1f) * 200) / 200;
             FieldStringValues[name] = value + "";
         }
         else
@@ -216,8 +256,17 @@ public class GUIEditor : MonoBehaviourPlus
             FieldStringValues[name] = FieldStringValues[name].Replace('.', ',');
             if (FieldStringValues[name] == string.Empty)
                 FieldStringValues[name] = "0";
+
+            char start = FieldStringValues[name][0];
+            bool startIsDot = start == ',';
+            if (startIsDot)
+            {
+                FieldStringValues[name].Insert(0, "0");
+            }
+            char end = FieldStringValues[name][FieldStringValues[name].Length - 1];
+            bool endIsNotDot = end != ',';
             float v;
-            if (FieldStringValues[name][FieldStringValues[name].Length - 1] != ',' && float.TryParse(FieldStringValues[name], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out v))
+            if (endIsNotDot && float.TryParse(FieldStringValues[name], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out v))
             {
                 value = v;
                 FieldStringValues[name] = value + "";
@@ -243,10 +292,11 @@ public class GUIEditor : MonoBehaviourPlus
             {
                 delta = 0f;
                 FieldDown[name] = false;
+                Event.current.Use();
             }
             GUI.TextField(rect.Add(new Vector2(10, 0)), value + "");
-            delta = delta + Event.current.delta.y * 0.15f;
-            value = Mathf.Ceil((value + Event.current.delta.y * Mathf.Clamp(Mathf.Abs(delta), 0.3f, 100f) * 0.1f) * 200) / 200;
+            delta = delta - Event.current.delta.y * 0.1f;
+            value = Mathf.Ceil((value - Event.current.delta.y * Mathf.Clamp(Mathf.Abs(delta), 0.3f, 100f) * 0.1f) * 200) / 200;
             FieldStringValues[name] = value + "";
         }
         else
@@ -261,75 +311,127 @@ public class GUIEditor : MonoBehaviourPlus
 
             if (!curr)
             {
-                FieldStringValues[name] = value + "";
+                FieldStringValues[name] = value.ToString();
                 return value;
             }
 
             FieldStringValues[name] = FieldStringValues[name].Replace('.', ',');
             if (FieldStringValues[name] == string.Empty)
                 FieldStringValues[name] = "0";
+
+            char start = FieldStringValues[name][0];
+            bool startIsDot = start == ',';
+            if(startIsDot)
+            {
+                FieldStringValues[name].Insert(0, "0");
+            }
+            char end = FieldStringValues[name][FieldStringValues[name].Length - 1];
+            bool endIsNotDot = end != ',';
             float v;
-            if (FieldStringValues[name][FieldStringValues[name].Length - 1] != ',' && float.TryParse(FieldStringValues[name], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out v))
+            if (endIsNotDot && float.TryParse(FieldStringValues[name], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out v))
             {
                 value = v;
-                FieldStringValues[name] = value + "";
+                FieldStringValues[name] = value.ToString();
             }
             FieldFocuses[name] = curr;
         }
 
         return value;
     }
-    public static void DrawLine(Vector2 from, Vector2 to, Color color)
+
+    public static void DrawLine(Vector2 from, Vector2 to, Color color, bool CutByRect = false, bool drawArrow = false)
     {
-        if (!pixel)
-            SetPixel();
+        if (CutByRect)
+        {
+            Rect LinesCutout = new Rect(0, 0, Screen.width, Screen.height);
+            bool fromIn = LinesCutout.Contains(from);
+            bool toIn = LinesCutout.Contains(to);
+            if (fromIn == false && toIn == false)
+                return;
+            if (fromIn != toIn)
+            {
+                if (fromIn)
+                {
+                    to = to.RectangleCut(from, LinesCutout);
+                }
+                else
+                {
+                    from = from.RectangleCut(to, LinesCutout);
+                }
+            }
+        }
+        if (!line)
+            SetLineTex();
+        if (!arrow)
+            SetArrowTex();
         Vector2 direction = to - from;
         Vector2 mid = (from + to) / 2;
-        Vector2 size = new Vector2(2, direction.magnitude);
+        Vector2 size = new Vector2(direction.magnitude, 3);
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         var mat = GUI.matrix;
-        GUIUtility.RotateAroundPivot(-angle, mid);
+        GUIUtility.RotateAroundPivot(-angle + 90, mid);
         GUI.color = color;
-        GUI.DrawTexture(new Rect(mid - size * 0.5f, size), pixel);
+        GUI.DrawTexture(new Rect(mid - size * 0.5f + Vector2.down, size), line);
+        if(drawArrow)
+            GUI.DrawTexture(new Rect(mid - Vector2.one * 5 + Vector2.down, Vector2.one * 10), arrow);
         GUI.color = Color.white;
         GUI.matrix = mat;
     }
-    public static void SetPixel()
+
+    public static void SetLineTex()
     {
-        Color[] p = new Color[1];
-        p[0] = Color.white;
-        pixel = new Texture2D(1, 1);
-        pixel.SetPixels(p);
-        pixel.Apply();
+        Color[] p = new Color[3];
+        p[0] = new Color(1, 1, 1, 0.5f);
+        p[1] = Color.black;
+        p[2] = new Color(1, 1, 1, 0.5f);
+        line = new Texture2D(1, 3);
+        line.filterMode = FilterMode.Bilinear;
+        line.SetPixels(p);
+        line.Apply();
     }
-    public static void SetDefault(Rect rect)
+    public static void SetArrowTex()
     {
-        Default = rect;
-        Last = rect;
+        Color[] p = new Color[10*9];
+        bool[] b = new bool[]
+        {
+            true, true, false, false, false, false, false, false, false, false,
+            true, true, true, true, false, false, false, false, false, false,
+            true, true, true, true, true, true, false, false, false, false,
+            true, true, true, true, true, true, true, true, false, false,
+            true, true, true, true, true, true, true, true, true, true,
+            true, true, true, true, true, true, true, true, false, false,
+            true, true, true, true, true, true, false, false, false, false,
+            true, true, true, true, false, false, false, false, false, false,
+            true, true, false, false, false, false, false, false, false, false
+        };
+        for (int w = 0; w < 10; w++)
+        {
+            for (int h = 0; h < 9; h++)
+            {
+                p[w * 9 + h] = b[w * 9 + h] ? Color.white : Color.clear;
+            }
+        }
+        arrow = new Texture2D(10, 9);
+        arrow.filterMode = FilterMode.Bilinear;
+        arrow.wrapMode = TextureWrapMode.Clamp;
+        arrow.SetPixels(p);
+        arrow.Apply();
     }
-    public static Rect GetOffset(float x, float y, float w, float h)
-    {
-        return new Rect(Default.position + new Vector2(x, y), Default.size + new Vector2(w, h));
-    }
-    public static Rect GetNextWithOffset(float x, float y, float w, float h)
-    {
-        Last.position += new Vector2(x, y);
-        return new Rect(Last.position, Last.size + new Vector2(w, h));
-    }
-    public static Rect GetNext(Vector2 offset)
-    {
-        Last.position += offset;
-        return Last;
-    }
-    public static Rect GetNextWithoutOffset(float x, float y, float w, float h)
-    {
-        return new Rect(Last.position + new Vector2(x, y), Last.size + new Vector2(w, h));
-    }
-    public static Rect GetWithSize(float x, float y, float w, float h)
-    {
-        return new Rect(Default.position + new Vector2(x, y), new Vector2(w, h));
-    }
+
     static Vector2 mousePosition;
+
+    public static List<string> GetNamedLinksNames(List<INamedID> links)
+    {
+        List<string> names = new List<string>();
+        links.ForEach(x => names.Add(x.GetName()));
+        return names;
+    }
+    public static List<string> GetNamedLinksIDs(List<INamedID> links)
+    {
+        List<string> names = new List<string>();
+        links.ForEach(x => names.Add(x.GetID()));
+        return names;
+    }
 
     public static List<Popup> popups;
     public class Popup
@@ -339,41 +441,46 @@ public class GUIEditor : MonoBehaviourPlus
         public string name;
         public Rect rect;
         public bool Drown = false;
-        public int time;
     }
-    public static string PopUpLayout(string value, List<string> variants, string name)
+
+    public static System.Enum PopUp(Rect rect, System.Enum value, string name)
     {
-        if (!FieldStringValues.ContainsKey(name))
-        {
-            FieldStringValues.Add(name, value + "");
-            FieldDown.Add(name, false);
-        }
+        var variants = System.Enum.GetNames(value.GetType()).ToList();
 
-        GUI.color = Color.white * 0.8f;
-        GUILayout.Box(value, GUILayout.Width(120), GUILayout.Height(22));
-        GUI.color = Color.white;
-        Rect lastRect = GUILayoutUtility.GetLastRect();
-        if (Event.current.type == EventType.MouseDown && lastRect.Contains(Event.current.mousePosition))
-        {
-            FieldDown[name] = !FieldDown[name];
-        }
-
-        Popup old = popups.Where(x => x.name == name).SingleOrDefault();
-        if (old != null)
-        {
-            old.rect = lastRect;
-            old.variants = variants;
-            old.Drown = false;
-            return old.value;
-        }
-        else
-        {
-            popups.Add(new Popup { value = value, time = time++, rect = lastRect, variants = variants, name = name, Drown = false });
-            return value;
-        }
+        return System.Enum.ToObject(value.GetType(), variants.IndexOf(PopUp(rect, value.ToString(), variants, name))) as System.Enum;
     }
+
+    public static INamedID PopUp(Rect rect, INamedID value, List<INamedID> variants, string name)
+    {
+        List<string> names = GetNamedLinksNames(variants);
+        List<string> ids = GetNamedLinksIDs(variants);
+
+        var pu = PopUp(rect, value.GetID(), value.GetName(), ids, names, name);
+        var val = variants.FirstOrDefault(x => x.GetID() == pu);
+        if (val != null)
+            return val;
+        return value;
+    }
+
+    public static string PopUp(Rect rect, string value, List<INamedID> variants, string name)
+    {
+        List<string> names = GetNamedLinksNames(variants);
+        List<string> ids = GetNamedLinksIDs(variants);
+        string vName = value;
+        var val = ids.IndexOf(value);
+        if (val != -1)
+            vName = names[val];
+
+        return PopUp(rect, value, vName, ids, names, name);
+    }
+
     public static string PopUp(Rect rect, string value, List<string> variants, string name)
     {
+        return PopUp(rect, value, value, variants, variants, name);
+    }
+
+    public static string PopUp(Rect rect, string value, string showValue, List<string> variants, List<string> showVariants, string name)
+    {
         if (!FieldStringValues.ContainsKey(name))
         {
             FieldStringValues.Add(name, value + "");
@@ -381,37 +488,56 @@ public class GUIEditor : MonoBehaviourPlus
         }
 
         GUI.color = Color.white * 0.8f;
-        GUI.Box(rect, value);
+        GUI.Box(rect, showValue);
         GUI.color = Color.white;
         Rect lastRect = rect;
         if (Event.current.type == EventType.MouseDown && lastRect.Contains(Event.current.mousePosition))
         {
             FieldDown[name] = !FieldDown[name];
+            Event.current.Use();
         }
-
+        List<Rect> vars = new List<Rect>();
+        for (int i = 0; i < variants.Count; i++)
+        {
+            Rect pos = rect.Add(Vector2.up * 20 * (i - 1));
+            vars.Add(pos);
+        }
+        if (FieldDown[name])
+        {
+            if (Event.current.type == EventType.MouseUp)
+            {
+                for (int i = 0; i < vars.Count; i++)
+                    if (vars[i].Contains(Event.current.mousePosition))
+                        value = variants[i];
+                FieldDown[name] = false;
+                popupIsOpen = false;
+                Event.current.Use();
+            }
+        }
         Popup old = popups.Where(x => x.name == name).SingleOrDefault();
         if (old != null)
         {
+            old.value = showValue;
             old.rect = lastRect;
-            old.variants = variants;
+            old.variants = showVariants;
             old.Drown = false;
-            return old.value;
         }
         else
         {
-            popups.Add(new Popup { value = value, time = time++, rect = lastRect, variants = variants, name = name, Drown = false });
-            return value;
+            popups.Add(new Popup { value = showValue, rect = lastRect, variants = showVariants, name = name, Drown = false });
         }
+        return value;
     }
-    static string DrawPopup(Popup popup)
+
+    static void DrawPopup(Popup popup)
     {
         if (FieldDown[popup.name])
         {
-            if (HasWallOnMouse(popup.time))
+            /*if (HasWallOnMouse(popup.time))
             {
                 FieldDown[popup.name] = false;
                 return popup.value;
-            }
+            }*/
             popupIsOpen = true;
             List<Rect> vars = new List<Rect>();
             GUI.color = Color.gray;
@@ -434,40 +560,16 @@ public class GUIEditor : MonoBehaviourPlus
                 GUI.Box(pos, popup.variants[i]);
             }
             GUI.color = Color.white;
-            if (Event.current.type == EventType.MouseUp)
-            {
-                for (int i = 0; i < vars.Count; i++)
-                    if (vars[i].Contains(Event.current.mousePosition))
-                        popup.value = popup.variants[i];
-                FieldDown[popup.name] = false;
-                popupIsOpen = false;
-            }
 
         }
-        return popup.value;
-    }
-    public static void AddWall(Rect rect)
-    {
-        Walls.Add( new System.Tuple<int, Rect>(time, rect));
-    }
-
-    public static bool HasWallOnMouse(int Time)
-    {
-        foreach(var hit in Walls)
-        {
-            if (Time > hit.Item1 && hit.Item2.Contains(mousePosition))
-                return true;
-        }
-        return false;
     }
 
     public static void Begin()
     {
         mousePosition = Event.current.mousePosition;
-
+        
         if (popups == null)
             popups = new List<Popup>();
-        Walls = new List<System.Tuple<int, Rect>>();
     }
 
     public static void Draw()
@@ -477,7 +579,7 @@ public class GUIEditor : MonoBehaviourPlus
             if (!hit.Drown)
             {
                 hit.Drown = true;
-                hit.value = DrawPopup(hit);
+                DrawPopup(hit);
             }
         }
     }

@@ -4,9 +4,61 @@ using UnityEngine;
 using UnityEngine.UI;
 using Waiters;
 using UnityEngine.SceneManagement;
+using Modernizations;
+using System.Linq;
 
-public class Garage : MonoBehaviour, IAccountEvents
+public class Garage : MonoBehaviourPlus, IAccountEvents
 {
+    public List<string> MyShips;
+    public List<ShipSet> Ships;
+    [System.Serializable]
+    public class ShipSet
+    {
+        public string PrefabName;
+        public string StorageName;
+        public string FullName;
+        public int Cost;
+        public List<string> GrowthEntries;
+        public List<string> BlocksInStock;
+        public List<PropertyBlock> GrowthStock;
+
+        public void ApplyGrowth(GameObject Instance)
+        {
+            ShipInstance SI = new ShipInstance(Instance);
+            List<string> Exist = new List<string>();
+            foreach (var Hit in GrowthEntries)
+            {
+                if (BlocksInStock.Contains(Hit))
+                {
+                    var entry = GrowthStock.Where(x => x.Name == Hit).SingleOrDefault();
+                    Exist.Add(entry.Name);
+                    entry.Apply(SI, GrowthStock, BlocksInStock, Exist);
+                }
+            }
+        }
+    }
+
+    public ShipSet GetShip(string PrefabName)
+    {
+        foreach (var ship in Ships)
+        {
+            if (ship.PrefabName == PrefabName)
+                return ship;
+        }
+        return null;
+    }
+
+    public static void SetStandart(ShipSet ship)
+    {
+        ship.BlocksInStock = new List<string>();
+        foreach (var entry in ship.GrowthEntries)
+        {
+            ship.BlocksInStock.Add(entry);
+        }
+    }
+
+
+
     public static Garage Instance;
     public ShipSetUI CurrentSet;
     public Transform UserPlace;
@@ -40,7 +92,7 @@ public class Garage : MonoBehaviour, IAccountEvents
         public UILink Parameters;
         [System.NonSerialized]
         public UILink Values;
-        public void Set(UILink root, Storage.ShipSet Ship, string setName, Health machine)
+        public void Set(UILink root, ShipSet Ship, string setName, Health machine)
         {
             SetName = root.GetChildByName("SetName");
             var mr = root.GetChildByName("MachineSet");
@@ -85,8 +137,8 @@ public class Garage : MonoBehaviour, IAccountEvents
         Instance = this;
         storage = Resources.Load<Storage>("Storage");
         CurrentSet = new ShipSetUI();
-        MachinePrefabs = new Transform[storage.Ships.Count];
-        MachineInstances = new Transform[storage.Ships.Count];
+        MachinePrefabs = new Transform[Ships.Count];
+        MachineInstances = new Transform[Ships.Count];
 
         this.Wait(0.1f, LateStart);
     }
@@ -131,8 +183,8 @@ public class Garage : MonoBehaviour, IAccountEvents
     {
         for (int i = 0; i < MachinePrefabs.Length; i++)
         {
-            MachinePrefabs[i] = Resources.Load<Transform>(storage.Ships[i].PrefabName);
-            InstanceShip(ref MachineInstances[i], storage.Ships[i].PrefabName);
+            MachinePrefabs[i] = Resources.Load<Transform>(Ships[i].PrefabName);
+            InstanceShip(ref MachineInstances[i], Ships[i].PrefabName);
         }
 
        
@@ -145,10 +197,10 @@ public class Garage : MonoBehaviour, IAccountEvents
     public void OpenModernizations()
     {
         int shipN = ShipsScroll.ScrollRing.Value;
-        StorageEditor.SelectedShip = storage.Ships[shipN];
-        StorageEditor.Back.AddListener(CloseModernizations);
+        //SelectedShip = Ships[shipN];
+        //StorageEditor.Back.AddListener(CloseModernizations);
         UILink.MainCanvas.GetChildByName("Background").gameObject.SetActive(true);
-        StartCoroutine(UsersDATA.Instance.GetItemsCosts(storage.Ships[shipN]));
+        StartCoroutine(UsersDATA.Instance.GetItemsCosts(Ships[shipN]));
     }
 
     public void CloseModernizations()
@@ -158,7 +210,7 @@ public class Garage : MonoBehaviour, IAccountEvents
 
     void ExploreShip()
     {
-        StartCoroutine(UsersDATA.Instance.Explore(storage.Ships[ShipsScroll.ScrollRing.Value].PrefabName, "ship"));
+        StartCoroutine(UsersDATA.Instance.Explore(Ships[ShipsScroll.ScrollRing.Value].PrefabName, "ship"));
     }
 
     public void SetSelfMachine()
@@ -166,10 +218,10 @@ public class Garage : MonoBehaviour, IAccountEvents
         if (isGame) selfShipDirty = true;
 
         int shipN = ShipsScroll.ScrollRing.Value;
-        if (storage.MyShips.Contains(storage.Ships[shipN].PrefabName))
+        if (MyShips.Contains(Ships[shipN].PrefabName))
         {
-            UsersDATA.currentAccount.ShoosedMachine = storage.Ships[shipN];
-            UserShip.Text.text = storage.Ships[shipN].FullName;
+            UsersDATA.currentAccount.ShoosedMachine = Ships[shipN];
+            UserShip.Text.text = Ships[shipN].FullName;
             SetShipInstance(ref UserInstance, shipN, UserPlace);
         }
     }
@@ -179,17 +231,17 @@ public class Garage : MonoBehaviour, IAccountEvents
         if (isGame) aiShipDirty = true;
 
         int shipN = ShipsScroll.ScrollRing.Value;
-        if (storage.MyShips.Contains(storage.Ships[shipN].PrefabName))
+        if (MyShips.Contains(Ships[shipN].PrefabName))
         {
-            UsersDATA.currentAccount.AIMachine = storage.Ships[shipN];
-            AIShip.Text.text = storage.Ships[shipN].FullName;
+            UsersDATA.currentAccount.AIMachine = Ships[shipN];
+            AIShip.Text.text = Ships[shipN].FullName;
             SetShipInstance(ref AIInstance, shipN, AIPlace);
         }
     }
 
     public int GetShipID(string Name)
     {
-        return storage.Ships.FindIndex(x => x.PrefabName == Name);
+        return Ships.FindIndex(x => x.PrefabName == Name);
     }
 
     public void SetShipInstance(ref Transform ship, int N, Transform place)
@@ -220,9 +272,9 @@ public class Garage : MonoBehaviour, IAccountEvents
     public void SelectMachine(int i, string setName)
     {
         ShipsScroll.ScrollRing.Value = i;
-        storage.Ships[i].ApplyGrowth(MachineInstances[i].gameObject);
-        CurrentSet.Set(SetWindow, storage.Ships[i], setName, MachineInstances[i].GetComponent<Health>());
-        if (storage.MyShips.Contains(storage.Ships[i].PrefabName))
+        Ships[i].ApplyGrowth(MachineInstances[i].gameObject);
+        CurrentSet.Set(SetWindow, Ships[i], setName, MachineInstances[i].GetComponent<Health>());
+        if (MyShips.Contains(Ships[i].PrefabName))
         {
             ExploreButton.gameObject.SetActive(false);
             ToBotButton.gameObject.SetActive(true);
@@ -233,15 +285,15 @@ public class Garage : MonoBehaviour, IAccountEvents
             ExploreButton.gameObject.SetActive(true);
             ToBotButton.gameObject.SetActive(false);
             ToSelfButton.gameObject.SetActive(false);
-            ExploreButtonText.Text.text = "Исследовать: " + storage.Ships[i].Cost;
+            ExploreButtonText.Text.text = "Исследовать: " + Ships[i].Cost;
         }
     }
 
     void SetApply()
     {
-        storage.Ships[ShipsScroll.ScrollRing.Value].ApplyGrowth(MachineInstances[ShipsScroll.ScrollRing.Value].gameObject);
-        CurrentSet.Set(SetWindow, storage.Ships[ShipsScroll.ScrollRing.Value], "Машина", MachineInstances[ShipsScroll.ScrollRing.Value].GetComponent<Health>());
-        if (storage.MyShips.Contains(storage.Ships[ShipsScroll.ScrollRing.Value].PrefabName))
+        Ships[ShipsScroll.ScrollRing.Value].ApplyGrowth(MachineInstances[ShipsScroll.ScrollRing.Value].gameObject);
+        CurrentSet.Set(SetWindow, Ships[ShipsScroll.ScrollRing.Value], "Машина", MachineInstances[ShipsScroll.ScrollRing.Value].GetComponent<Health>());
+        if (MyShips.Contains(Ships[ShipsScroll.ScrollRing.Value].PrefabName))
         {
             ExploreButton.gameObject.SetActive(false);
             ToBotButton.gameObject.SetActive(true);
@@ -252,7 +304,7 @@ public class Garage : MonoBehaviour, IAccountEvents
             ExploreButton.gameObject.SetActive(true);
             ToBotButton.gameObject.SetActive(false);
             ToSelfButton.gameObject.SetActive(false);
-            ExploreButtonText.Text.text = "Исследовать: " + storage.Ships[ShipsScroll.ScrollRing.Value].Cost;
+            ExploreButtonText.Text.text = "Исследовать: " + Ships[ShipsScroll.ScrollRing.Value].Cost;
         }
     }
 
@@ -267,10 +319,10 @@ public class Garage : MonoBehaviour, IAccountEvents
     {
         _Garage.gameObject.SetActive(true);
 
-        for (int i = 0; i < storage.Ships.Count; i++)
+        for (int i = 0; i < Ships.Count; i++)
         {
             var hit = ShipsScroll.GetChildByName(string.Format("Item ({0})", i));
-            hit.Text.text = storage.Ships[i].StorageName;
+            hit.Text.text = Ships[i].StorageName;
         }
         ShipsScroll.ScrollRing.OnValueChainge.AddListener(SetApply);
         if (!isGame) SelectMachine(0, "Машина");

@@ -21,4 +21,10 @@ public  static class FloatExtensions
             value += 360f;
         return value;
     }
+    public static float Side(this float value, bool zeroIsOne = false)
+    {
+        if (value == 0f)
+            return zeroIsOne ? 1 : 0;
+        return value / Mathf.Abs(value);
+    }
 }

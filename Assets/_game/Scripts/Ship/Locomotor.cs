@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 using UnityEditor;
+using Modernizations;
+
 [RequireComponent(typeof(Rigidbody))]
-public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IComponent
+public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IModifiable
 {
     public bool IsAlive { get; set; } = true;
     [System.NonSerialized]
@@ -38,7 +40,7 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
     EngineSoundManager sound;
 
     [System.Serializable]
-    public class Support : IComponent
+    public class Support : IModifiable
     {
         public int Group;
         public Vector3 localPosition;
@@ -57,9 +59,12 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
                 return parent.TransformDirection(localDirection).normalized;
             }
         }
+        [Modifiable("Length")]
         public float length = 1f;
         public float targetDistance;
+        [Modifiable("Force")]
         public float Force;
+        [Modifiable("Dumping")]
         public float Dumping;
         [HideInInspector]
         public bool IsGrounded;
@@ -157,6 +162,11 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
                     field.SetValue(this, zero);
                 field.SetValue(this, value);
             }
+        }
+
+        public int GetGroup()
+        {
+            return Group;
         }
     }
     
@@ -416,5 +426,10 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, ICompone
         System.Type type = GetType();
         var field = type.GetField(name);
         return field.GetValue(this);
+    }
+
+    public int GetGroup()
+    {
+        return 0;
     }
 }

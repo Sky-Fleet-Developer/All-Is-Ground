@@ -492,16 +492,16 @@ public class MonoBehaviourPlus : MonoBehaviour
         public string Name;
         public int Experience;
         public int FreeExperience;
-        public Storage.ShipSet ShoosedMachine;
-        public Storage.ShipSet AIMachine;
+        public Garage.ShipSet ShoosedMachine;
+        public Garage.ShipSet AIMachine;
 
         public Account(string name, int experience, int freeExp, Storage storage)
         {
             Name = name;
             Experience = experience;
             FreeExperience = freeExp;
-            ShoosedMachine = storage.Ships.Where(x => x.PrefabName == PlayerPrefs.GetString("PlayerMachine", "MMZ")).SingleOrDefault();
-            AIMachine = storage.Ships.Where(x => x.PrefabName == PlayerPrefs.GetString("AIMachine", "MMZ")).SingleOrDefault();
+            ShoosedMachine = Garage.Instance.Ships.Where(x => x.PrefabName == PlayerPrefs.GetString("PlayerMachine", "MMZ")).SingleOrDefault();
+            AIMachine = Garage.Instance.Ships.Where(x => x.PrefabName == PlayerPrefs.GetString("AIMachine", "MMZ")).SingleOrDefault();
 
             foreach (var hit in FindObjectsOfType<MonoBehaviourPlus>())
             {

@@ -121,30 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &22514556 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 804358817657363507, guid: 5dda612b7d2ca2e4c90afb6864affe01,
-    type: 3}
-  m_PrefabInstance: {fileID: 2424601188805974443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &104048693 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 804358817567457146, guid: 5dda612b7d2ca2e4c90afb6864affe01,
-    type: 3}
-  m_PrefabInstance: {fileID: 2424601188805974443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &235820177
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,30 +324,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &307826770 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2424601189105273337, guid: 5dda612b7d2ca2e4c90afb6864affe01,
-    type: 3}
-  m_PrefabInstance: {fileID: 2424601188805974443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &310649733 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 804358817377170634, guid: 5dda612b7d2ca2e4c90afb6864affe01,
-    type: 3}
-  m_PrefabInstance: {fileID: 2424601188805974443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &403557028
 GameObject:
   m_ObjectHideFlags: 1
@@ -449,18 +401,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &607626170 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 804358817063875829, guid: 5dda612b7d2ca2e4c90afb6864affe01,
-    type: 3}
-  m_PrefabInstance: {fileID: 2424601188805974443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34a13b44b31bd4b840cee4cb6ab532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &756450959
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +835,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489640200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc6e9f17107ad7446915ac7332220c04, type: 3}
+  m_Script: {fileID: 11500000, guid: f4bf22066423b274eb191480aba810b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1489640202
@@ -942,11 +882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a843d9998c7d848b479b6467199459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GarageWindow: {fileID: 310649733}
-  ShipsScroll: {fileID: 22514556}
-  SetVariantsMenu: {fileID: 307826770}
-  UserShip: {fileID: 607626170}
-  AIShip: {fileID: 104048693}
+  MyShips: []
+  Ships: []
   UserPlace: {fileID: 3571981817674977477}
   AIPlace: {fileID: 824698475305724734}
   UserInstance: {fileID: 0}
@@ -1142,6 +1079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 804358817921967917, guid: 5dda612b7d2ca2e4c90afb6864affe01,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00091552734
       objectReference: {fileID: 0}
     - target: {fileID: 6974502196741400210, guid: 5dda612b7d2ca2e4c90afb6864affe01,
         type: 3}

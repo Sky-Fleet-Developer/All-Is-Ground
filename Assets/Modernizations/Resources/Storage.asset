@@ -1,0 +1,467 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee97264abbef3844ba3d540d1053aebe, type: 3}
+  m_Name: Storage
+  m_EditorClassIdentifier: 
+  GlobalResources:
+  - Name: Money
+    Count: 0
+    ResourceType: 1
+  - Name: Experience
+    Count: 0
+    ResourceType: 0
+  SelfResources: []
+  onResourcesChainge:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Items:
+  - Name: Main
+    Stock: []
+    Modernizations:
+    - Name: Weapon
+      Description: Standart tank weapon
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 503
+        width: 130
+        height: 30
+      position: {x: -97, y: 151}
+      AvailableBySingle: 0
+      id: 602.5745
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 248,8557
+      Properties:
+      - property:
+          Name: TurelControl.RotationSpeed
+          FieldName: RotationSpeed
+          Description: Turret rotation speed
+          Type: 0
+        groupName: 
+        id: 771.4077
+        ApplyType: 0
+        Group: 0
+        fVal: 60
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 60
+      - property:
+          Name: TurelControl.MaxDamage
+          FieldName: MaxDamage
+          Description: Maximal damage
+          Type: 0
+        groupName: 
+        id: 573.6969
+        ApplyType: 0
+        Group: 0
+        fVal: 1010
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1010
+      - property:
+          Name: TurelControl.MinDamage
+          FieldName: MinDamage
+          Description: Minimal damage
+          Type: 0
+        groupName: 
+        id: 248.7439
+        ApplyType: 0
+        Group: 0
+        fVal: 750
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 750
+      - property:
+          Name: TurelControl.ReloadTimer
+          FieldName: ReloadTimer
+          Description: Reloading time
+          Type: 0
+        groupName: 
+        id: 405.74878
+        ApplyType: 0
+        Group: 0
+        fVal: 5
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 5
+    - Name: Movement 1.6
+      Description: Replacing the transmission
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 403
+        width: 130
+        height: 30
+      position: {x: 277.5, y: 54.5}
+      AvailableBySingle: 0
+      id: 117.61522
+      GlobalResourceDependences:
+      - ResourceName: Money
+        Cost: 100
+      - ResourceName: Experience
+        Cost: 400
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: TankControl.MaxEngineRPM
+          FieldName: MaxEngineRPM
+          Description: Maximal RPM
+          Type: 0
+        groupName: 
+        id: 205.8556
+        ApplyType: 1
+        Group: 0
+        fVal: 65
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 65
+    - Name: Movement
+      Description: Standart tank movement
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 363
+        width: 130
+        height: 30
+      position: {x: -92.5, y: 14}
+      AvailableBySingle: 0
+      id: 808.10156
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 272,6594
+      Properties:
+      - property:
+          Name: TankControl.MaxEngineRPM
+          FieldName: MaxEngineRPM
+          Description: Maximal RPM
+          Type: 0
+        groupName: 
+        id: 86.04455
+        ApplyType: 0
+        Group: 0
+        fVal: 300
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 300
+      - property:
+          Name: TankControl.EnginePower
+          FieldName: EnginePower
+          Description: Engine power
+          Type: 0
+        groupName: 
+        id: 919.97705
+        ApplyType: 0
+        Group: 0
+        fVal: 100
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 100
+    - Name: Weapon 1.0
+      Description: Replace the reloading system
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 503
+        width: 130
+        height: 30
+      position: {x: 93.5, y: 154}
+      AvailableBySingle: 0
+      id: 248.85571
+      GlobalResourceDependences:
+      - ResourceName: Money
+        Cost: 45
+      - ResourceName: Experience
+        Cost: 90
+      SelfResourceDependences: []
+      Connections:
+      - 229,0045
+      Properties:
+      - property:
+          Name: TurelControl.ReloadTimer
+          FieldName: ReloadTimer
+          Description: Reloading time
+          Type: 0
+        groupName: 
+        id: 745.7861
+        ApplyType: 2
+        Group: 0
+        fVal: 0.7
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,7
+    - Name: Weapon 2.0
+      Description: Replace the gun
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 503
+        width: 130
+        height: 30
+      position: {x: 268, y: 153}
+      AvailableBySingle: 0
+      id: 229.0045
+      GlobalResourceDependences:
+      - ResourceName: Money
+        Cost: 220
+      - ResourceName: Experience
+        Cost: 500
+      SelfResourceDependences: []
+      Connections:
+      - 815,7057
+      Properties:
+      - property:
+          Name: TurelControl.ReloadTimer
+          FieldName: ReloadTimer
+          Description: Reloading time
+          Type: 0
+        groupName: 
+        id: 914.09204
+        ApplyType: 0
+        Group: 0
+        fVal: 4.8
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 4,8
+      - property:
+          Name: TurelControl.MaxDamage
+          FieldName: MaxDamage
+          Description: Maximal damage
+          Type: 0
+        groupName: 
+        id: 788.79596
+        ApplyType: 0
+        Group: 0
+        fVal: 1180
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1180
+      - property:
+          Name: TurelControl.MinDamage
+          FieldName: MinDamage
+          Description: Minimal damage
+          Type: 0
+        groupName: 
+        id: 547.67914
+        ApplyType: 0
+        Group: 0
+        fVal: 860
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 860
+    - Name: Weapon 3.0
+      Description: Replace the gun rotation system
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 503
+        width: 130
+        height: 30
+      position: {x: 447, y: 147.5}
+      AvailableBySingle: 0
+      id: 815.70575
+      GlobalResourceDependences:
+      - ResourceName: Money
+        Cost: 180
+      - ResourceName: Experience
+        Cost: 650
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: TurelControl.RotationSpeed
+          FieldName: RotationSpeed
+          Description: Turret rotation speed
+          Type: 0
+        groupName: 
+        id: 942.9644
+        ApplyType: 2
+        Group: 0
+        fVal: 1.2
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,2
+    - Name: Movement 1.3
+      Description: Replace the engine turbine
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 323
+        width: 130
+        height: 30
+      position: {x: 269, y: -28}
+      AvailableBySingle: 0
+      id: 449.29724
+      GlobalResourceDependences:
+      - ResourceName: Money
+        Cost: 120
+      - ResourceName: Experience
+        Cost: 400
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: TankControl.EnginePower
+          FieldName: EnginePower
+          Description: Engine power
+          Type: 0
+        groupName: 
+        id: 758.849
+        ApplyType: 1
+        Group: 0
+        fVal: 25
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 25
+    - Name: Movement 1.0
+      Description: Replacing the tank engine
+      Sprite: {fileID: 21300000, guid: 2303c773272e7f945be9cb4bda27a799, type: 3}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 363
+        width: 130
+        height: 30
+      position: {x: 82.5, y: 13}
+      AvailableBySingle: 0
+      id: 272.65936
+      GlobalResourceDependences:
+      - ResourceName: Money
+        Cost: 80
+      - ResourceName: Experience
+        Cost: 120
+      SelfResourceDependences: []
+      Connections:
+      - 449,2972
+      - 117,6152
+      Properties:
+      - property:
+          Name: TankControl.MaxEngineRPM
+          FieldName: MaxEngineRPM
+          Description: Maximal RPM
+          Type: 0
+        groupName: 
+        id: 281.0355
+        ApplyType: 0
+        Group: 0
+        fVal: 320
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 320
+      - property:
+          Name: TankControl.EnginePower
+          FieldName: EnginePower
+          Description: Engine power
+          Type: 0
+        groupName: 
+        id: 438.74948
+        ApplyType: 0
+        Group: 0
+        fVal: 130
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 130
+    Resources: []
+  Skin: {fileID: 11400000, guid: 7ff46521dd6b2cb4eb7367d373a2029b, type: 2}
+  SavedProperties:
+  - Name: TankControl.MaxEngineRPM
+    FieldName: MaxEngineRPM
+    Description: Maximal RPM
+    Type: 0
+  - Name: TankControl.EnginePower
+    FieldName: EnginePower
+    Description: Engine power
+    Type: 0
+  - Name: TurelControl.RotationSpeed
+    FieldName: RotationSpeed
+    Description: Turret rotation speed
+    Type: 0
+  - Name: TurelControl.MaxDamage
+    FieldName: MaxDamage
+    Description: Maximal damage
+    Type: 0
+  - Name: TurelControl.MinDamage
+    FieldName: MinDamage
+    Description: Minimal damage
+    Type: 0
+  - Name: TurelControl.ReloadTimer
+    FieldName: ReloadTimer
+    Description: Reloading time
+    Type: 0
+  BackgroundMesh: {fileID: 2800000, guid: 677d247f7fe5c124cb685bb8a4324243, type: 3}
+  BlockGUISize: {x: 130, y: 30}
+  inPointAlignment: 0
+  IsEditor: 1

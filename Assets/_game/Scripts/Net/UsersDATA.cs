@@ -241,18 +241,18 @@ public class UsersDATA : MonoBehaviourPlus
     {
         var setup = String.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-        storage.MyShips = new List<string>();
+        Garage.Instance.MyShips = new List<string>();
 
         foreach (var set in setup)
         {
             if (set.Length > 2)
             {
                 var vals = set.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                Storage.ShipSet ship = storage.Ships.Where(x => x.PrefabName == vals[0]).SingleOrDefault();
-                storage.MyShips.Add(vals[0]);
+                Garage.ShipSet ship = Garage.Instance.Ships.FirstOrDefault(x => x.PrefabName == vals[0]);
+                Garage.Instance.MyShips.Add(vals[0]);
                 if (vals[1] == "standart")
                 {
-                    Storage.SetStandart(ship);
+                    Garage.SetStandart(ship);
                 }
                 else
                 {
@@ -303,8 +303,7 @@ public class UsersDATA : MonoBehaviourPlus
 
                     List<string> ask = new List<string>();
 
-                    for(int i = 1; i < storage.Ships.Count; i++)
-                        ask.Add(storage.Ships[i].PrefabName);
+                    for(int i = 1; i < Garage.Instance.Ships.Count; i++) ask.Add(Garage.Instance.Ships[i].PrefabName);
 
                     yield return StartCoroutine(GetShipsCosts(ask));
 
@@ -347,8 +346,8 @@ public class UsersDATA : MonoBehaviourPlus
                     PlayerPrefs.SetString("LastPassword", password);
 
                     List<string> ask = new List<string>();
-                    for (int i = 1; i < storage.Ships.Count; i++)
-                        ask.Add(storage.Ships[i].PrefabName);
+                    for (int i = 1; i < Garage.Instance.Ships.Count; i++)
+                        ask.Add(Garage.Instance.Ships[i].PrefabName);
                     yield return StartCoroutine(GetShipsCosts(ask));
 
                     SignIn(dic["name"], int.Parse(dic["experience"]), 0);
@@ -389,7 +388,7 @@ public class UsersDATA : MonoBehaviourPlus
         }
     }
 
-    public IEnumerator GetItemsCosts(Storage.ShipSet ship)
+    public IEnumerator GetItemsCosts(Garage.ShipSet ship)
     {
         string uri = string.Format("{0}?method=GetItemsCosts&ask={1}", ServerUri, ship.PrefabName);
         using (UnityWebRequest www = UnityWebRequest.Get(uri))
@@ -443,7 +442,7 @@ public class UsersDATA : MonoBehaviourPlus
             var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
             foreach (var hit in dic)
             {
-                storage.Ships.Where(x => x.PrefabName == hit.Key).SingleOrDefault().Cost = int.Parse(hit.Value);
+                Garage.Instance.Ships.Where(x => x.PrefabName == hit.Key).SingleOrDefault().Cost = int.Parse(hit.Value);
             }
         }
     }
@@ -477,7 +476,7 @@ public class UsersDATA : MonoBehaviourPlus
                 case "correct":
                     if (type == "ship")
                     {
-                        storage.MyShips.Add(item);
+                        Garage.Instance.MyShips.Add(item);
                         Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
                     }
                     if(type == "item")
