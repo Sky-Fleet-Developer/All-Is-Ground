@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Modernizations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,39 +13,18 @@ public class ProtectionManager : MonoBehaviourPlus
     }
 
     [System.Serializable]
-    public class ArmorGroup : IComponent
+    public class ArmorGroup : IModifiable
     {
+        [Modifiable("Толщина брони")]
         public float ArmorThickness = 20;
+        [Modifiable("Качество брони")]
         public float ARC = 2200;
         public List<Damageble> Armor;
+        public int group;
 
-        public System.Type GetFieldType(string name)
+        public int GetGroup()
         {
-
-            System.Type type = GetType();
-            var field = type.GetField(name);
-            return field.GetType();
-        }
-
-        public void SetField(string name, object value, object zero)
-        {
-            System.Type type = GetType();
-
-            var field = type.GetField(name);
-
-            object Val = 0f;
-            if (field != null)
-            {
-                if (value == null)
-                    field.SetValue(this, zero);
-                field.SetValue(this, value);
-            }
-        }
-        public object GetField(string name)
-        {
-            System.Type type = GetType();
-            var field = type.GetField(name);
-            return field.GetValue(this);
+            return group;
         }
     }
 

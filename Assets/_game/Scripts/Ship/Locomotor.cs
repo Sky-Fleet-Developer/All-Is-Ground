@@ -16,14 +16,18 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IModifia
     [Header("Engine")]
     public bool MultiplyEngineSoundOnGear;
     public bool InverceBacktreck;
+        [Modifiable("Максимальная скорость")]
     public Vector2 Speed;
     public float VibroengineVelocity;
     public Vector2 VibroengineSide;
     public Vector3 EngineTopOffset;
     public Vector3 EngineBottomOffset;
+        [Modifiable("Вертикальное сопротивление")]
     public float YDrag = 0.5f;
+        [Modifiable("Мощность")]
     public float VibroengineForce;
     public float VibroengineMass;
+        [Modifiable("Сцепление")]
     public float SpaceEngineForce;
     public float Traction;
     public float GrowingGearTurns = 0.9f;
@@ -33,6 +37,7 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IModifia
     public List<float> Gears;
     [Header("Hyroscope")]
     public Vector3 RotationVelocty;
+        [Modifiable("Мощность гироскопов")]
     public Vector3 GyroscopeForce;
     public float AngularPredictionValue;
     public float DragForce;
@@ -59,12 +64,13 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IModifia
                 return parent.TransformDirection(localDirection).normalized;
             }
         }
-        [Modifiable("Length")]
+        [Modifiable("Длина")]
         public float length = 1f;
+        [Modifiable("Высота подвески")]
         public float targetDistance;
-        [Modifiable("Force")]
+        [Modifiable("Сила пружины")]
         public float Force;
-        [Modifiable("Dumping")]
+        [Modifiable("Жесткость пружины")]
         public float Dumping;
         [HideInInspector]
         public bool IsGrounded;

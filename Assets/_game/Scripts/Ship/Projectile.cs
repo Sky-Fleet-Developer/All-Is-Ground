@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Modernizations;
 
 public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
 {
@@ -35,15 +36,19 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
     protected List<UILink> Reloading;
 
     [System.Serializable]
-    public class Turel : IComponent
+    public class Turel : IModifiable
     {
         public int Group;
         public Transform Turret;
+        [Modifiable("Горизонтальная скорость")]
         public float HorizontalRotationSpeed;
+        [Modifiable("Угол горизонтального наведения")]
         public Vector2 HorizontalRotationAngle;
         public bool Radial;
         public Transform Gunpoint;
+        [Modifiable("Вертикальная скорость")]
         public float VerticalRotationSpeed;
+        [Modifiable("Угол вертикального наведения")]
         public Vector2 VerticalRotationAngle;
         Vector2 screenPos;
 
@@ -96,25 +101,34 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
                 field.SetValue(this, value);
             }
         }
+
+        public int GetGroup()
+        {
+            return Group;
+        }
     }
 
     [System.Serializable]
-    public class ChargeBlock : IComponent
+    public class ChargeBlock : IModifiable
     {
         public string name;
         public int Group;
         public Transform Launcher;
+        [Modifiable("Задержка")]
         public float ReloadDelay = 5;
         //[System.NonSerialized]
         public bool Charged;
         [System.NonSerialized]
         public float ReloadTimer;
+        [Modifiable("Выстрелы")]
         public int ChargesCount = 15;
         [System.NonSerialized]
         public AudioSource audio;
         [System.NonSerialized]
         public int StartChargesCount;
+        [Modifiable("Боезапас")]
         public int Clips = 1;
+        [Modifiable("Перезарядка")]
         public float ClipReloadDelay = 15;
         [System.NonSerialized]
         public float ClipReloadTimer;
@@ -148,6 +162,11 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
                     field.SetValue(this, zero);
                 field.SetValue(this, value);
             }
+        }
+
+        public int GetGroup()
+        {
+            return Group;
         }
     }
 
