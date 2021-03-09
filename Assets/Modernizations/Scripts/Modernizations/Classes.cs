@@ -251,7 +251,7 @@ namespace Modernizations
         bool mDown = false;
         bool drag = false;
         public bool AvailableBySingle; //TODO
-        public float id;
+        public string id;
         [Header("---------------")]
         public List<ResourceDependence> GlobalResourceDependences;
         public List<ResourceDependence> SelfResourceDependences;
@@ -1058,7 +1058,14 @@ namespace Modernizations
                     GUI.color = Storage.AvailableWithResources(this, Item) ? new Color(0.2f, 0.7f, 0.2f, 1) : new Color(0.7f, 0.2f, 0.2f, 1);
                     if (GUI.Button(GetNextWithOffset(0, 24 * n, 380, 24), "Explore"))
                     {
-                        Storage.Explore("Main", this);
+
+                        UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(id, UsersDATA.ExploreTypes.item, (v) => 
+                        {
+                            if (v)
+                            {
+                                Storage.Explore(Item.Name, this);
+                            }
+                        }));
                     }
                 }
                 else
@@ -1100,7 +1107,7 @@ namespace Modernizations
                 Properties = new List<Property>();
                 AvailableBySingle = false;
                 position = new Vector2(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100));
-                id = UnityEngine.Random.Range(0, 1000.0f);
+                id = System.Guid.NewGuid().ToString();
                 GlobalResourceDependences = new List<ResourceDependence>();
                 SelfResourceDependences = new List<ResourceDependence>();
             }
@@ -1120,7 +1127,7 @@ namespace Modernizations
             PropertyBlock clone = new PropertyBlock(false);
             clone.Name += Name + " (clone)";
             clone.position = position + Vector2.one * 40;
-            clone.id = UnityEngine.Random.Range(0, 1000.0f);
+            clone.id = System.Guid.NewGuid().ToString();
             clone.GlobalResourceDependences = new List<ResourceDependence>();
             foreach (var hit in GlobalResourceDependences)
                 clone.GlobalResourceDependences.Add(hit.Clone());

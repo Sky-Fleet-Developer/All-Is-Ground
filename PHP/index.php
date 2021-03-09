@@ -62,7 +62,7 @@ switch ($method) {
 				$sault = "$password$account_id";
 				$pass = hash('sha512', $sault);
 
-				DB::SendQuery($db_conn, "UPDATE `accounts` SET `password` = '$pass' WHERE id ='$account_id'");// Сохраняем пароль
+				DB::SendQuery($db_conn, "UPDATE `accounts` SET `password`, `garage_set` = '$pass', 'MMZ' WHERE id ='$account_id'");// Сохраняем пароль
 
 				echo "<start>auth=correct&name=$name&experience=0</start>";
 			}
@@ -185,51 +185,11 @@ switch ($method) {
 
 		if($free_experience > $cost)
 		{
-			$type = $_GET["type"];
-			if($type == "ship")
-			{
-				$new_set = $garage_set . $item . ":standart;";
+				$garage_set = $garage_set.",".$item;
 				$new_free_exp = $free_experience - $cost;
-				DB::SendQuery($db_conn, "UPDATE `accounts` SET `garage_set` = '$new_set' WHERE name ='$name'");
+				DB::SendQuery($db_conn, "UPDATE `accounts` SET `garage_set` = '$garage_set' WHERE name ='$name'");
 				DB::SendQuery($db_conn, "UPDATE `accounts` SET `free_experience` = '$new_free_exp'  WHERE name ='$name'");
 				echo "<start>result=correct&free_experience=$new_free_exp</start>";
-			}
-			if($type == "item")
-			{
-				$ship = explode(".", $item)[0];
-				$itemN = explode(".", $item);
-				$itemName = "";
-				if(count($itemN) == 3)
-					$itemName = $itemN[1] . "." . $itemN[2];
-				else
-					$itemName = $itemN[1];
-
-
-				$setexplode = explode(";", $garage_set);
-				for($i = 0; $i < count($setexplode); $i++) //перебираем машинки
-				{
-					$shipset = explode(":", $setexplode[$i]); //разбиваем сет машинки на имя и модули
-					if($shipset[0] == $ship) //если имя нужное
-					{
-						if($shipset[1] == "standart")
-						{
-							$shipset[1] = $itemName;
-						}
-						else
-						{
-							$shipset[1] = $shipset[1] . "," . $itemName; //прибавляем к модулям 
-						}
-						$setexplode[$i] = $shipset[0] . ":" . $shipset[1]; //собираем сет машинки обратно из имени и модулей
-						$garage_set = implode(";", $setexplode); //собираем гараж из сетов машинок
-						$new_free_exp = $free_experience - $cost;
-						DB::SendQuery($db_conn, "UPDATE `accounts` SET `garage_set` = '$garage_set' WHERE name ='$name'");
-						DB::SendQuery($db_conn, "UPDATE `accounts` SET `free_experience` = '$new_free_exp'  WHERE name ='$name'");
-						$ss = $setexplode[$i];
-						echo "<start>result=correct&free_experience=$new_free_exp&set=$garage_set&shipSet=$ss</start>";
-					}
-				}
-			}
-			echo "<start>result=error&error=unexpected type</start>";
 		}
 		else
 		{

@@ -18,9 +18,6 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
         public string StorageName;
         public string FullName;
         public int Cost;
-        public List<string> GrowthEntries;
-        public List<string> BlocksInStock;
-        public List<PropertyBlock> GrowthStock;
 
         public void ApplyGrowth(GameObject Instance)
         {
@@ -37,16 +34,6 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
         }
         return null;
     }
-
-    public static void SetStandart(ShipSet ship)
-    {
-        ship.BlocksInStock = new List<string>();
-        foreach (var entry in ship.GrowthEntries)
-        {
-            ship.BlocksInStock.Add(entry);
-        }
-    }
-
 
 
     public static Garage Instance;
@@ -205,7 +192,7 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
 
     void ExploreShip()
     {
-        StartCoroutine(UsersDATA.Instance.Explore(Ships[ShipsScroll.ScrollRing.Value].PrefabName, "ship"));
+        StartCoroutine(UsersDATA.Instance.Explore(Ships[ShipsScroll.ScrollRing.Value].PrefabName, UsersDATA.ExploreTypes.ship));
     }
 
     public void SetSelfMachine()

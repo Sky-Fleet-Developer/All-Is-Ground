@@ -64,11 +64,11 @@ public class UsersDATA : MonoBehaviourPlus
         foreach (var ship in Garage.Instance.Ships)
         {
             var item = Storage.GetItem(ship.PrefabName);
+            send += ship.PrefabName + ":" + ship.Cost + ",";
             if (item == null) continue;
             foreach (var property in item.Modernizations)
             {
-                if (property.GlobalResourceDependences.Count != 0)
-                    send += ship.PrefabName + "." + property.Name + ":" + property.GlobalResourceDependences[0].Cost + ",";
+                if (property.GlobalResourceDependences.Count != 0) send += property.id + ":" + property.GlobalResourceDependences[0].Cost + ",";
             }
         }
         StartCoroutine(SetItemsCosts(send));
@@ -267,15 +267,8 @@ public class UsersDATA : MonoBehaviourPlus
                 var vals = set.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
                 Garage.ShipSet ship = Garage.Instance.Ships.FirstOrDefault(x => x.PrefabName == vals[0]);
                 Garage.Instance.MyShips.Add(vals[0]);
-                if (vals[1] == "standart")
-                {
-                    Garage.SetStandart(ship);
-                }
-                else
-                {
-                    var moderns = vals[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    ship.BlocksInStock.AddRange(moderns);
-                }
+
+                Storage.GarageSet = vals[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
         }
     }
@@ -421,8 +414,8 @@ public class UsersDATA : MonoBehaviourPlus
 
             foreach (var hit in dic)
             {
-                string key = hit.Key.Replace(ship.PrefabName + ".", "");
-                var pb = ship.GrowthStock.FirstOrDefault(x => x.Name == key);
+                var item = Storage.GetItem(ship.PrefabName);
+                var pb = item.Modernizations.FirstOrDefault(x => x.id == hit.Key);
                 if(pb != null) pb.GlobalResourceDependences[0].Cost = int.Parse(hit.Value);
             }
         }
@@ -463,14 +456,19 @@ public class UsersDATA : MonoBehaviourPlus
         }
     }
 
+    public enum ExploreTypes 
+    {
+        ship = 0,
+        item = 1
+    }
     bool exploreInProgress = false;
-    public IEnumerator Explore(string item, string type)
+    public IEnumerator Explore(string item, ExploreTypes type, System.Action<bool> onComplete = null)
     {
         int Try = 0;
         while (exploreInProgress && Try++ < 10)
             yield return new WaitForSeconds(1);
 
-        string uri = string.Format("{0}?method=Explore&name={1}&item={2}&type={3}", ServerUri, currentAccount.Name, item, type);
+        string uri = string.Format("{0}?method=Explore&name={1}&item={2}&type={3}", ServerUri, currentAccount.Name, item, type.ToString());
        // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
         using (UnityWebRequest www = UnityWebRequest.Get(uri))
         {
@@ -488,17 +486,20 @@ public class UsersDATA : MonoBehaviourPlus
                 case "error":
                     Debug.Log("Error");
                     State.text = "<color=red>" + dic["error"] + "</color>";
+                    onComplete?.Invoke(false);
                     break;
                 case "correct":
-                    if (type == "ship")
+                    switch (type)
                     {
-                        Garage.Instance.MyShips.Add(item);
-                        Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
+                        case ExploreTypes.ship:
+                            Garage.Instance.MyShips.Add(item);
+                            Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
+                            break;
+                        case ExploreTypes.item:
+                        //BuildGarage(dic["set"]);
+                            break;
                     }
-                    if(type == "item")
-                    {
-                        BuildGarage(dic["set"]);
-                    }
+                    onComplete?.Invoke(true);
                     currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
                     SetAsSignedIn();
                     break;

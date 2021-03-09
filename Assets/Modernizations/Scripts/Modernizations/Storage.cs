@@ -12,16 +12,16 @@ public class Storage : ScriptableObject
 {
     public List<Resource> GlobalResources;
     public List<Resource> SelfResources;
-    public static UnityEvent OnResourcesChainge
+    public static List<string> GarageSet;
+    public static System.Action OnResourcesChainge
     {
-        get
-        {
-            return Instance.onResourcesChainge;
-        }
-        set
-        {
-            Instance.onResourcesChainge = value;
-        }
+        get => instance.onResourcesChainge;
+        set => instance.onResourcesChainge = value;
+    }
+    public static System.Action<string, string> OnExploreSome
+    {
+        get => instance.onExploreSome;
+        set => instance.onExploreSome = value;
     }
 
     #region Variables
@@ -34,7 +34,8 @@ public class Storage : ScriptableObject
             return instance;
         }
     }
-    public UnityEvent onResourcesChainge;
+    public System.Action onResourcesChainge;
+    public System.Action<string, string> onExploreSome;
     static Storage instance;
     public List<ItemSet> Items;
     public GUISkin Skin;
@@ -353,7 +354,7 @@ public class Storage : ScriptableObject
                         res.Count -= hit.Cost;
                     }
                 }
-                OnResourcesChainge.Invoke();
+                OnResourcesChainge?.Invoke();
                 Item.Stock.Add(id);
             }
             else
@@ -364,6 +365,7 @@ public class Storage : ScriptableObject
         else
             Debug.Log("<color=red>Modernization \"" + Modernization.Name + "\" is not open yet.\nCall \"ExploreExtra()\" to explore modernization with ignoring modernization tree</color>");
     }
+
 
     /// <summary>
     /// Adds a new modernization to the configure, ignoring the Modernization tree and cost. Stock of the item was not chainged.
@@ -558,7 +560,7 @@ public class Storage : ScriptableObject
             return;
         }
         resource.Count += count;
-        OnResourcesChainge.Invoke();
+        OnResourcesChainge?.Invoke();
     }
 
     public static int GetResourceOnItem(string ItemName, string resourceName)
@@ -583,7 +585,7 @@ public class Storage : ScriptableObject
             return;
         }
         resource.Count = count;
-        OnResourcesChainge.Invoke();
+        OnResourcesChainge?.Invoke();
     }
 
     public static void AddGlobalResource(string resourceName, int count)
@@ -595,7 +597,7 @@ public class Storage : ScriptableObject
             return;
         }
         resource.Count += count;
-        OnResourcesChainge.Invoke();
+        OnResourcesChainge?.Invoke();
     }
 
     public static int GetGlobalResourceValue(string resourceName)
@@ -618,7 +620,7 @@ public class Storage : ScriptableObject
             return;
         }
         resource.Count = count;
-        OnResourcesChainge.Invoke();
+        OnResourcesChainge?.Invoke();
     }
     #endregion
 

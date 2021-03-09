@@ -81,7 +81,13 @@ namespace Modernizations
                         button.transform.SetAsLastSibling();
                         button.Button.onClick.AddListener(delegate
                         {
-                            Storage.Explore("Main", _block);
+                            UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(_block.id, UsersDATA.ExploreTypes.item, (v) =>
+                            {
+                                if (v)
+                                {
+                                    Storage.Explore(Item.Name, _block);
+                                }
+                            }));
                             UIStorageEditor.Refresh();
                         });
                     }

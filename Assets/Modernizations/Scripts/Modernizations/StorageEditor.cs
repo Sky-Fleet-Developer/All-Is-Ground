@@ -46,6 +46,18 @@ public class StorageEditor : MonoBehaviour
         Init();
     }
 
+    [ContextMenu("ReplaceGUID")]
+    private void UpdateGUID()
+    {
+        foreach(var hit in Storage.Instance.Items)
+        {
+            foreach(var block in hit.Modernizations)
+            {
+                block.id = System.Guid.NewGuid().ToString();
+            }
+        }
+    }
+
     static Vector2 offset;
     private void OnGUI()
     {

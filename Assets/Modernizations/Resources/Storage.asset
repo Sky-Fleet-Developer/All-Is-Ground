@@ -17,15 +17,16 @@ MonoBehaviour:
     Count: 0
     ResourceType: 1
   - Name: Experience
-    Count: 0
+    Count: 13526
     ResourceType: 0
   SelfResources: []
-  onResourcesChainge:
-    m_PersistentCalls:
-      m_Calls: []
   Items:
   - Name: MMZ
-    Stock: []
+    Stock:
+    - RAM
+    - Engine2.0
+    - Engine2.5
+    - 266,0112
     Modernizations:
     - Name: Engine
       Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
@@ -35,18 +36,18 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 149
-        y: -169
+        x: 251
+        y: -217
         width: 130
         height: 30
       position: {x: -28, y: -30}
       AvailableBySingle: 0
-      id: 501.82312
+      id: 1752897e-44f9-4839-ba3f-4804863fa6b8
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 782,5667
-      - 266,0112
+      - 8d3c59f6-9a9a-44f2-a62c-4a9195e8330f
+      - 2b37a81d-7f69-4977-8ea1-af62f90838ff
       Properties:
       - property:
           Name: ForwardLocomotor.Speed
@@ -138,21 +139,21 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 329
-        y: -249
+        x: 431
+        y: -297
         width: 130
         height: 30
       position: {x: 149, y: -102}
       AvailableBySingle: 0
-      id: 782.56665
+      id: 8d3c59f6-9a9a-44f2-a62c-4a9195e8330f
       GlobalResourceDependences:
       - ResourceName: Experience
-        Cost: 450
+        Cost: 458
       SelfResourceDependences: []
       Connections:
-      - 141,2355
-      - 400,9039
-      - 996,4609
+      - 3eb6b53b-8baf-4a52-9be8-f87ac029baab
+      - ffac803f-6185-46d7-87ba-094de8cecff8
+      - 7f835b5b-c35e-41d6-a166-1c3d4bb15168
       Properties:
       - property:
           Name: ForwardLocomotor.Speed
@@ -179,13 +180,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 329
-        y: -89
+        x: 431
+        y: -137
         width: 130
         height: 30
       position: {x: 147, y: 46}
       AvailableBySingle: 0
-      id: 266.01117
+      id: 2b37a81d-7f69-4977-8ea1-af62f90838ff
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 470
@@ -215,13 +216,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: -329
+        x: 631
+        y: -377
         width: 130
         height: 30
       position: {x: 352, y: -190}
       AvailableBySingle: 0
-      id: 141.23547
+      id: 3eb6b53b-8baf-4a52-9be8-f87ac029baab
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 450
@@ -252,13 +253,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: -249
+        x: 631
+        y: -297
         width: 130
         height: 30
       position: {x: 346, y: -106}
       AvailableBySingle: 0
-      id: 400.90387
+      id: ffac803f-6185-46d7-87ba-094de8cecff8
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 525
@@ -287,13 +288,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: -169
+        x: 631
+        y: -217
         width: 130
         height: 30
       position: {x: 355, y: -32}
       AvailableBySingle: 0
-      id: 996.46094
+      id: 7f835b5b-c35e-41d6-a166-1c3d4bb15168
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 420
@@ -324,17 +325,17 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 149
-        y: 91
+        x: 251
+        y: 43
         width: 130
         height: 30
       position: {x: -36, y: 233}
       AvailableBySingle: 0
-      id: 293.209
+      id: d122b26f-dfac-4399-a425-fbb8106b6532
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 256,2918
+      - da250ea1-65a7-445c-9f69-cda82aa2e1fd
       Properties:
       - property:
           Name: Support.length
@@ -455,20 +456,20 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 329
-        y: 91
+        x: 431
+        y: 43
         width: 130
         height: 30
       position: {x: 153, y: 236}
       AvailableBySingle: 0
-      id: 256.2918
+      id: da250ea1-65a7-445c-9f69-cda82aa2e1fd
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 370
       SelfResourceDependences: []
       Connections:
-      - 708,3906
-      - 999,2561
+      - e7bba81d-a29d-4d0f-a85d-3ef3c741eecd
+      - 19b9cc79-b659-42b1-8c06-e140d88e7a81
       Properties:
       - property:
           Name: Support.length
@@ -542,13 +543,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: 51
+        x: 631
+        y: 3
         width: 130
         height: 30
       position: {x: 345, y: 186}
       AvailableBySingle: 0
-      id: 708.39056
+      id: e7bba81d-a29d-4d0f-a85d-3ef3c741eecd
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 340
@@ -577,13 +578,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: 151
+        x: 631
+        y: 103
         width: 130
         height: 30
       position: {x: 349, y: 293}
       AvailableBySingle: 0
-      id: 999.2561
+      id: 19b9cc79-b659-42b1-8c06-e140d88e7a81
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 340
@@ -614,17 +615,17 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 149
-        y: 331
+        x: 251
+        y: 283
         width: 130
         height: 30
-      position: {x: -35, y: 465}
+      position: {x: -34, y: 470}
       AvailableBySingle: 0
-      id: 125.99099
+      id: ec40f80b-3072-4112-8943-d588026bddb7
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 306,9753
+      - 2adf1413-b28f-460a-a594-a5b5354c9fdd
       Properties:
       - property:
           Name: ChargeBlock.ReloadDelay
@@ -664,17 +665,17 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 329
-        y: 331
+        x: 431
+        y: 283
         width: 130
         height: 30
       position: {x: 144, y: 471}
       AvailableBySingle: 0
-      id: 306.9753
+      id: 2adf1413-b28f-460a-a594-a5b5354c9fdd
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 656,4057
+      - e4ade50f-7b5e-4fea-ace3-06a10a920187
       Properties:
       - property:
           Name: ChargeBlock.ReloadDelay
@@ -698,13 +699,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: 331
+        x: 631
+        y: 283
         width: 130
         height: 30
       position: {x: 353, y: 474}
       AvailableBySingle: 0
-      id: 656.4057
+      id: e4ade50f-7b5e-4fea-ace3-06a10a920187
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections: []
@@ -733,18 +734,18 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 149
-        y: 531
+        x: 251
+        y: 483
         width: 130
         height: 30
       position: {x: -28, y: 677}
       AvailableBySingle: 0
-      id: 458.4258
+      id: 73224179-7e1e-4e2d-8449-3fe5843c58cc
       GlobalResourceDependences: []
       SelfResourceDependences: []
       Connections:
-      - 990,4107
-      - 588,4661
+      - 68e87e3f-b4ab-47a3-b6ea-b773eb5a4699
+      - 7386f2a5-69e2-4cc1-809e-2f807442e0aa
       Properties:
       - property:
           Name: ArmorGroup.ArmorThickness
@@ -849,19 +850,19 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 329
-        y: 491
+        x: 431
+        y: 443
         width: 130
         height: 30
       position: {x: 157, y: 623}
       AvailableBySingle: 0
-      id: 990.4107
+      id: 68e87e3f-b4ab-47a3-b6ea-b773eb5a4699
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 360
       SelfResourceDependences: []
       Connections:
-      - 12,44998
+      - e2050f41-d222-4454-bd8a-f362f7dbf812
       Properties:
       - property:
           Name: ArmorGroup.ArmorThickness
@@ -885,13 +886,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 329
-        y: 591
+        x: 431
+        y: 543
         width: 130
         height: 30
       position: {x: 144, y: 726}
       AvailableBySingle: 0
-      id: 588.4661
+      id: 7386f2a5-69e2-4cc1-809e-2f807442e0aa
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 470
@@ -938,19 +939,19 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 529
-        y: 491
+        x: 631
+        y: 443
         width: 130
         height: 30
       position: {x: 342, y: 627}
       AvailableBySingle: 0
-      id: 12.44998
+      id: e2050f41-d222-4454-bd8a-f362f7dbf812
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 490
       SelfResourceDependences: []
       Connections:
-      - 521,4918
+      - 7d72f06b-a136-425d-9af4-fcac445c8d36
       Properties:
       - property:
           Name: ArmorGroup.ArmorThickness
@@ -975,13 +976,13 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 729
-        y: 491
+        x: 831
+        y: 443
         width: 130
         height: 30
       position: {x: 552, y: 633}
       AvailableBySingle: 0
-      id: 521.4918
+      id: 7d72f06b-a136-425d-9af4-fcac445c8d36
       GlobalResourceDependences:
       - ResourceName: Experience
         Cost: 490
