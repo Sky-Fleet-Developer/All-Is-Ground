@@ -1059,7 +1059,7 @@ namespace Modernizations
                     if (GUI.Button(GetNextWithOffset(0, 24 * n, 380, 24), "Explore"))
                     {
 
-                        UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(id, UsersDATA.ExploreTypes.item, (v) => 
+                        UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(id, (v) => 
                         {
                             if (v)
                             {

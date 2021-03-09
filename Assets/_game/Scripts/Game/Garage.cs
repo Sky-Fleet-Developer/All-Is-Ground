@@ -178,9 +178,14 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
         //StorageEditor.Back.AddListener(CloseModernizations);
         var bg = UILink.MainCanvas.GetChildByName("Background");
         if(bg) bg.gameObject.SetActive(true);
-        StartCoroutine(UsersDATA.Instance.GetItemsCosts(Ships[shipN]));
-        StorageEditor.SelectedItem = Storage.GetItem(Ships[shipN].PrefabName);
-        StorageEditor.OnCloseWindow += CloseModernizations;
+
+        var items = (from x in Storage.GetItem(Ships[shipN].PrefabName).Modernizations where x.IsDefault == false select x.id).ToArray();
+
+        StartCoroutine(UsersDATA.Instance.GetItemsCosts(Ships[shipN].PrefabName, items, () =>
+        {
+            StorageEditor.SelectedItem = Storage.GetItem(Ships[shipN].PrefabName);
+            StorageEditor.OnCloseWindow += CloseModernizations;
+        }));
     }
 
     public void CloseModernizations()
@@ -192,7 +197,12 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
 
     void ExploreShip()
     {
-        StartCoroutine(UsersDATA.Instance.Explore(Ships[ShipsScroll.ScrollRing.Value].PrefabName, UsersDATA.ExploreTypes.ship));
+        string item = Ships[ShipsScroll.ScrollRing.Value].PrefabName;
+        StartCoroutine(UsersDATA.Instance.Explore(item, (v) =>
+        {
+            MyShips.Add(item);
+            SelectMachine(GetShipID(item), "Машина");
+        }));
     }
 
     public void SetSelfMachine()

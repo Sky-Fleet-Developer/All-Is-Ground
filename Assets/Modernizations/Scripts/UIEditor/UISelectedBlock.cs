@@ -81,7 +81,7 @@ namespace Modernizations
                         button.transform.SetAsLastSibling();
                         button.Button.onClick.AddListener(delegate
                         {
-                            UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(_block.id, UsersDATA.ExploreTypes.item, (v) =>
+                            UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(_block.id, (v) =>
                             {
                                 if (v)
                                 {
