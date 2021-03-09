@@ -7622,8 +7622,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 4
+  instantiationId: 4
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &3075361760144845147
@@ -7664,6 +7664,7 @@ MonoBehaviour:
     - {fileID: 7449113287345102319}
     - {fileID: 5664331261020026076}
     - {fileID: 6481840372268489551}
+    group: 0
   - ArmorThickness: 18
     ARC: 1900
     Armor:
@@ -7676,6 +7677,7 @@ MonoBehaviour:
     - {fileID: 3796092882164199724}
     - {fileID: 7984715845590410341}
     - {fileID: 7208890469705753880}
+    group: 0
   - ArmorThickness: 12
     ARC: 1900
     Armor:
@@ -7685,10 +7687,12 @@ MonoBehaviour:
     - {fileID: 6839025495426114738}
     - {fileID: 1164792535258532128}
     - {fileID: 7679163200659857349}
+    group: 0
   - ArmorThickness: 20
     ARC: 1700
     Armor:
     - {fileID: 7272601121175875918}
+    group: 0
 --- !u!114 &8204288065316235981
 MonoBehaviour:
   m_ObjectHideFlags: 0

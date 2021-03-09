@@ -26,6 +26,8 @@ public class UsersDATA : MonoBehaviourPlus
 
     public const string ServerUri = "https://newships-storage.000webhostapp.com/";
 
+    private static bool isPolygon;
+
     void Start()
     {
         Invoke("LateStart", Time.deltaTime);
@@ -34,6 +36,7 @@ public class UsersDATA : MonoBehaviourPlus
         var exit = UILink.MainCanvas.GetChildByName("Quit");
         UpperBar.GetChildByName("ExitGame").Button.onClick.AddListener(delegate { exit.gameObject.SetActive(true); });
         SceneLoading = UILink.MainCanvas.GetChildByName("LevelLoading");
+        UILink.StartPolygon.Button.onClick.AddListener(StartPolygon);
         if (currentAccount == null || !PhotonNetwork.connected)
         {
             storage = Resources.Load<Storage>("Storage");
@@ -164,6 +167,11 @@ public class UsersDATA : MonoBehaviourPlus
         if (string.IsNullOrEmpty(N))
             N += string.Format("{0:0000}", UnityEngine.Random.Range(0, 1000));
         PhotonNetwork.CreateRoom(GameValues.Levels[LevelToCreate].Name + ": " + N);
+    }
+
+    private void StartPolygon() {
+        isPolygon = true;
+        SignIn("хуимя", 0, int.MaxValue);
     }
 
     #endregion
@@ -372,6 +380,8 @@ public class UsersDATA : MonoBehaviourPlus
 
     IEnumerator AddExp(string login, int exp)
     {
+        if (isPolygon) yield break;
+
         string uri = string.Format("{0}?method=AddExperience&name={1}&exp={2}", ServerUri, login, exp);
         using (UnityWebRequest www = UnityWebRequest.Get(uri))
         {
@@ -464,46 +474,66 @@ public class UsersDATA : MonoBehaviourPlus
     bool exploreInProgress = false;
     public IEnumerator Explore(string item, ExploreTypes type, System.Action<bool> onComplete = null)
     {
-        int Try = 0;
-        while (exploreInProgress && Try++ < 10)
-            yield return new WaitForSeconds(1);
-
-        string uri = string.Format("{0}?method=Explore&name={1}&item={2}&type={3}", ServerUri, currentAccount.Name, item, type.ToString());
-       // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
+        if (!isPolygon)
         {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
 
-            Debug.Log(answer);
+            int Try = 0;
+            while (exploreInProgress && Try++ < 10)
+                yield return new WaitForSeconds(1);
 
-            var split = answer.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-
-            switch (dic["result"])
+            string uri = string.Format("{0}?method=Explore&name={1}&item={2}&type={3}", ServerUri, currentAccount.Name, item, type.ToString());
+            // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
+            using (UnityWebRequest www = UnityWebRequest.Get(uri))
             {
-                case "error":
-                    Debug.Log("Error");
-                    State.text = "<color=red>" + dic["error"] + "</color>";
-                    onComplete?.Invoke(false);
+                yield return www.SendWebRequest();
+                string answer = SelectString(www.downloadHandler.text);
+
+                Debug.Log(answer);
+
+                var split = answer.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+
+                var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
+
+                switch (dic["result"])
+                {
+                    case "error":
+                        Debug.Log("Error");
+                        State.text = "<color=red>" + dic["error"] + "</color>";
+                        onComplete?.Invoke(false);
+                        break;
+                    case "correct":
+                        switch (type)
+                        {
+                            case ExploreTypes.ship:
+                                Garage.Instance.MyShips.Add(item);
+                                Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
+                                break;
+                            case ExploreTypes.item:
+                                //BuildGarage(dic["set"]);
+                                break;
+                        }
+                        onComplete?.Invoke(true);
+                        currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
+                        SetAsSignedIn();
+                        break;
+                }
+            }
+        }
+        else {
+            switch (type)
+            {
+                case ExploreTypes.ship:
+                    Garage.Instance.MyShips.Add(item);
+                    Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
                     break;
-                case "correct":
-                    switch (type)
-                    {
-                        case ExploreTypes.ship:
-                            Garage.Instance.MyShips.Add(item);
-                            Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
-                            break;
-                        case ExploreTypes.item:
-                        //BuildGarage(dic["set"]);
-                            break;
-                    }
-                    onComplete?.Invoke(true);
-                    currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
-                    SetAsSignedIn();
+                case ExploreTypes.item:
+                    //BuildGarage(dic["set"]);
                     break;
             }
+            onComplete?.Invoke(true);
+            //currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
+
+           
         }
     }
 

@@ -12,6 +12,7 @@ public partial class UILink
     public static UILink Garage;
     public static UILink ToggleGarage;
     public static UILink BattleGarage;
+    public static UILink StartPolygon;
     public StaticObjectTypes StaticObject = StaticObjectTypes.None;
     public enum StaticObjectTypes
     {
@@ -26,6 +27,7 @@ public partial class UILink
         Garage = 7,
         ToggleGarage = 8,
         BattleGarage = 9,
+        StartPolygon = 10,
     }
     public void OnInit()
     {
@@ -60,6 +62,9 @@ public partial class UILink
                 break;
             case StaticObjectTypes.BattleGarage:
                 BattleGarage = this;
+                break;
+            case StaticObjectTypes.StartPolygon:
+                StartPolygon = this;
                 break;
         }
     }
