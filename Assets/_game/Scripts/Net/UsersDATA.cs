@@ -262,22 +262,17 @@ public class UsersDATA : MonoBehaviourPlus
         }
     }
 
-    void BuildGarage(string String)
+    void ParceGarage(string String)
     {
-        var setup = String.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+        var setup = String.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+        Storage.GarageSet = setup.ToList();
 
         Garage.Instance.MyShips = new List<string>();
-
         foreach (var set in setup)
         {
-            if (set.Length > 2)
-            {
-                var vals = set.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                Garage.ShipSet ship = Garage.Instance.Ships.FirstOrDefault(x => x.PrefabName == vals[0]);
-                Garage.Instance.MyShips.Add(vals[0]);
-
-                Storage.GarageSet = vals[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            }
+            if(set.Length < 10)
+            Garage.Instance.MyShips.Add(set);
         }
     }
     #endregion
@@ -317,7 +312,7 @@ public class UsersDATA : MonoBehaviourPlus
                     PlayerPrefs.SetString("LastLogin", login);
                     PlayerPrefs.SetString("LastPassword", password);
 
-                    BuildGarage(dic["set"]);
+                    ParceGarage(dic["set"]);
 
                     List<string> ask = new List<string>();
 
@@ -408,9 +403,15 @@ public class UsersDATA : MonoBehaviourPlus
         }
     }
 
-    public IEnumerator GetItemsCosts(Garage.ShipSet ship)
+    public IEnumerator GetItemsCosts(string ship, string[] items, Action onComplete)
     {
-        string uri = string.Format("{0}?method=GetItemsCosts&ask={1}", ServerUri, ship.PrefabName);
+        string ask = ship;
+        foreach(var hit in items)
+        {
+            ask += "," + hit;
+        }
+
+        string uri = string.Format("{0}?method=GetItemsCosts&ask={1}", ServerUri, ask);
         using (UnityWebRequest www = UnityWebRequest.Get(uri))
         {
             yield return www.SendWebRequest();
@@ -422,12 +423,15 @@ public class UsersDATA : MonoBehaviourPlus
 
             var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
 
+            var item = Storage.GetItem(ship);
+            Garage.Instance.Ships.FirstOrDefault(x => x.PrefabName == ship).Cost = int.Parse(dic[ship]);
+
             foreach (var hit in dic)
             {
-                var item = Storage.GetItem(ship.PrefabName);
                 var pb = item.Modernizations.FirstOrDefault(x => x.id == hit.Key);
                 if(pb != null) pb.GlobalResourceDependences[0].Cost = int.Parse(hit.Value);
             }
+            onComplete?.Invoke();
         }
     }
 
@@ -466,13 +470,8 @@ public class UsersDATA : MonoBehaviourPlus
         }
     }
 
-    public enum ExploreTypes 
-    {
-        ship = 0,
-        item = 1
-    }
     bool exploreInProgress = false;
-    public IEnumerator Explore(string item, ExploreTypes type, System.Action<bool> onComplete = null)
+    public IEnumerator Explore(string item, System.Action<bool> onComplete = null)
     {
         if (!isPolygon)
         {
@@ -481,7 +480,7 @@ public class UsersDATA : MonoBehaviourPlus
             while (exploreInProgress && Try++ < 10)
                 yield return new WaitForSeconds(1);
 
-            string uri = string.Format("{0}?method=Explore&name={1}&item={2}&type={3}", ServerUri, currentAccount.Name, item, type.ToString());
+            string uri = string.Format("{0}?method=Explore&name={1}&item={2}", ServerUri, currentAccount.Name, item);
             // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
             using (UnityWebRequest www = UnityWebRequest.Get(uri))
             {
@@ -502,16 +501,6 @@ public class UsersDATA : MonoBehaviourPlus
                         onComplete?.Invoke(false);
                         break;
                     case "correct":
-                        switch (type)
-                        {
-                            case ExploreTypes.ship:
-                                Garage.Instance.MyShips.Add(item);
-                                Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
-                                break;
-                            case ExploreTypes.item:
-                                //BuildGarage(dic["set"]);
-                                break;
-                        }
                         onComplete?.Invoke(true);
                         currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
                         SetAsSignedIn();
@@ -519,21 +508,9 @@ public class UsersDATA : MonoBehaviourPlus
                 }
             }
         }
-        else {
-            switch (type)
-            {
-                case ExploreTypes.ship:
-                    Garage.Instance.MyShips.Add(item);
-                    Garage.Instance.SelectMachine(Garage.Instance.GetShipID(item), "Машина");
-                    break;
-                case ExploreTypes.item:
-                    //BuildGarage(dic["set"]);
-                    break;
-            }
+        else 
+        {
             onComplete?.Invoke(true);
-            //currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
-
-           
         }
     }
 

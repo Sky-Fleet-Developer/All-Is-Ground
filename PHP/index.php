@@ -23,7 +23,6 @@ switch ($method) {
 			if ($pass != $account_password) 
 			{
                 echo "<start>auth=error&error=Не верный логин или пароль</start>";
-                exit;
             } 
 			else 
 			{
@@ -37,7 +36,6 @@ switch ($method) {
 		else 
 		{
             echo "<start>error=Аккаунт не найден</start>";
-            exit;
         }
         break;
 
@@ -111,20 +109,6 @@ switch ($method) {
         }
         break;
 
-	case "GetItemsCosts":
-	    $ship = $_GET["ask"];
-		$ask = DB::GetFetchAll($db_conn, "SELECT name, cost FROM costs WHERE name LIKE '$ship%'");
-
-		$answer = "";//implode(', ', $ask);
-
-		foreach($ask as $hit)
-		{
-			$answer = $answer . $hit[0] . "=" . $hit[1] . ";";
-		}
-
-		echo "<start>$answer</start>";
-		break;
-
 	case "SetItemsCosts":
 		$all = $_GET["items"];
 		$items = explode(",", $all);
@@ -149,7 +133,7 @@ switch ($method) {
 		echo "<start>report: $report</start>";
 		break;
 
-	case "GetShipsCosts":
+	case "GetItemsCosts":
 		$quest = $_GET["ask"];
 		$items = explode(",", $quest);
 		$count = count($items);
@@ -160,7 +144,7 @@ switch ($method) {
 			{
 				$item = $items[$i];
 				$cost = DB::GetFetchArray($db_conn, "SELECT cost FROM `costs` WHERE name = '$item' LIMIT 1");
-				$answer = $answer . $item . "=" . $cost[0] . ";";
+				if(count($cost) > 0) $answer = $answer.$item."=".$cost[0].";";
 			}
 		}
 		echo "<start>$answer</start>";
