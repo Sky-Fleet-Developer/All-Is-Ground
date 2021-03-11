@@ -128,7 +128,7 @@ public class Health : MonoBehaviourPlus, IDestroyeble
             if (HPBar) HPBar.Image.fillAmount = HitPoints / 100;
             if (hp == 0f || float.IsNaN(HitPoints))
             {
-                GameManager.WaitForSpawn(this);
+             //   GameManager.WaitForSpawn(this);
 
                 string c1 = PunTeamsColorsString[(int)PhotonNetwork.player.GetTeam()];
 

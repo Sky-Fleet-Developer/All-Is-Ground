@@ -9,7 +9,7 @@ public class CaptureblePoint : MonoBehaviour
     public string UILetter = "A";
     public float Radius;
     [System.NonSerialized]
-    public List<Control> PlayersInside;
+    public List<BattleMember> PlayersInside;
     [System.NonSerialized]
     public float RedTeamOwenship;
     [System.NonSerialized]
@@ -28,7 +28,7 @@ public class CaptureblePoint : MonoBehaviour
     {
         transform = base.transform;
         View = GetComponent<PhotonView>();
-        PlayersInside = new List<Control>();
+        PlayersInside = new List<BattleMember>();
         Owner = PunTeams.Team.none;
     }
 
@@ -49,9 +49,9 @@ public class CaptureblePoint : MonoBehaviour
             yield return new WaitForSeconds(1f);
             if (PhotonNetwork.isMasterClient)
             {
-                PlayersInside = new List<Control>();
+                PlayersInside = new List<BattleMember>();
 
-                foreach(var hit in FindObjectsOfType<Control>())
+                foreach(var hit in FindObjectsOfType<BattleMember>())
                 {
                     if (Vector3.SqrMagnitude(hit.transform.position - transform.position) < Radius * Radius)
                         PlayersInside.Add(hit);
@@ -62,9 +62,9 @@ public class CaptureblePoint : MonoBehaviour
                 owenship.Add(0);
                 foreach (var hit in PlayersInside)
                 {
-                    if (hit.IsAlive)
+                    if (hit.GetModule<Control>().IsAlive)
                     {
-                        owenship[(int)hit.View.owner.GetTeam() - 1] += 1;
+                        owenship[(int)hit.Owner.GetTeam() - 1] += 1;
                     }
                 }
                 if (owenship[0] != owenship[1])
@@ -110,10 +110,10 @@ public class CaptureblePoint : MonoBehaviour
                     {
                         foreach (var hit in PlayersInside)
                         {
-                            if (hit.View.owner.GetTeam() == Owner)
+                            if (hit.Owner.GetTeam() == Owner)
                             {
-                                hit.View.owner.AddScore(add);
-                                UsersDATA.AddExperience(hit.View.owner.NickName, add);
+                                hit.Owner.AddScore(add);
+                                UsersDATA.AddExperience(hit.Owner.NickName, add);
                             }
 
                         }

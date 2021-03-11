@@ -316,7 +316,7 @@ public class UsersDATA : MonoBehaviourPlus
 
                     List<string> ask = new List<string>();
 
-                    for(int i = 1; i < Garage.Instance.Ships.Count; i++) ask.Add(Garage.Instance.Ships[i].PrefabName);
+                    for(int i = 1; i < Garage.Instance.Ships.Length; i++) ask.Add(Garage.Instance.Ships[i].PrefabName);
 
                     yield return StartCoroutine(GetShipsCosts(ask));
 
@@ -359,7 +359,7 @@ public class UsersDATA : MonoBehaviourPlus
                     PlayerPrefs.SetString("LastPassword", password);
 
                     List<string> ask = new List<string>();
-                    for (int i = 1; i < Garage.Instance.Ships.Count; i++)
+                    for (int i = 1; i < Garage.Instance.Ships.Length; i++)
                         ask.Add(Garage.Instance.Ships[i].PrefabName);
                     yield return StartCoroutine(GetShipsCosts(ask));
 

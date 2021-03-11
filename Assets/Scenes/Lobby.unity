@@ -851,6 +851,12 @@ PrefabInstance:
       propertyPath: UserPlace
       value: 
       objectReference: {fileID: 3571981817674977477}
+    - target: {fileID: 4215200632427289392, guid: 33e565418d585c24591bc07179cf6590,
+        type: 3}
+      propertyPath: shipDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: c0de107e884f35443b232d028a783026,
+        type: 2}
     - target: {fileID: 4215200632427289396, guid: 33e565418d585c24591bc07179cf6590,
         type: 3}
       propertyPath: m_Name

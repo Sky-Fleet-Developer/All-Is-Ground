@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b2c7746d6bc3d448c4cb8624e6d4d1, type: 3}
+  m_Name: ShipData
+  m_EditorClassIdentifier: 
+  ships:
+  - ShipPrefab: {fileID: 8338861304706160441, guid: 8f4a40702a0785b418a95b02944ed2b2,
+      type: 3}
+    StorageName: MMZ
+    FullName: MMZ
+    Cost: 1

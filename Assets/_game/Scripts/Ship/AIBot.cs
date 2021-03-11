@@ -425,7 +425,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
                         TargetWaypoint = GetCloserPoint();
                         break;
                     case MovingPrioritets.Partner:
-                        var tr = GameManager.Instance.CurrentShip.transform;
+                        var tr = GameManager.Instance.ThisPlayer.transform;
                         TargetWaypoint = Vector3.ProjectOnPlane(DistantPoint(Tr.position, tr.position, 10f) - tr.position, tr.up) + tr.position;
                         break;
                     case MovingPrioritets.CapPoint:

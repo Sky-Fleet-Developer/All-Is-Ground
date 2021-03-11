@@ -10,11 +10,13 @@ using System.Linq;
 public class Garage : MonoBehaviourPlus, IAccountEvents
 {
     public List<string> MyShips;
-    public List<ShipSet> Ships;
+    public ShipSet[] Ships => ShipData.GetArray();
     [System.Serializable]
     public class ShipSet
     {
-        public string PrefabName;
+        public string PrefabName => ShipPrefab.gameObject.name;
+
+        public Ship ShipPrefab;
         public string StorageName;
         public string FullName;
         public int Cost;
@@ -45,6 +47,8 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
     public Transform[] MachinePrefabs;
     public Transform[] MachineInstances;
 
+    public ShipDataBase ShipData { get { return shipDataBase; } }
+
     UILink _Garage;
     UILink ModernizationsButton;
     UILink ToSelfButton;
@@ -58,6 +62,10 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
 
     public static bool selfShipDirty = false;
     public static bool aiShipDirty = false;
+
+
+
+    [SerializeField] private ShipDataBase shipDataBase;
 
     public class ShipSetUI
     {
@@ -114,8 +122,8 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
         Instance = this;
         storage = Resources.Load<Storage>("Storage");
         CurrentSet = new ShipSetUI();
-        MachinePrefabs = new Transform[Ships.Count];
-        MachineInstances = new Transform[Ships.Count];
+        MachinePrefabs = new Transform[Ships.Length];
+        MachineInstances = new Transform[Ships.Length];
 
         this.Wait(0.1f, LateStart);
     }
@@ -233,7 +241,7 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
 
     public int GetShipID(string Name)
     {
-        return Ships.FindIndex(x => x.PrefabName == Name);
+        return System.Array.FindIndex(Ships,x=> x.PrefabName == Name);
     }
 
     public void SetShipInstance(ref Transform ship, int N, Transform place)
@@ -311,7 +319,7 @@ public class Garage : MonoBehaviourPlus, IAccountEvents
     {
         _Garage.gameObject.SetActive(true);
 
-        for (int i = 0; i < Ships.Count; i++)
+        for (int i = 0; i < Ships.Length; i++)
         {
             var hit = ShipsScroll.GetChildByName(string.Format("Item ({0})", i));
             hit.Text.text = Ships[i].StorageName;

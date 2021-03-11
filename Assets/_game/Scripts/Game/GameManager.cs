@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviourPlus
 {
     public static GameManager Instance;
     [System.NonSerialized]
-    public Health CurrentShip;
+    public Player ThisPlayer;
     [System.NonSerialized]
     public AIBot AIShip;
     [System.NonSerialized]
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviourPlus
     void Start()
     {
         Instance = this;
-        this.Wait(1f,delegate { InitPlayer(); });
+        this.Wait(1f, delegate { InitPlayer(); });
         StartCoroutine(GetPlayers());
         UILink.MainCanvas.GetChildByName("Exit").Button.onClick.AddListener(LeveBattle);
     }
@@ -39,39 +39,39 @@ public class GameManager : MonoBehaviourPlus
         LoadLobby();
     }
 
-    public static void WaitForSpawn(Health ship)
+    public static void WaitForSpawn(BattleMember ship)
     {
 
         var RespMessege = UILink.MainCanvas.GetChildByName("RespawnMessege");
-        if (ship.control.UserControl)
-        {
-            RespMessege.gameObject.SetActive(true);
-            RespMessege.GetChildByName("Messege").Text.text = "You dead!\nHahaha.\nWait for spawn.";
-        }
+        /*  if (ship.control.UserControl)
+          {
+              RespMessege.gameObject.SetActive(true);
+              RespMessege.GetChildByName("Messege").Text.text = "You dead!\nHahaha.\nWait for spawn.";
+          }*/
         Instance.StartCoroutine(Instance.WaitForSpawnRoutine(RespMessege, ship));
     }
 
-    IEnumerator WaitForSpawnRoutine(UILink RespMessege, Health ship)
+    IEnumerator WaitForSpawnRoutine(UILink RespMessege, BattleMember ship)
     {
         float timer = 10f;
         while (timer > 0f)
         {
             yield return new WaitForSeconds(0.1f);
             timer -= 0.1f;
-            if (ship.control.UserControl)
-            {
-                RespMessege.GetChildByName("State").Text.text = string.Format("{0:0.0}", timer);
-                RespMessege.GetChildByName("Bar").Image.fillAmount = timer / 10;
-            }
+            /* if (ship.IsMine)
+             {
+                 RespMessege.GetChildByName("State").Text.text = string.Format("{0:0.0}", timer);
+                 RespMessege.GetChildByName("Bar").Image.fillAmount = timer / 10;
+             }*/
         }
-        if (ship.control.UserControl)
-            RespMessege.gameObject.SetActive(false);
+        /*if (ship.control.UserControl)
+            RespMessege.gameObject.SetActive(false);*/
         Respawn(ship);
     }
 
-    void Respawn(Health ship)
+    void Respawn(BattleMember ship)
     {
-        bool selfDirty = ship == CurrentShip && Garage.selfShipDirty;
+        bool selfDirty = ship == ThisPlayer && Garage.selfShipDirty;
         bool aiDirty = ship.gameObject == AIShip.gameObject && Garage.aiShipDirty;
 
         if (selfDirty)
@@ -82,25 +82,14 @@ public class GameManager : MonoBehaviourPlus
         else if (aiDirty)
         {
             Garage.aiShipDirty = false;
-            SpawnAI();
+            //SpawnAI();
         }
         else
         {
-            ship.Respawn();
-            ship.transform.position = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition();
-            ship.transform.rotation = SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation;
-            var rb = ship.Rigid;
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            StartCoroutine(Unfreeze(ship));
-        }
-    }
 
-    IEnumerator Unfreeze(Health ship)
-    {
-        ship.Rigid.isKinematic = true;
-        yield return new WaitForSeconds(0.2f);
-        ship.Rigid.isKinematic = false;
+            ship.RespawnShip(SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(),
+                SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation);
+        }
     }
 
     public static int GetEnamysCount()
@@ -188,20 +177,29 @@ public class GameManager : MonoBehaviourPlus
         }
 
         SpawnSelf();
-        SpawnAI();
+        //SpawnAI();
     }
 
     void SpawnSelf()
     {
-        var ship = PhotonNetwork.Instantiate(UsersDATA.currentAccount.ShoosedMachine.PrefabName, SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(), SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);
-        UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(ship);
-        ship.AddComponent<ShowFriendUI>();
+        /*  var ship = PhotonNetwork.Instantiate(UsersDATA.currentAccount.ShoosedMachine.PrefabName,
+              SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(),
+              SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0);*/
 
 
-        if (CurrentShip != null) PhotonNetwork.Destroy(CurrentShip.View);
-        CurrentShip = ship.GetComponent<Health>();
+        //ship.AddComponent<ShowFriendUI>()
 
-        MouseOrbit.Instance.target = ship.transform;
+        Player player = PhotonNetwork.Instantiate("Player",
+             SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).GetSpawnPosition(),
+             SpawnPosition.Spawn(PhotonNetwork.player.GetTeam()).Tr.rotation, 0).GetComponent<Player>();
+
+        player.BaseInit();
+
+        UsersDATA.currentAccount.ShoosedMachine.ApplyGrowth(player.gameObject);
+
+        MouseOrbit.Instance.target = player.transform;
+
+        ThisPlayer = player;
     }
 
     void SpawnAI()

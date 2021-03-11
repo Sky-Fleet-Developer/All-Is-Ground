@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Control : MonoBehaviourPlus, IDestroyeble
+public class Control : Module, IDestroyeble
 {
     public bool UserControl;
 
-    public LocomotorType LocomotionType;
+    public MonoBehaviourPlus.LocomotorType LocomotionType;
 
     public Vector2 InputAxis;
     public Vector3 Forward;
@@ -25,22 +25,20 @@ public class Control : MonoBehaviourPlus, IDestroyeble
 
     [System.NonSerialized]
     public bool IsAlive;
-    [System.NonSerialized]
-    public PhotonView View;
-    [System.NonSerialized]
-    AIBot Bot;
+
+
+
     float ScyncTimer = 0.1f;
-    void Start()
+
+    protected override void OnInit()
     {
         Forward = transform.forward;
-        View = GetComponent<PhotonView>();
-        Bot = GetComponent<AIBot>();
+
         IsAlive = true;
         TurnIllumination();
-        if (PhotonNetwork.connected)
-        {
-            UserControl = View.isMine && !Bot;
-        }
+
+        UserControl = false;
+
         if (UserControl)
         {
             foreach (var hit in GetComponents<Projectile>())
@@ -49,13 +47,17 @@ public class Control : MonoBehaviourPlus, IDestroyeble
         }
     }
 
+    public void SetGetControllFromInput() {
+        UserControl = ship.IsMine;
+    }
+    
     public void TurnIllumination()
     {
         illumination = !illumination;
         foreach (var Hit in Illuminations)
             Hit.enabled = illumination;
-        if(PhotonNetwork.connected && View.isMine)
-            View.RPC("ScyncIllumination", PhotonTargets.Others, illumination);
+       // if(PhotonNetwork.connected && View.isMine)
+          //  View.RPC("ScyncIllumination", PhotonTargets.Others, illumination);
     }
 
 
@@ -80,7 +82,7 @@ public class Control : MonoBehaviourPlus, IDestroyeble
             lFire2 = true;
         if (Fire3)
             lFire3 = true;
-        if (PhotonNetwork.connected && View.isMine)
+        if (PhotonNetwork.connected && ship.IsMine)
         {
             ScyncTimer = Mathf.MoveTowards(ScyncTimer, 0f, Time.deltaTime);
 
@@ -88,7 +90,7 @@ public class Control : MonoBehaviourPlus, IDestroyeble
             {
                 ScyncTimer = 0.2f;
 
-                View.RPC("Scync", PhotonTargets.Others, InputAxis, Forward, AimPoint, lFire1, lFire2, lFire3, ClampUp);
+               // View.RPC("Scync", PhotonTargets.Others, InputAxis, Forward, AimPoint, lFire1, lFire2, lFire3, ClampUp);
                 lFire1 = false;
                 lFire2 = false;
                 lFire3 = false;
