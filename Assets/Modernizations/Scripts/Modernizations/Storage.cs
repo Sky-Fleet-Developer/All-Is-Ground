@@ -667,7 +667,7 @@ public class Storage : ScriptableObject
 
                     foreach (FieldInfo field in fields)
                     {
-                        if (field.IsDefined(modT))
+                        if (field.IsDefined(modT) && !IsParentClassesHasField(field, T))
                         {
                             AddProperty(namePrefix, descrPrefix, field);
                         }
@@ -675,6 +675,17 @@ public class Storage : ScriptableObject
                 }
             }
         }
+    }
+
+    public bool IsParentClassesHasField(FieldInfo field, System.Type type)
+    {
+        int i = 0;
+        while(type.BaseType != null && i++ < 20)
+        {
+            type = type.BaseType;
+            if (type.GetField(field.Name) != null) return true;
+        }
+        return false;
     }
 
     private void AddProperty(string namePrefix, string descrPrefix, FieldInfo field)

@@ -405,6 +405,12 @@ public class UsersDATA : MonoBehaviourPlus
 
     public IEnumerator GetItemsCosts(string ship, string[] items, Action onComplete)
     {
+        if (isPolygon)
+        {
+            onComplete?.Invoke();
+            yield break;
+        }
+
         string ask = ship;
         foreach(var hit in items)
         {
@@ -473,44 +479,41 @@ public class UsersDATA : MonoBehaviourPlus
     bool exploreInProgress = false;
     public IEnumerator Explore(string item, System.Action<bool> onComplete = null)
     {
-        if (!isPolygon)
-        {
-
-            int Try = 0;
-            while (exploreInProgress && Try++ < 10)
-                yield return new WaitForSeconds(1);
-
-            string uri = string.Format("{0}?method=Explore&name={1}&item={2}", ServerUri, currentAccount.Name, item);
-            // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
-            using (UnityWebRequest www = UnityWebRequest.Get(uri))
-            {
-                yield return www.SendWebRequest();
-                string answer = SelectString(www.downloadHandler.text);
-
-                Debug.Log(answer);
-
-                var split = answer.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-
-                var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-
-                switch (dic["result"])
-                {
-                    case "error":
-                        Debug.Log("Error");
-                        State.text = "<color=red>" + dic["error"] + "</color>";
-                        onComplete?.Invoke(false);
-                        break;
-                    case "correct":
-                        onComplete?.Invoke(true);
-                        currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
-                        SetAsSignedIn();
-                        break;
-                }
-            }
-        }
-        else 
+        if (isPolygon)
         {
             onComplete?.Invoke(true);
+            yield break;
+        }
+        int Try = 0;
+        while (exploreInProgress && Try++ < 10)
+            yield return new WaitForSeconds(1);
+
+        string uri = string.Format("{0}?method=Explore&name={1}&item={2}", ServerUri, currentAccount.Name, item);
+        // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
+        using (UnityWebRequest www = UnityWebRequest.Get(uri))
+        {
+            yield return www.SendWebRequest();
+            string answer = SelectString(www.downloadHandler.text);
+
+            Debug.Log(answer);
+
+            var split = answer.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
+
+            switch (dic["result"])
+            {
+                case "error":
+                    Debug.Log("Error");
+                    State.text = "<color=red>" + dic["error"] + "</color>";
+                    onComplete?.Invoke(false);
+                    break;
+                case "correct":
+                    onComplete?.Invoke(true);
+                    currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
+                    SetAsSignedIn();
+                    break;
+            }
         }
     }
 

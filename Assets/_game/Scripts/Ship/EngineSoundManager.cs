@@ -22,8 +22,14 @@ public class EngineSoundManager : MonoBehaviour
 
         public void Set(float volume, float pitch)
         {
-            Source.volume = Mathf.Lerp(Source.volume, Volume.Evaluate(volume), Time.fixedDeltaTime / VolumeSmooth);
-            Source.pitch = Mathf.Lerp(Source.pitch, Pitch.Evaluate(pitch), Time.fixedDeltaTime / PitchSmooth);
+            try
+            {
+                Source.volume = Mathf.Lerp(Source.volume, Volume.Evaluate(volume), Time.fixedDeltaTime / VolumeSmooth);
+                Source.pitch = Mathf.Lerp(Source.pitch, Pitch.Evaluate(pitch), Time.fixedDeltaTime / PitchSmooth);
+            }catch(System.Exception e)
+            {
+                Debug.LogError(e);
+            }
         }
     }
 

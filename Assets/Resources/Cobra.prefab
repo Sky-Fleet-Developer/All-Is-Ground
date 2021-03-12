@@ -5198,29 +5198,29 @@ MonoBehaviour:
     parent: {fileID: 1853723493435947220}
     groundDistance: 0.89293414
     lastGroundDistance: 0
-  - Group: 0
+  - Group: 1
     localPosition: {x: 0.6, y: 0.03, z: 1.2}
     localDirection: {x: 0.1, y: -1, z: -0.25}
     length: 2
     targetDistance: 1
-    Force: 1100
+    Force: 1200
     Dumping: 500
     IsGrounded: 0
     parent: {fileID: 1853723493435947220}
     groundDistance: 0.79346335
     lastGroundDistance: 0
-  - Group: 0
+  - Group: 1
     localPosition: {x: -0.6, y: 0.03, z: 1.2}
     localDirection: {x: -0.1, y: -1, z: -0.25}
     length: 2
     targetDistance: 1
-    Force: 1100
+    Force: 1200
     Dumping: 500
     IsGrounded: 0
     parent: {fileID: 1853723493435947220}
     groundDistance: 0.79606616
     lastGroundDistance: 0
-  - Group: 0
+  - Group: 1
     localPosition: {x: 0.75, y: 0.03, z: -1}
     localDirection: {x: 0.2, y: -1, z: 0.25}
     length: 2
@@ -5231,7 +5231,7 @@ MonoBehaviour:
     parent: {fileID: 1853723493435947220}
     groundDistance: 0.716635
     lastGroundDistance: 0
-  - Group: 0
+  - Group: 1
     localPosition: {x: -0.75, y: 0.03, z: -1}
     localDirection: {x: -0.2, y: -1, z: 0.25}
     length: 2
@@ -5242,7 +5242,7 @@ MonoBehaviour:
     parent: {fileID: 1853723493435947220}
     groundDistance: 0.71949476
     lastGroundDistance: 0
-  - Group: 0
+  - Group: 1
     localPosition: {x: 0.65, y: 0.1, z: -2.1}
     localDirection: {x: -0.2, y: -1, z: -0.1}
     length: 2
@@ -5253,7 +5253,7 @@ MonoBehaviour:
     parent: {fileID: 1853723493435947220}
     groundDistance: 0.70972466
     lastGroundDistance: 0
-  - Group: 0
+  - Group: 1
     localPosition: {x: -0.65, y: 0.1, z: -2.1}
     localDirection: {x: 0.2, y: -1, z: -0.1}
     length: 2
@@ -5283,9 +5283,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1859436
-      inSlope: 3.365422
-      outSlope: 3.365422
+      value: 0.0262146
+      inSlope: 3.5649557
+      outSlope: 3.5649557
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -5293,8 +5293,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.80051076
       value: 2.88
-      inSlope: 3.365422
-      outSlope: 3.365422
+      inSlope: 3.5649557
+      outSlope: 3.5649557
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -5385,7 +5385,7 @@ MonoBehaviour:
   ScyncEffects: 0
   Blocks:
   - name: Left
-    Group: 0
+    Group: 1
     Launcher: {fileID: 4798396506601820949}
     ReloadDelay: 12
     Charged: 0
@@ -5394,7 +5394,7 @@ MonoBehaviour:
     ClipReloadDelay: 0
     ClipCharged: 0
   - name: Right
-    Group: 0
+    Group: 1
     Launcher: {fileID: 3562168721625453079}
     ReloadDelay: 12
     Charged: 0
@@ -7949,7 +7949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6429723376826839490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.496, z: -1.7907976}
+  m_LocalPosition: {x: 0, y: 1.57, z: -1.7907976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6298136723382518707}

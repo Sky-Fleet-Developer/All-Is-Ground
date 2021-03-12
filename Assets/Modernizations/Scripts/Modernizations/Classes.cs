@@ -58,16 +58,28 @@ namespace Modernizations
             {
                 var value = field.GetValue(root);
                 if (value == null)
-                    return;
-                if (value.GetType().IsArray)
+                    continue;
+                var t = value.GetType();
+                if (t.IsArray && t.GetElementType().GetInterfaces().Contains(typeof(IModifiable)))
                 {
                     IModifiable[] arr = value as IModifiable[];
                     foreach (var hit in arr)
                     {
-                        GetBranch(hit, branch, lastPath + dot + field.Name);
+                        GetBranch(hit, branch, lastPath + dot + hit.GetType().Name);
+                    }
+                }else if (value is System.Collections.IList)
+                {
+                    var list = value as System.Collections.IList;
+                    
+                    foreach (var hit in list)
+                    {
+                        if (hit is IModifiable)
+                        {
+                            GetBranch(hit as IModifiable, branch, lastPath + dot + hit.GetType().Name);
+                        }
                     }
                 }
-                else if (field.FieldType.GetInterfaces().Contains(typeof(IModifiable)))
+                else if (t.GetInterfaces().Contains(typeof(IModifiable)))
                 {
                     GetBranch(value as IModifiable, branch, lastPath + dot + field.Name);
                 }
@@ -90,11 +102,14 @@ namespace Modernizations
                 field.SetValue(mod, value);
             }
         }
-        public static object GetField(IModifiable mod, string name)
+        public static bool GetField(IModifiable mod, string name, out object value)
         {
+            value = null;
             System.Type type = mod.GetType();
             var field = type.GetField(name);
-            return field.GetValue(mod);
+            if (field == null) return false;
+            value = field.GetValue(mod);
+            return true;
         }
     }
 
@@ -390,27 +405,32 @@ namespace Modernizations
                 if (_value == null)
                     GetDefault();
 #endif
-
-                switch (property.Type)
+                try
                 {
-                    case PropertyTypes.Float:
-                        value = float.Parse(_value);
-                        break;
-                    case PropertyTypes.Int:
-                        value = int.Parse(_value);
-                        break;
-                    case PropertyTypes.Vector2:
-                        value = JsonUtility.FromJson<Vector2>(_value);
-                        break;
-                    case PropertyTypes.Vector3:
-                        value = JsonUtility.FromJson<Vector3>(_value);
-                        break;
-                    case PropertyTypes.Bool:
-                        value = bool.Parse(_value);
-                        break;
-                    case PropertyTypes.String:
-                        value = _value;
-                        break;
+                    switch (property.Type)
+                    {
+                        case PropertyTypes.Float:
+                            value = float.Parse(_value);
+                            break;
+                        case PropertyTypes.Int:
+                            value = int.Parse(_value);
+                            break;
+                        case PropertyTypes.Vector2:
+                            value = JsonUtility.FromJson<Vector2>(_value);
+                            break;
+                        case PropertyTypes.Vector3:
+                            value = JsonUtility.FromJson<Vector3>(_value);
+                            break;
+                        case PropertyTypes.Bool:
+                            value = bool.Parse(_value);
+                            break;
+                        case PropertyTypes.String:
+                            value = _value;
+                            break;
+                    }
+                }catch(Exception e)
+                {
+                    return default;
                 }
                 return value;
             }
@@ -461,14 +481,16 @@ namespace Modernizations
 
             public void Apply(IModifiable component, Property root = null)
             {
-                object value = ModifiableUtility.GetField(component, property.FieldName);
-                object rootValue = null;
-                if (root != null)
+                if (ModifiableUtility.GetField(component, property.FieldName, out object value))
                 {
-                    rootValue = root.GetValue();
+                    object rootValue = null;
+                    if (root != null)
+                    {
+                        rootValue = root.GetValue();
+                    }
+                    value = GetValue(value, rootValue);
+                    ModifiableUtility.SetField(component, property.FieldName, value);
                 }
-                value = GetValue(value, rootValue);
-                ModifiableUtility.SetField(component, property.FieldName, value);
             }
 
             public object GetValue(object oldValue, object rootValue)
@@ -551,6 +573,8 @@ namespace Modernizations
                         }
                         break;
                 }
+
+                Debug.Log("From " + oldValue + " to " + value + " by " + ApplyType + " " + add);
                 return value;
             }
 
@@ -639,28 +663,26 @@ namespace Modernizations
         public void ApplyProperty(IModifiable[] components, Property property, PropertyBlock root = null)
         {
             List<string> path = property.property.Name.Split(new char[] { '.' }).ToList();
-            var filtred = components.Where(x => x.GetType().Name == path[0]).ToArray();
             string clampedPath = string.Empty;
 
-            if (path.Count > 2)
+            for (int i = 1; i < path.Count - 2; i++)
             {
-                for (int i = 1; i < path.Count - 2; i++)
-                {
-                    clampedPath += path[i] + ".";
-                }
-                clampedPath += path[path.Count - 2];
-
+                clampedPath += path[i] + ".";
             }
-            foreach (var hit in filtred)
-            {
-                    //Debug.Log(property.GetName() + " group is " + property.Group + ". " + hit + " group is " + hit.GetGroup() + ". ");
-                if (property.Group == hit.GetGroup() || property.Group == -1)
-                {
-                    List<Tuple<string, IModifiable>> Branch = new List<Tuple<string, IModifiable>>();
-                    ModifiableUtility.GetBranch(hit, Branch, string.Empty);
+            clampedPath += path[path.Count - 2];
 
-                    foreach (var mod in Branch.Where(x => x.Item1 == clampedPath))
+            foreach (var hit in components)
+            {
+                //Debug.Log(property.GetName() + " group is " + property.Group + ". " + hit + " group is " + hit.GetGroup() + ". ");
+                List<Tuple<string, IModifiable>> Branch = new List<Tuple<string, IModifiable>>();
+                ModifiableUtility.GetBranch(hit, Branch, string.Empty);
+
+                Debug.Log(clampedPath);
+                foreach (var mod in Branch.Where(x => x.Item1 == clampedPath))
+                {
+                    if (mod.Item2.GetGroup() == property.Group || property.Group == -1)
                     {
+                        Debug.Log("Try apply " + property.property.Name + " to " + mod.Item1 + ", " + mod.Item2);
                         property.Apply(mod.Item2, root == null ? null : root.Properties.FirstOrDefault(x => x.property.Name == property.property.Name && x.Group == property.Group || x.Group == -1));
                     }
                 }

@@ -423,6 +423,7 @@ public class Projectile : MonoBehaviourPlus, IDestroyeble, IDescription
         for (int i = 0; i < groups; i++)
         {
             var gr = Blocks.Where(x => x.Group == i).ToList();
+            if (gr.Count == 0) continue;
             Parameters.Add("Боезапас");
             Values.Add((gr[0].Clips * gr.Count + gr[0].ChargesCount).ToString());
             Parameters.Add("Темп стрельбы");

@@ -128,39 +128,6 @@ public class Locomotor : MonoBehaviourPlus, IDestroyeble, IDescription, IModifia
             return IsGrounded;
         }
 
-        public System.Type GetFieldType(string name)
-        {
-            System.Type type = this.GetType();
-            var field = type.GetField(name);
-            if (field != null)
-                return field.GetType();
-            else
-            {
-                Debug.Log("<color=red>" + this + ": " + name + "</color>");
-                return null;
-            }
-        }
-        public object GetField(string name)
-        {
-            System.Type type = GetType();
-            var field = type.GetField(name);
-            return field.GetValue(this);
-        }
-        public void SetField(string name, object value, object zero)
-        {
-            System.Type type = GetType();
-
-            var field = type.GetField(name);
-
-            object Val = 0f;
-            if (field != null)
-            {
-                if (value == null)
-                    field.SetValue(this, zero);
-                field.SetValue(this, value);
-            }
-        }
-
         public int GetGroup()
         {
             return Group;

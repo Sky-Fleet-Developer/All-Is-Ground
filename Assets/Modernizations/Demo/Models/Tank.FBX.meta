@@ -1,0 +1,375 @@
+fileFormatVersion: 2
+guid: 1e4808f045a73444c8f883795504cd0a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BackCollider
+    100002: BackCollider001
+    100004: BackCollider002
+    100006: BackCollider003
+    100008: Box001
+    100010: Box002
+    100012: Cylinder001
+    100014: Cylinder002
+    100016: Cylinder003
+    100018: FrontCollider
+    100020: FrontCollider001
+    100022: FrontCollider002
+    100024: FrontCollider003
+    100026: Object
+    100028: OtherCollider
+    100030: OtherCollider001
+    100032: OtherCollider002
+    100034: OtherCollider003
+    100036: OtherCollider004
+    100038: OtherCollider005
+    100040: SideCollider
+    100042: SideCollider001
+    100044: SideCollider002
+    100046: SideCollider003
+    100048: SideCollider004
+    100050: SideCollider005
+    100052: //RootNode
+    100054: WheelDummyLB
+    100056: WheelDummyLB1
+    100058: WheelDummyLB2
+    100060: WheelDummyLF
+    100062: WheelDummyLF1
+    100064: WheelDummyLF2
+    100066: WheelDummyLM
+    100068: WheelDummyRB
+    100070: WheelDummyRB1
+    100072: WheelDummyRB2
+    100074: WheelDummyRF
+    100076: WheelDummyRF1
+    100078: WheelDummyRF2
+    100080: WheelDummyRM
+    100082: WheelLB
+    100084: WheelLB1
+    100086: WheelLB2
+    100088: WheelLF
+    100090: WheelLF1
+    100092: WheelLF2
+    100094: WheelLM
+    100096: WheelRB
+    100098: WheelRB1
+    100100: WheelRB2
+    100102: WheelRF
+    100104: WheelRF1
+    100106: WheelRF2
+    100108: WheelRM
+    100110: BodyMesh
+    100112: Dummy001
+    100114: TurelMesh
+    100116: Collider
+    100118: Collider 1
+    400000: BackCollider
+    400002: BackCollider001
+    400004: BackCollider002
+    400006: BackCollider003
+    400008: Box001
+    400010: Box002
+    400012: Cylinder001
+    400014: Cylinder002
+    400016: Cylinder003
+    400018: FrontCollider
+    400020: FrontCollider001
+    400022: FrontCollider002
+    400024: FrontCollider003
+    400026: Object
+    400028: OtherCollider
+    400030: OtherCollider001
+    400032: OtherCollider002
+    400034: OtherCollider003
+    400036: OtherCollider004
+    400038: OtherCollider005
+    400040: SideCollider
+    400042: SideCollider001
+    400044: SideCollider002
+    400046: SideCollider003
+    400048: SideCollider004
+    400050: SideCollider005
+    400052: //RootNode
+    400054: WheelDummyLB
+    400056: WheelDummyLB1
+    400058: WheelDummyLB2
+    400060: WheelDummyLF
+    400062: WheelDummyLF1
+    400064: WheelDummyLF2
+    400066: WheelDummyLM
+    400068: WheelDummyRB
+    400070: WheelDummyRB1
+    400072: WheelDummyRB2
+    400074: WheelDummyRF
+    400076: WheelDummyRF1
+    400078: WheelDummyRF2
+    400080: WheelDummyRM
+    400082: WheelLB
+    400084: WheelLB1
+    400086: WheelLB2
+    400088: WheelLF
+    400090: WheelLF1
+    400092: WheelLF2
+    400094: WheelLM
+    400096: WheelRB
+    400098: WheelRB1
+    400100: WheelRB2
+    400102: WheelRF
+    400104: WheelRF1
+    400106: WheelRF2
+    400108: WheelRM
+    400110: BodyMesh
+    400112: Dummy001
+    400114: TurelMesh
+    400116: Collider
+    400118: Collider 1
+    2300000: BackCollider
+    2300002: BackCollider001
+    2300004: BackCollider002
+    2300006: BackCollider003
+    2300008: Box001
+    2300010: Box002
+    2300012: Cylinder003
+    2300014: FrontCollider
+    2300016: FrontCollider001
+    2300018: FrontCollider002
+    2300020: FrontCollider003
+    2300022: Object
+    2300024: OtherCollider
+    2300026: OtherCollider001
+    2300028: OtherCollider002
+    2300030: OtherCollider003
+    2300032: OtherCollider004
+    2300034: OtherCollider005
+    2300036: SideCollider
+    2300038: SideCollider001
+    2300040: SideCollider002
+    2300042: SideCollider003
+    2300044: SideCollider004
+    2300046: SideCollider005
+    2300048: WheelLB
+    2300050: WheelLB1
+    2300052: WheelLB2
+    2300054: WheelLF
+    2300056: WheelLF1
+    2300058: WheelLF2
+    2300060: WheelLM
+    2300062: WheelRB
+    2300064: WheelRB1
+    2300066: WheelRB2
+    2300068: WheelRF
+    2300070: WheelRF1
+    2300072: WheelRF2
+    2300074: WheelRM
+    2300076: BodyMesh
+    2300078: TurelMesh
+    2300080: Collider
+    2300082: Collider 1
+    3300000: BackCollider
+    3300002: BackCollider001
+    3300004: BackCollider002
+    3300006: BackCollider003
+    3300008: Box001
+    3300010: Box002
+    3300012: Cylinder003
+    3300014: FrontCollider
+    3300016: FrontCollider001
+    3300018: FrontCollider002
+    3300020: FrontCollider003
+    3300022: Object
+    3300024: OtherCollider
+    3300026: OtherCollider001
+    3300028: OtherCollider002
+    3300030: OtherCollider003
+    3300032: OtherCollider004
+    3300034: OtherCollider005
+    3300036: SideCollider
+    3300038: SideCollider001
+    3300040: SideCollider002
+    3300042: SideCollider003
+    3300044: SideCollider004
+    3300046: SideCollider005
+    3300048: WheelLB
+    3300050: WheelLB1
+    3300052: WheelLB2
+    3300054: WheelLF
+    3300056: WheelLF1
+    3300058: WheelLF2
+    3300060: WheelLM
+    3300062: WheelRB
+    3300064: WheelRB1
+    3300066: WheelRB2
+    3300068: WheelRF
+    3300070: WheelRF1
+    3300072: WheelRF2
+    3300074: WheelRM
+    3300076: BodyMesh
+    3300078: TurelMesh
+    3300080: Collider
+    3300082: Collider 1
+    4300000: Cylinder001
+    4300002: WheelRB2
+    4300004: WheelRB1
+    4300006: WheelRM
+    4300008: WheelRF1
+    4300010: WheelRF2
+    4300012: WheelRB
+    4300014: WheelRF
+    4300016: WheelLF
+    4300018: Cylinder002
+    4300020: WheelLB2
+    4300022: WheelLB1
+    4300024: WheelLM
+    4300026: WheelLF1
+    4300028: WheelLF2
+    4300030: WheelLB
+    4300032: Box001
+    4300034: Object
+    4300036: Box002
+    4300038: Cylinder003
+    4300040: BackCollider
+    4300042: SideCollider
+    4300044: OtherCollider
+    4300046: FrontCollider
+    4300048: SideCollider005
+    4300050: OtherCollider005
+    4300052: FrontCollider001
+    4300054: BackCollider001
+    4300056: SideCollider001
+    4300058: OtherCollider001
+    4300060: FrontCollider002
+    4300062: FrontCollider003
+    4300064: OtherCollider002
+    4300066: BackCollider002
+    4300068: BackCollider003
+    4300070: SideCollider002
+    4300072: SideCollider003
+    4300074: SideCollider004
+    4300076: OtherCollider003
+    4300078: OtherCollider004
+    4300080: BodyMesh
+    4300082: TurelMesh
+    4300084: Collider
+    4300086: Collider
+    9500000: //RootNode
+    13700000: Cylinder001
+    13700002: Cylinder002
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #23'
+    second: {fileID: 2100000, guid: 1dc0e1712a77a884c884c3c247a8a4e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #24'
+    second: {fileID: 2100000, guid: efd7cd582ddd6314e87276e29956c9f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: efd7cd582ddd6314e87276e29956c9f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: 141139b91c1618348b7c4ecc864e23b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: 141139b91c1618348b7c4ecc864e23b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #28'
+    second: {fileID: 2100000, guid: 141139b91c1618348b7c4ecc864e23b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: cce64a3baf13d614d988e09fe4a614a1, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0508
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

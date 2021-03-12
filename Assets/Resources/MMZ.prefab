@@ -50,7 +50,7 @@ MonoBehaviour:
   Messege: OnStart
   SendOnStart: 0
   charge: {fileID: 0}
-  InitOnStart: 1
+  InitOnStart: 0
   FirstIndex: 0
   DeteachActive: 1
   DisabledObject: []
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   ScyncEffects: 0
   Blocks:
   - name: Left
-    Group: 0
+    Group: 1
     Launcher: {fileID: 4865744360836205887}
     ReloadDelay: 0.5
     Charged: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
     ClipReloadDelay: 0
     ClipCharged: 0
   - name: Right
-    Group: 0
+    Group: 1
     Launcher: {fileID: 4865744359872070507}
     ReloadDelay: 0.5
     Charged: 0
@@ -2086,6 +2086,7 @@ MonoBehaviour:
     - {fileID: 787167574419809998}
     - {fileID: 4339938033501312570}
     - {fileID: 6121008616454537221}
+    group: 0
   - ArmorThickness: 14
     ARC: 1900
     Armor:
@@ -2104,10 +2105,12 @@ MonoBehaviour:
     - {fileID: 6154953358198611933}
     - {fileID: 5409753998373898321}
     - {fileID: 4168355587058319352}
+    group: 0
   - ArmorThickness: 20
     ARC: 1700
     Armor:
     - {fileID: 4327241715767158443}
+    group: 0
 --- !u!114 &449203348776928434
 MonoBehaviour:
   m_ObjectHideFlags: 0

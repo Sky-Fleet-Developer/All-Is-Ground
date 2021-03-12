@@ -17,7 +17,7 @@ MonoBehaviour:
     Count: 0
     ResourceType: 1
   - Name: Experience
-    Count: 13526
+    Count: 0
     ResourceType: 0
   SelfResources: []
   Items:
@@ -36,8 +36,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 251
-        y: -217
+        x: 189
+        y: 24
         width: 130
         height: 30
       position: {x: -28, y: -30}
@@ -50,7 +50,7 @@ MonoBehaviour:
       - 2b37a81d-7f69-4977-8ea1-af62f90838ff
       Properties:
       - property:
-          Name: ForwardLocomotor.Speed
+          Name: Locomotor.Speed
           FieldName: Speed
           Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
             \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
@@ -67,7 +67,7 @@ MonoBehaviour:
         sVal: 
         _value: '{"x":25.0,"y":16.0}'
       - property:
-          Name: ForwardLocomotor.YDrag
+          Name: Locomotor.YDrag
           FieldName: YDrag
           Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
             \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
@@ -84,7 +84,7 @@ MonoBehaviour:
         sVal: 
         _value: 170
       - property:
-          Name: ForwardLocomotor.VibroengineForce
+          Name: Locomotor.VibroengineForce
           FieldName: VibroengineForce
           Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
           Type: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
         sVal: 
         _value: 0
       - property:
-          Name: ForwardLocomotor.SpaceEngineForce
+          Name: Locomotor.SpaceEngineForce
           FieldName: SpaceEngineForce
           Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
           Type: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
         sVal: 
         _value: 0
       - property:
-          Name: ForwardLocomotor.GyroscopeForce
+          Name: Locomotor.GyroscopeForce
           FieldName: GyroscopeForce
           Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
           Type: 3
@@ -139,8 +139,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 431
-        y: -297
+        x: 369
+        y: -56
         width: 130
         height: 30
       position: {x: 149, y: -102}
@@ -156,7 +156,7 @@ MonoBehaviour:
       - 7f835b5b-c35e-41d6-a166-1c3d4bb15168
       Properties:
       - property:
-          Name: ForwardLocomotor.Speed
+          Name: Locomotor.Speed
           FieldName: Speed
           Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
             \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
@@ -180,8 +180,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 431
-        y: -137
+        x: 369
+        y: 104
         width: 130
         height: 30
       position: {x: 147, y: 46}
@@ -194,7 +194,7 @@ MonoBehaviour:
       Connections: []
       Properties:
       - property:
-          Name: ForwardLocomotor.VibroengineForce
+          Name: Locomotor.VibroengineForce
           FieldName: VibroengineForce
           Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
           Type: 0
@@ -216,8 +216,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: -377
+        x: 569
+        y: -136
         width: 130
         height: 30
       position: {x: 352, y: -190}
@@ -230,7 +230,7 @@ MonoBehaviour:
       Connections: []
       Properties:
       - property:
-          Name: ForwardLocomotor.YDrag
+          Name: Locomotor.YDrag
           FieldName: YDrag
           Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
             \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
@@ -253,8 +253,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: -297
+        x: 569
+        y: -56
         width: 130
         height: 30
       position: {x: 346, y: -106}
@@ -267,7 +267,7 @@ MonoBehaviour:
       Connections: []
       Properties:
       - property:
-          Name: ForwardLocomotor.SpaceEngineForce
+          Name: Locomotor.SpaceEngineForce
           FieldName: SpaceEngineForce
           Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
           Type: 0
@@ -288,8 +288,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: -217
+        x: 569
+        y: 24
         width: 130
         height: 30
       position: {x: 355, y: -32}
@@ -302,7 +302,7 @@ MonoBehaviour:
       Connections: []
       Properties:
       - property:
-          Name: ForwardLocomotor.GyroscopeForce
+          Name: Locomotor.GyroscopeForce
           FieldName: GyroscopeForce
           Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
           Type: 3
@@ -325,8 +325,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 251
-        y: 43
+        x: 189
+        y: 284
         width: 130
         height: 30
       position: {x: -36, y: 233}
@@ -456,8 +456,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 431
-        y: 43
+        x: 369
+        y: 284
         width: 130
         height: 30
       position: {x: 153, y: 236}
@@ -543,8 +543,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: 3
+        x: 569
+        y: 244
         width: 130
         height: 30
       position: {x: 345, y: 186}
@@ -578,8 +578,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: 103
+        x: 569
+        y: 344
         width: 130
         height: 30
       position: {x: 349, y: 293}
@@ -615,8 +615,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 251
-        y: 283
+        x: 189
+        y: 524
         width: 130
         height: 30
       position: {x: -34, y: 470}
@@ -632,10 +632,10 @@ MonoBehaviour:
           FieldName: ReloadDelay
           Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
           Type: 0
-        groupName: 
+        groupName: ' (group:1) '
         id: 842.863
         ApplyType: 0
-        Group: 0
+        Group: 1
         fVal: 0.6
         iVal: 0
         v2Val: {x: 0, y: 0}
@@ -648,10 +648,10 @@ MonoBehaviour:
           FieldName: Clips
           Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
           Type: 1
-        groupName: 
+        groupName: ' (group:1) '
         id: 857.7467
         ApplyType: 0
-        Group: 0
+        Group: 1
         fVal: 0
         iVal: 20
         v2Val: {x: 0, y: 0}
@@ -660,13 +660,14 @@ MonoBehaviour:
         sVal: 
         _value: 20
     - Name: Rockets2.0
-      Description: 
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u043A\u043E\u043D\u0434\u0435\u043D\u0441\u0430\u0442\u043E\u0440\u043E\u0432
+        \u0437\u0430\u043F\u0430\u043B\u0430"
       Sprite: {fileID: 0}
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 431
-        y: 283
+        x: 369
+        y: 524
         width: 130
         height: 30
       position: {x: 144, y: 471}
@@ -682,10 +683,10 @@ MonoBehaviour:
           FieldName: ReloadDelay
           Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
           Type: 0
-        groupName: 
+        groupName: ' (group:1) '
         id: 930.90894
         ApplyType: 0
-        Group: 0
+        Group: 1
         fVal: 0.35
         iVal: 0
         v2Val: {x: 0, y: 0}
@@ -694,13 +695,13 @@ MonoBehaviour:
         sVal: 
         _value: 0,35
     - Name: Rockets3.0
-      Description: 
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u043A\u0430\u0441\u0441\u0435\u0442"
       Sprite: {fileID: 0}
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: 283
+        x: 569
+        y: 524
         width: 130
         height: 30
       position: {x: 353, y: 474}
@@ -715,10 +716,10 @@ MonoBehaviour:
           FieldName: Clips
           Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
           Type: 1
-        groupName: 
+        groupName: ' (group:1) '
         id: 650.09143
         ApplyType: 0
-        Group: 0
+        Group: 1
         fVal: 0
         iVal: 60
         v2Val: {x: 0, y: 0}
@@ -734,11 +735,11 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 251
-        y: 483
+        x: 189
+        y: 724
         width: 130
         height: 30
-      position: {x: -28, y: 677}
+      position: {x: -27, y: 679}
       AvailableBySingle: 0
       id: 73224179-7e1e-4e2d-8449-3fe5843c58cc
       GlobalResourceDependences: []
@@ -850,8 +851,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 431
-        y: 443
+        x: 369
+        y: 684
         width: 130
         height: 30
       position: {x: 157, y: 623}
@@ -886,8 +887,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 431
-        y: 543
+        x: 369
+        y: 784
         width: 130
         height: 30
       position: {x: 144, y: 726}
@@ -939,8 +940,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 631
-        y: 443
+        x: 569
+        y: 684
         width: 130
         height: 30
       position: {x: 342, y: 627}
@@ -976,8 +977,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 831
-        y: 443
+        x: 769
+        y: 684
         width: 130
         height: 30
       position: {x: 552, y: 633}
@@ -1005,31 +1006,826 @@ MonoBehaviour:
         bVal: 0
         sVal: 
         _value: 1,35
+    - Name: Gun
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u043F\u0443\u0448\u043A\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 904
+        width: 130
+        height: 30
+      position: {x: -26, y: 848}
+      AvailableBySingle: 0
+      id: a3294059-acef-449c-9633-14a1ac179bb6
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 10d7ced8-e809-4900-aeb9-a663525fdad6
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 538.7748
+        ApplyType: 0
+        Group: 0
+        fVal: 0.4
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,4
+      - property:
+          Name: ChargeBlock.ChargesCount
+          FieldName: ChargesCount
+          Description: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+          Type: 1
+        groupName: 
+        id: 759.65546
+        ApplyType: 0
+        Group: 0
+        fVal: 12
+        iVal: 12
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 12
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 117.329
+        ApplyType: 0
+        Group: 0
+        fVal: 60
+        iVal: 60
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 60
+      - property:
+          Name: ChargeBlock.ClipReloadDelay
+          FieldName: ClipReloadDelay
+          Description: "\u041F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 689.80084
+        ApplyType: 0
+        Group: 0
+        fVal: 7.3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 7,3
+    - Name: Gun2.0
+      Description: "\u041F\u043E\u043B\u043D\u0430\u044F \u0437\u0430\u043C\u0435\u043D\u0430
+        \u043F\u0443\u0448\u043A\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 904
+        width: 130
+        height: 30
+      position: {x: 160, y: 850}
+      AvailableBySingle: 0
+      id: 10d7ced8-e809-4900-aeb9-a663525fdad6
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 1200
+      SelfResourceDependences: []
+      Connections:
+      - 3e7dc61b-382e-40b4-9705-ebf1ce58b211
+      - 8cdb3f96-e98e-4c89-97f8-a58fabd36344
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 464.4093
+        ApplyType: 0
+        Group: 0
+        fVal: 0.9
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,9
+      - property:
+          Name: ChargeBlock.ChargesCount
+          FieldName: ChargesCount
+          Description: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+          Type: 1
+        groupName: 
+        id: 491.14566
+        ApplyType: 0
+        Group: 0
+        fVal: 9
+        iVal: 9
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 9
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 966.14124
+        ApplyType: 0
+        Group: 0
+        fVal: 30
+        iVal: 30
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 30
+      - property:
+          Name: ChargeBlock.ClipReloadDelay
+          FieldName: ClipReloadDelay
+          Description: "\u041F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 448.00406
+        ApplyType: 0
+        Group: 0
+        fVal: 8.5
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 8,5
+    - Name: Gun3.0
+      Description: "\u0410\u043B\u044C\u0442\u0435\u0440\u043D\u0430\u0442\u0438\u0432\u043D\u0430\u044F
+        \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430 \u0441\u0438\u0441\u0442\u0435\u043C\u044B
+        \u0437\u0430\u0440\u044F\u0436\u0430\u043D\u0438\u044F"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 864
+        width: 130
+        height: 30
+      position: {x: 360, y: 808}
+      AvailableBySingle: 0
+      id: 3e7dc61b-382e-40b4-9705-ebf1ce58b211
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 725
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 520.0606
+        ApplyType: 2
+        Group: 0
+        fVal: 0.4
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,4
+      - property:
+          Name: ChargeBlock.ClipReloadDelay
+          FieldName: ClipReloadDelay
+          Description: "\u041F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 96.477036
+        ApplyType: 2
+        Group: 0
+        fVal: 1.8
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,8
+    - Name: Gun3.5
+      Description: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u043D\u0430\u044F
+        \u043A\u0430\u0441\u0441\u0435\u0442\u0430"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 964
+        width: 130
+        height: 30
+      position: {x: 347, y: 909}
+      AvailableBySingle: 0
+      id: 8cdb3f96-e98e-4c89-97f8-a58fabd36344
+      GlobalResourceDependences:
+      - ResourceName: Experience
+        Cost: 650
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 863.2001
+        ApplyType: 1
+        Group: 0
+        fVal: 20
+        iVal: 20
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 20
+    Resources: []
+  - Name: Cobra
+    Stock:
+    - 614ec296-26b4-4e65-83fe-a37678f628d9
+    - dc29dbd8-4339-4f2f-8bf7-1fdf4ec2d9e8
+    Modernizations:
+    - Name: Suspension
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 265
+        width: 130
+        height: 30
+      position: {x: 18, y: 77}
+      AvailableBySingle: 0
+      id: d2fb3147-0f59-4c4f-85a3-cd1dc01bfe06
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - dc29dbd8-4339-4f2f-8bf7-1fdf4ec2d9e8
+      Properties:
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 951.1348
+        ApplyType: 0
+        Group: 0
+        fVal: 2.1
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 2,1
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 378.6978
+        ApplyType: 0
+        Group: 1
+        fVal: 2
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 2
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 964.1795
+        ApplyType: 0
+        Group: 0
+        fVal: 1.1
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,1
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 866.7421
+        ApplyType: 0
+        Group: 1
+        fVal: 1
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 457.1566
+        ApplyType: 0
+        Group: 0
+        fVal: 1100
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1100
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 439.55057
+        ApplyType: 0
+        Group: 1
+        fVal: 1200
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1200
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 549.6817
+        ApplyType: 0
+        Group: 0
+        fVal: 800
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 800
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 508.90344
+        ApplyType: 0
+        Group: 1
+        fVal: 500
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 500
+    - Name: Engine
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u044F"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 105
+        width: 130
+        height: 30
+      position: {x: 11, y: -90}
+      AvailableBySingle: 0
+      id: 1beb588c-5816-4972-addf-0ba8eea7683b
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections:
+      - 614ec296-26b4-4e65-83fe-a37678f628d9
+      Properties:
+      - property:
+          Name: Locomotor.Speed
+          FieldName: Speed
+          Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+            \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+          Type: 2
+        groupName: 
+        id: 111.43732
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 30, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: '{"x":30.0,"y":0.0}'
+      - property:
+          Name: Locomotor.YDrag
+          FieldName: YDrag
+          Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+            \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 53.566814
+        ApplyType: 0
+        Group: 0
+        fVal: 200
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 200
+      - property:
+          Name: Locomotor.VibroengineForce
+          FieldName: VibroengineForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
+          Type: 0
+        groupName: 
+        id: 386.31647
+        ApplyType: 0
+        Group: 0
+        fVal: 240
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 240
+      - property:
+          Name: Locomotor.SpaceEngineForce
+          FieldName: SpaceEngineForce
+          Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 479.9854
+        ApplyType: 0
+        Group: 0
+        fVal: 140
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 140
+      - property:
+          Name: Locomotor.GyroscopeForce
+          FieldName: GyroscopeForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+          Type: 3
+        groupName: 
+        id: 360.19308
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 200, y: 900, z: 200}
+        bVal: 0
+        sVal: 
+        _value: '{"x":200.0,"y":900.0,"z":200.0}'
+    - Name: Guns
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0442\u0443\u0440\u0435\u043B\u0435\u0439"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 585
+        width: 130
+        height: 30
+      position: {x: 9, y: 397}
+      AvailableBySingle: 0
+      id: fefe95f8-b2a1-4d92-938c-be62a464e7ca
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 751.65656
+        ApplyType: 0
+        Group: 0
+        fVal: 0.1
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,1
+      - property:
+          Name: ChargeBlock.ChargesCount
+          FieldName: ChargesCount
+          Description: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+          Type: 1
+        groupName: 
+        id: 538.5615
+        ApplyType: 0
+        Group: 0
+        fVal: 50
+        iVal: 50
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 50
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 236.385
+        ApplyType: 0
+        Group: 0
+        fVal: 200
+        iVal: 200
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 200
+      - property:
+          Name: ChargeBlock.ClipReloadDelay
+          FieldName: ClipReloadDelay
+          Description: "\u041F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 546.55115
+        ApplyType: 0
+        Group: 0
+        fVal: 5
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 5
+    - Name: Rockets
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0440\u0430\u043A\u0435\u0442"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 425
+        width: 130
+        height: 30
+      position: {x: 5, y: 221}
+      AvailableBySingle: 0
+      id: 3d77acdf-f073-4b96-87b6-b7f94eb11d10
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 756.2421
+        ApplyType: 0
+        Group: 1
+        fVal: 12
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 12
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: ' (group:1) '
+        id: 431.32812
+        ApplyType: 0
+        Group: 1
+        fVal: 8
+        iVal: 8
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 8
+    - Name: Protection
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0431\u0440\u043E\u043D\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 745
+        width: 130
+        height: 30
+      position: {x: 14, y: 555}
+      AvailableBySingle: 0
+      id: f0835af8-de83-4a0f-8b7c-ad64c7540842
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties: []
+    - Name: Engine2.0
+      Description: 
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 105
+        width: 130
+        height: 30
+      position: {x: 217, y: -88}
+      AvailableBySingle: 0
+      id: 614ec296-26b4-4e65-83fe-a37678f628d9
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: Locomotor.Speed
+          FieldName: Speed
+          Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+            \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+          Type: 2
+        groupName: 
+        id: 364.73804
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 40, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: '{"x":40.0,"y":0.0}'
+      - property:
+          Name: Locomotor.YDrag
+          FieldName: YDrag
+          Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+            \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 688.79425
+        ApplyType: 0
+        Group: 0
+        fVal: 350
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 350
+      - property:
+          Name: Locomotor.VibroengineForce
+          FieldName: VibroengineForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
+          Type: 0
+        groupName: 
+        id: 511.35284
+        ApplyType: 0
+        Group: 0
+        fVal: 320
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 320
+      - property:
+          Name: Locomotor.SpaceEngineForce
+          FieldName: SpaceEngineForce
+          Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 735.5089
+        ApplyType: 0
+        Group: 0
+        fVal: 170
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 170
+      - property:
+          Name: Locomotor.GyroscopeForce
+          FieldName: GyroscopeForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+          Type: 3
+        groupName: 
+        id: 430.97598
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 200, y: 1200, z: 200}
+        bVal: 0
+        sVal: 
+        _value: '{"x":200.0,"y":1200.0,"z":200.0}'
+    - Name: Suspension2.0
+      Description: "\u0417\u0430\u043C\u0435\u043D\u0430 \u0441\u0438\u043B\u043E\u0432\u043E\u0433\u043E
+        \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430"
+      Sprite: {fileID: 0}
+      IsDefault: 0
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 265
+        width: 130
+        height: 30
+      position: {x: 205, y: 74}
+      AvailableBySingle: 0
+      id: dc29dbd8-4339-4f2f-8bf7-1fdf4ec2d9e8
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: 
+        id: 238.06322
+        ApplyType: 2
+        Group: -1
+        fVal: 1.5
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,5
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: 
+        id: 319.4472
+        ApplyType: 2
+        Group: -1
+        fVal: 1.3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,3
     Resources: []
   Skin: {fileID: 11400000, guid: 7ff46521dd6b2cb4eb7367d373a2029b, type: 2}
   SavedProperties:
-  - Name: ForwardLocomotor.Speed
-    FieldName: Speed
-    Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
-      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
-    Type: 2
-  - Name: ForwardLocomotor.YDrag
-    FieldName: YDrag
-    Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
-      \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
-    Type: 0
-  - Name: ForwardLocomotor.VibroengineForce
-    FieldName: VibroengineForce
-    Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
-    Type: 0
-  - Name: ForwardLocomotor.SpaceEngineForce
-    FieldName: SpaceEngineForce
-    Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
-    Type: 0
-  - Name: ForwardLocomotor.GyroscopeForce
-    FieldName: GyroscopeForce
-    Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
-    Type: 3
   - Name: Locomotor.Speed
     FieldName: Speed
     Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
@@ -1052,6 +1848,30 @@ MonoBehaviour:
     FieldName: GyroscopeForce
     Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
     Type: 3
+  - Name: TankControl.MaxEngineRPM
+    FieldName: MaxEngineRPM
+    Description: Maximal RPM
+    Type: 0
+  - Name: TankControl.EnginePower
+    FieldName: EnginePower
+    Description: Engine power
+    Type: 0
+  - Name: TurelControl.RotationSpeed
+    FieldName: RotationSpeed
+    Description: Turret rotation speed
+    Type: 0
+  - Name: TurelControl.MaxDamage
+    FieldName: MaxDamage
+    Description: Maximal damage
+    Type: 0
+  - Name: TurelControl.MinDamage
+    FieldName: MinDamage
+    Description: Minimal damage
+    Type: 0
+  - Name: TurelControl.ReloadTimer
+    FieldName: ReloadTimer
+    Description: Reloading time
+    Type: 0
   - Name: Support.length
     FieldName: length
     Description: "\u0414\u043B\u0438\u043D\u0430"
