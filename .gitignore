@@ -12,8 +12,6 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
-
-
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -48,6 +46,7 @@ Assets/Plugins/Editor.meta
 *.mdb
 *.opendb
 *.VC.db
+*.rar
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -72,3 +71,4 @@ Assets/ScreenshotWindowConfig.asset.meta
 Assets/ScreenshotWindowConfig.asset
 Assets/Resources/Editor/DEFINES.meta
 Исходники/
+AllIsGround_12.03.2021.rar

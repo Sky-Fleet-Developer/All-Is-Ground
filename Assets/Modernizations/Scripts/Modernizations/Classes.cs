@@ -1080,14 +1080,7 @@ namespace Modernizations
                     GUI.color = Storage.AvailableWithResources(this, Item) ? new Color(0.2f, 0.7f, 0.2f, 1) : new Color(0.7f, 0.2f, 0.2f, 1);
                     if (GUI.Button(GetNextWithOffset(0, 24 * n, 380, 24), "Explore"))
                     {
-
-                        UsersDATA.Instance.StartCoroutine(UsersDATA.Instance.Explore(id, (v) => 
-                        {
-                            if (v)
-                            {
-                                Storage.Explore(Item.Name, this);
-                            }
-                        }));
+                        Storage.Explore(Item.Name, this);
                     }
                 }
                 else

@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Waiters;
 
-public class UsersDATA : MonoBehaviourPlus
+public class UsersDATA : MonoBehaviour
 {
     public static UsersDATA Instance;
     public static Account currentAccount;
@@ -51,7 +51,6 @@ public class UsersDATA : MonoBehaviourPlus
         {
             if (!PhotonNetwork.insideLobby)
                 PhotonNetwork.JoinLobby();
-            StartCoroutine(GetExp());
         }
     }
 
@@ -74,13 +73,12 @@ public class UsersDATA : MonoBehaviourPlus
                 if (property.GlobalResourceDependences.Count != 0) send += property.id + ":" + property.GlobalResourceDependences[0].Cost + ",";
             }
         }
-        StartCoroutine(SetItemsCosts(send));
     }
 
     #region Public
     public static void AddExperience(string PlayerName, int expToAdd)
     {
-        Instance.StartCoroutine(Instance.AddExp(PlayerName, expToAdd));
+        Debug.Log("AddExperience method has no implementation");
     }
     #endregion
 
@@ -124,29 +122,13 @@ public class UsersDATA : MonoBehaviourPlus
 
     #region Buttons
 
-    public void AddNewUser()
-    {
-        string LogIn, Pass, ConfPass;
-        LogIn = RegisterWindow.GetChildByName("NicknameField").InputField.text;
-        Pass = RegisterWindow.GetChildByName("PasswordField").InputField.text;
-        ConfPass = RegisterWindow.GetChildByName("ConfirmPasswordField").InputField.text;
-        if (string.IsNullOrEmpty(LogIn) || string.IsNullOrEmpty(Pass))
-            return;
-        if (Pass != ConfPass)
-        {
-            State.text = "<color=red>Пароли не совпадают.</color>";
-        }
-        StartCoroutine(Registration(LogIn, Pass));
-    }
-
     public void Authorization()
     {
-        string LogIn, Pass;
+        string LogIn;
         LogIn = LogInWindow.GetChildByName("NicknameField").InputField.text;
-        Pass = LogInWindow.GetChildByName("PasswordField").InputField.text;
-        if (string.IsNullOrEmpty(LogIn) || string.IsNullOrEmpty(Pass))
+        if (string.IsNullOrEmpty(LogIn))
             return;
-        StartCoroutine(Auth(LogIn, Pass));
+        SignIn(LogIn, 5000, int.MaxValue);
     }
 
     public void ExitGame()
@@ -171,7 +153,7 @@ public class UsersDATA : MonoBehaviourPlus
 
     private void StartPolygon() {
         isPolygon = true;
-        SignIn("хуимя", 0, int.MaxValue);
+        SignIn("Empty name", 0, int.MaxValue);
     }
 
     #endregion
@@ -261,272 +243,6 @@ public class UsersDATA : MonoBehaviourPlus
             obj.GetChildByName("Entry").Button.onClick.AddListener(delegate { EnterRoom(n); });
         }
     }
-
-    void ParceGarage(string String)
-    {
-        var setup = String.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-        Storage.GarageSet = setup.ToList();
-
-        Garage.Instance.MyShips = new List<string>();
-        foreach (var set in setup)
-        {
-            if(set.Length < 10)
-            Garage.Instance.MyShips.Add(set);
-        }
-    }
-    #endregion
-
-    #region HostRequests
-
-    IEnumerator Auth(string login, string password) // Авторизация
-    {
-        string uri = string.Format("{0}?method=Auth&name={1}&password={2}", ServerUri, login, password);
-        State.text = "Вход...";
-
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-
-            yield return www.SendWebRequest();
-
-            if (!string.IsNullOrEmpty(www.error))
-            {
-                Debug.Log("NetworkApi.Login error: " + www.error);
-                yield break;
-            }
-
-            Debug.Log(SelectString(www.downloadHandler.text));
-
-            var split = SelectString(www.downloadHandler.text).Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var dic = split.Select(n => n.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-
-
-            switch (dic["auth"])
-            {
-                case "error":
-                    Debug.Log("Error");
-                    State.text = "<color=red>" + dic["error"] + "</color>";
-                    break;
-                case "correct":
-                    PlayerPrefs.SetString("LastLogin", login);
-                    PlayerPrefs.SetString("LastPassword", password);
-
-                    ParceGarage(dic["set"]);
-
-                    List<string> ask = new List<string>();
-
-                    for(int i = 1; i < Garage.Instance.Ships.Count; i++) ask.Add(Garage.Instance.Ships[i].PrefabName);
-
-                    yield return StartCoroutine(GetShipsCosts(ask));
-
-                    SignIn(dic["name"], int.Parse(dic["experience"]), int.Parse(dic["free_exp"]));
-                    State.text = "";
-                    break;
-            }
-        }
-    }
-
-    IEnumerator Registration(string login, string password) // Регистрация
-    {
-        string uri = string.Format("{0}?method=Registration&id={1}&name={2}&password={3}", ServerUri, string.Format("{0:00000000}", UnityEngine.Random.Range(0, 99999999)), login, password);
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-
-            yield return www.SendWebRequest();
-
-            if (!string.IsNullOrEmpty(www.error))
-            {
-                Debug.Log("NetworkApi.Login error: " + www.error);
-                yield break;
-            }
-
-            string answer = SelectString(www.downloadHandler.text);
-
-            Debug.Log(answer);
-
-            var pars = answer.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-            var dic = pars.Select(n => n.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-
-            switch (dic["auth"])
-            {
-                case "error":
-                    Debug.Log("Error");
-                    State.text = "<color=red>" + dic["error"] + "</color>";
-                    break;
-                case "correct":
-                    PlayerPrefs.SetString("LastLogin", login);
-                    PlayerPrefs.SetString("LastPassword", password);
-
-                    List<string> ask = new List<string>();
-                    for (int i = 1; i < Garage.Instance.Ships.Count; i++)
-                        ask.Add(Garage.Instance.Ships[i].PrefabName);
-                    yield return StartCoroutine(GetShipsCosts(ask));
-
-                    SignIn(dic["name"], int.Parse(dic["experience"]), 0);
-                    State.text = "";
-                    break;
-            }
-
-            //var DetechModuls = SelectString(www.downloadHandler.text).Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-
-        }
-    }
-
-    IEnumerator AddExp(string login, int exp)
-    {
-        if (isPolygon) yield break;
-
-        string uri = string.Format("{0}?method=AddExperience&name={1}&exp={2}", ServerUri, login, exp);
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
-            Debug.Log(answer);
-        }
-    }
-
-    IEnumerator GetExp()
-    {
-        string uri = string.Format("{0}?method=GetExperience&name={1}", ServerUri, currentAccount.Name);
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
-            var dic = answer.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-            int exp = 0;
-            if (int.TryParse(dic["experience"], out exp))
-                currentAccount.Experience = exp;
-            if (int.TryParse(dic["free_experience"], out exp))
-                currentAccount.FreeExperience = exp;
-            SetAsSignedIn();
-        }
-    }
-
-    public IEnumerator GetItemsCosts(string ship, string[] items, Action onComplete)
-    {
-        if (isPolygon)
-        {
-            onComplete?.Invoke();
-            yield break;
-        }
-
-        string ask = ship;
-        foreach(var hit in items)
-        {
-            ask += "," + hit;
-        }
-
-        string uri = string.Format("{0}?method=GetItemsCosts&ask={1}", ServerUri, ask);
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
-
-            Debug.Log(answer);
-
-            var split = answer.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-
-            var item = Storage.GetItem(ship);
-            Garage.Instance.Ships.FirstOrDefault(x => x.PrefabName == ship).Cost = int.Parse(dic[ship]);
-
-            foreach (var hit in dic)
-            {
-                var pb = item.Modernizations.FirstOrDefault(x => x.id == hit.Key);
-                if(pb != null) pb.GlobalResourceDependences[0].Cost = int.Parse(hit.Value);
-            }
-            onComplete?.Invoke();
-        }
-    }
-
-    public IEnumerator SetItemsCosts(string send)
-    {
-        string uri = string.Format("{0}?method=SetItemsCosts&items={1}", ServerUri, send);
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
-
-            Debug.Log(answer);
-        }
-    }
-
-    IEnumerator GetShipsCosts(List<string> items)
-    {
-        string ask = string.Empty;
-        foreach(var hit in items)
-        {
-            ask += hit + ",";
-        }
-        string uri = string.Format("{0}?method=GetShipsCosts&ask={1}", ServerUri, ask);
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
-
-            var split = answer.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-            foreach (var hit in dic)
-            {
-                Garage.Instance.Ships.Where(x => x.PrefabName == hit.Key).SingleOrDefault().Cost = int.Parse(hit.Value);
-            }
-        }
-    }
-
-    bool exploreInProgress = false;
-    public IEnumerator Explore(string item, System.Action<bool> onComplete = null)
-    {
-        if (isPolygon)
-        {
-            onComplete?.Invoke(true);
-            yield break;
-        }
-        int Try = 0;
-        while (exploreInProgress && Try++ < 10)
-            yield return new WaitForSeconds(1);
-
-        string uri = string.Format("{0}?method=Explore&name={1}&item={2}", ServerUri, currentAccount.Name, item);
-        // Debug.Log(string.Format("method=Explore&name={0}&item={1}&type={2}", currentAccount.Name, item, type));
-        using (UnityWebRequest www = UnityWebRequest.Get(uri))
-        {
-            yield return www.SendWebRequest();
-            string answer = SelectString(www.downloadHandler.text);
-
-            Debug.Log(answer);
-
-            var split = answer.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var dic = split.Select(x => x.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries)).ToDictionary(k => k[0].ToString(), v => v[1].ToString());
-
-            switch (dic["result"])
-            {
-                case "error":
-                    Debug.Log("Error");
-                    State.text = "<color=red>" + dic["error"] + "</color>";
-                    onComplete?.Invoke(false);
-                    break;
-                case "correct":
-                    onComplete?.Invoke(true);
-                    currentAccount.FreeExperience = int.Parse(dic["free_experience"]);
-                    SetAsSignedIn();
-                    break;
-            }
-        }
-    }
-
-
-    public static string SelectString(string text)
-    {
-        int StartIndex = text.IndexOf("<start>") + 7;
-        int EndIndex = text.IndexOf("</start>");
-        string Text = string.Empty;
-        for (int i = StartIndex; i < EndIndex; i++)
-            Text += text[i].ToString();
-        return Text;
-    }
-
+    
     #endregion
 }

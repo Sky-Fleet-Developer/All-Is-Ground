@@ -39,7 +39,7 @@ public class AIBot : MonoBehaviourPlus, IDestroyeble
     protected Rigidbody Rigid;
     protected Transform TWP;
     float PCTimer;
-    protected NavMeshPath NMPath = new NavMeshPath();
+    protected NavMeshPath NMPath;
     protected bool RocketShoot = false;
     protected bool CanRocketShoot = false;
     protected bool CanGunShoot = false;

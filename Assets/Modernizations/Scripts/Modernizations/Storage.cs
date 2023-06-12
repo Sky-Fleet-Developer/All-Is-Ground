@@ -12,7 +12,6 @@ public class Storage : ScriptableObject
 {
     public List<Resource> GlobalResources;
     public List<Resource> SelfResources;
-    public static List<string> GarageSet;
     public static System.Action OnResourcesChainge
     {
         get => instance.onResourcesChainge;
