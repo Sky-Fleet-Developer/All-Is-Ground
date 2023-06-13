@@ -23,10 +23,11 @@ MonoBehaviour:
   Items:
   - Name: MMZ
     Stock:
-    - RAM
-    - Engine2.0
-    - Engine2.5
-    - 266,0112
+    - 1752897e-44f9-4839-ba3f-4804863fa6b8
+    - d122b26f-dfac-4399-a425-fbb8106b6532
+    - ec40f80b-3072-4112-8943-d588026bddb7
+    - 73224179-7e1e-4e2d-8449-3fe5843c58cc
+    - a3294059-acef-449c-9633-14a1ac179bb6
     Modernizations:
     - Name: Engine
       Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
@@ -36,8 +37,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 24
+        x: 261
+        y: 190
         width: 130
         height: 30
       position: {x: -28, y: -30}
@@ -139,8 +140,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: -56
+        x: 441
+        y: 110
         width: 130
         height: 30
       position: {x: 149, y: -102}
@@ -180,8 +181,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 104
+        x: 441
+        y: 270
         width: 130
         height: 30
       position: {x: 147, y: 46}
@@ -216,8 +217,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: -136
+        x: 641
+        y: 30
         width: 130
         height: 30
       position: {x: 352, y: -190}
@@ -253,8 +254,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: -56
+        x: 641
+        y: 110
         width: 130
         height: 30
       position: {x: 346, y: -106}
@@ -288,8 +289,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 24
+        x: 641
+        y: 190
         width: 130
         height: 30
       position: {x: 355, y: -32}
@@ -325,8 +326,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 284
+        x: 261
+        y: 450
         width: 130
         height: 30
       position: {x: -36, y: 233}
@@ -456,8 +457,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 284
+        x: 441
+        y: 450
         width: 130
         height: 30
       position: {x: 153, y: 236}
@@ -543,8 +544,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 244
+        x: 641
+        y: 410
         width: 130
         height: 30
       position: {x: 345, y: 186}
@@ -578,8 +579,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 344
+        x: 641
+        y: 510
         width: 130
         height: 30
       position: {x: 349, y: 293}
@@ -615,8 +616,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 524
+        x: 261
+        y: 690
         width: 130
         height: 30
       position: {x: -34, y: 470}
@@ -666,8 +667,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 524
+        x: 441
+        y: 690
         width: 130
         height: 30
       position: {x: 144, y: 471}
@@ -700,8 +701,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 524
+        x: 641
+        y: 690
         width: 130
         height: 30
       position: {x: 353, y: 474}
@@ -735,8 +736,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 724
+        x: 261
+        y: 890
         width: 130
         height: 30
       position: {x: -27, y: 679}
@@ -851,8 +852,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 684
+        x: 441
+        y: 850
         width: 130
         height: 30
       position: {x: 157, y: 623}
@@ -887,8 +888,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 784
+        x: 441
+        y: 950
         width: 130
         height: 30
       position: {x: 144, y: 726}
@@ -940,8 +941,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 684
+        x: 641
+        y: 850
         width: 130
         height: 30
       position: {x: 342, y: 627}
@@ -977,8 +978,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 769
-        y: 684
+        x: 841
+        y: 850
         width: 130
         height: 30
       position: {x: 552, y: 633}
@@ -1014,8 +1015,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 904
+        x: 261
+        y: 1070
         width: 130
         height: 30
       position: {x: -26, y: 848}
@@ -1097,8 +1098,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 904
+        x: 441
+        y: 1070
         width: 130
         height: 30
       position: {x: 160, y: 850}
@@ -1184,8 +1185,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 864
+        x: 641
+        y: 1030
         width: 130
         height: 30
       position: {x: 360, y: 808}
@@ -1236,8 +1237,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 569
-        y: 964
+        x: 641
+        y: 1130
         width: 130
         height: 30
       position: {x: 347, y: 909}
@@ -1279,8 +1280,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 155
-        y: 265
+        x: 194
+        y: 249
         width: 130
         height: 30
       position: {x: 18, y: 77}
@@ -1427,8 +1428,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 155
-        y: 105
+        x: 194
+        y: 89
         width: 130
         height: 30
       position: {x: 11, y: -90}
@@ -1529,8 +1530,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 155
-        y: 585
+        x: 194
+        y: 569
         width: 130
         height: 30
       position: {x: 9, y: 397}
@@ -1612,8 +1613,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 155
-        y: 425
+        x: 194
+        y: 409
         width: 130
         height: 30
       position: {x: 5, y: 221}
@@ -1663,8 +1664,8 @@ MonoBehaviour:
       IsDefault: 1
       rect:
         serializedVersion: 2
-        x: 155
-        y: 745
+        x: 194
+        y: 729
         width: 130
         height: 30
       position: {x: 14, y: 555}
@@ -1680,8 +1681,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 355
-        y: 105
+        x: 394
+        y: 89
         width: 130
         height: 30
       position: {x: 217, y: -88}
@@ -1780,8 +1781,8 @@ MonoBehaviour:
       IsDefault: 0
       rect:
         serializedVersion: 2
-        x: 355
-        y: 265
+        x: 394
+        y: 249
         width: 130
         height: 30
       position: {x: 205, y: 74}
@@ -1823,6 +1824,429 @@ MonoBehaviour:
         bVal: 0
         sVal: 
         _value: 1,3
+    Resources: []
+  - Name: Almaz
+    Stock: []
+    Modernizations:
+    - Name: Engine
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u044F"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 189
+        width: 130
+        height: 30
+      position: {x: 2, y: 19}
+      AvailableBySingle: 0
+      id: b5354ff3-c0ee-4798-9366-65a45430a36e
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: Locomotor.Speed
+          FieldName: Speed
+          Description: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+            \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+          Type: 2
+        groupName: 
+        id: 501.53796
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 28, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: '{"x":28.0,"y":0.0}'
+      - property:
+          Name: Locomotor.YDrag
+          FieldName: YDrag
+          Description: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u0435
+            \u0441\u043E\u043F\u0440\u043E\u0442\u0438\u0432\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 642.3148
+        ApplyType: 0
+        Group: 0
+        fVal: 210
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 210
+      - property:
+          Name: Locomotor.VibroengineForce
+          FieldName: VibroengineForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C"
+          Type: 0
+        groupName: 
+        id: 649.2939
+        ApplyType: 0
+        Group: 0
+        fVal: 200
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 200
+      - property:
+          Name: Locomotor.SpaceEngineForce
+          FieldName: SpaceEngineForce
+          Description: "\u0421\u0446\u0435\u043F\u043B\u0435\u043D\u0438\u0435"
+          Type: 0
+        groupName: 
+        id: 379.47314
+        ApplyType: 0
+        Group: 0
+        fVal: 130
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 130
+      - property:
+          Name: Locomotor.GyroscopeForce
+          FieldName: GyroscopeForce
+          Description: "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C \u0433\u0438\u0440\u043E\u0441\u043A\u043E\u043F\u043E\u0432"
+          Type: 3
+        groupName: 
+        id: 263.98438
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 200, y: 900, z: 200}
+        bVal: 0
+        sVal: 
+        _value: '{"x":200.0,"y":900.0,"z":200.0}'
+    - Name: Suspension
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 249
+        width: 130
+        height: 30
+      position: {x: 12, y: 77}
+      AvailableBySingle: 0
+      id: 5bd6cfc6-86fb-4b25-8454-ca46a2ba59ab
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: Support.length
+          FieldName: length
+          Description: "\u0414\u043B\u0438\u043D\u0430"
+          Type: 0
+        groupName: 
+        id: 794.7668
+        ApplyType: 0
+        Group: -1
+        fVal: 2.3
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 2,3
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:0) '
+        id: 90.76023
+        ApplyType: 0
+        Group: 0
+        fVal: 1.2
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,2
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:-1) '
+        id: 948.21765
+        ApplyType: 0
+        Group: -1
+        fVal: 1100
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1100
+      - property:
+          Name: Support.Dumping
+          FieldName: Dumping
+          Description: "\u0416\u0435\u0441\u0442\u043A\u043E\u0441\u0442\u044C \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: 
+        id: 241.26363
+        ApplyType: 0
+        Group: 0
+        fVal: 800
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 800
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:1) '
+        id: 141.93892
+        ApplyType: 0
+        Group: 1
+        fVal: 1.15
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1,15
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:2) '
+        id: 844.10834
+        ApplyType: 0
+        Group: 2
+        fVal: 0.95
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,95
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:2) '
+        id: 983.2003
+        ApplyType: 0
+        Group: 2
+        fVal: 1200
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1200
+      - property:
+          Name: Support.Force
+          FieldName: Force
+          Description: "\u0421\u0438\u043B\u0430 \u043F\u0440\u0443\u0436\u0438\u043D\u044B"
+          Type: 0
+        groupName: ' (group:3) '
+        id: 597.0729
+        ApplyType: 0
+        Group: 3
+        fVal: 1200
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1200
+      - property:
+          Name: Support.targetDistance
+          FieldName: targetDistance
+          Description: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434\u0432\u0435\u0441\u043A\u0438"
+          Type: 0
+        groupName: ' (group:3) '
+        id: 972.5983
+        ApplyType: 0
+        Group: 3
+        fVal: 0.9
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 0,9
+    - Name: Rockets
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0440\u0430\u043A\u0435\u0442"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 309
+        width: 130
+        height: 30
+      position: {x: 9, y: 135}
+      AvailableBySingle: 0
+      id: fb85d87d-8b2d-4052-91af-fea1cd466956
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 524.435
+        ApplyType: 0
+        Group: 0
+        fVal: 10
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 10
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 776.30054
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 6
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 6
+      - property:
+          Name: ChargeBlock.ChargesCount
+          FieldName: ChargesCount
+          Description: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+          Type: 1
+        groupName: 
+        id: 922.03595
+        ApplyType: 0
+        Group: 0
+        fVal: 1
+        iVal: 1
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1
+    - Name: Guns
+      Description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F
+        \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442\u0430\u0446\u0438\u044F
+        \u0442\u0443\u0440\u0435\u043B\u0435\u0439"
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 369
+        width: 130
+        height: 30
+      position: {x: 12, y: 181}
+      AvailableBySingle: 0
+      id: e2d992e7-bd0b-4afc-a7f1-0256076e58d9
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties:
+      - property:
+          Name: ChargeBlock.ReloadDelay
+          FieldName: ReloadDelay
+          Description: "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430"
+          Type: 0
+        groupName: 
+        id: 485.57132
+        ApplyType: 0
+        Group: 0
+        fVal: 4.7
+        iVal: 0
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 4,7
+      - property:
+          Name: ChargeBlock.ChargesCount
+          FieldName: ChargesCount
+          Description: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+          Type: 1
+        groupName: 
+        id: 563.767
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 1
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 1
+      - property:
+          Name: ChargeBlock.Clips
+          FieldName: Clips
+          Description: "\u0411\u043E\u0435\u0437\u0430\u043F\u0430\u0441"
+          Type: 1
+        groupName: 
+        id: 808.0988
+        ApplyType: 0
+        Group: 0
+        fVal: 0
+        iVal: 40
+        v2Val: {x: 0, y: 0}
+        v3Val: {x: 0, y: 0, z: 0}
+        bVal: 0
+        sVal: 
+        _value: 40
+    Resources: []
+  - Name: RAM
+    Stock: []
+    Modernizations:
+    - Name: DEFAULT
+      Description: 
+      Sprite: {fileID: 0}
+      IsDefault: 1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 249
+        width: 130
+        height: 30
+      position: {x: -99, y: 64}
+      AvailableBySingle: 0
+      id: 71901293-2710-44ad-a1cc-8b79b353f1b2
+      GlobalResourceDependences: []
+      SelfResourceDependences: []
+      Connections: []
+      Properties: []
     Resources: []
   Skin: {fileID: 11400000, guid: 7ff46521dd6b2cb4eb7367d373a2029b, type: 2}
   SavedProperties:
